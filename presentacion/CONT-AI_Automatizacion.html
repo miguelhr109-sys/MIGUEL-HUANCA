@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Automatización Contable · CONT-AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<style>
+:root{--bg:#040A14;--ink:#F1F5F9;--mut:#94A3B8;--dim:#64748B;--ln:rgba(148,163,184,.18);--card:rgba(15,23,42,.62);
+ --a1:#FFB347;--a2:#FF5E3A;--ok1:#9BF0CC;--ok2:#2FBF8F;--bad:#FB7185;
+ --font:'Inter',ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;--mono:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;
+ box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#040A14;--ink:#F1F5F9}}
+:root[data-theme="dark"]{--bg:#040A14;--ink:#F1F5F9}
+html{height:100%;background:var(--bg)}
+body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);overflow:hidden;-webkit-font-smoothing:antialiased;user-select:none}
+/* ambient */
+.orb{position:fixed;width:70vmax;height:70vmax;border-radius:50%;filter:blur(90px);opacity:.22;pointer-events:none}
+.orb.o1{left:-20vmax;top:-30vmax;background:radial-gradient(circle,var(--a1),transparent 65%)}
+.orb.o2{right:-25vmax;bottom:-35vmax;background:radial-gradient(circle,var(--a2),transparent 65%)}
+.tex{position:fixed;inset:0;pointer-events:none;background-image:radial-gradient(rgba(148,163,184,.11) 1px,transparent 1.4px);background-size:28px 28px;-webkit-mask:radial-gradient(ellipse at 50% 50%,#000 25%,transparent 80%);mask:radial-gradient(ellipse at 50% 50%,#000 25%,transparent 80%)}
+.ghost{position:fixed;left:0;top:50%;white-space:nowrap;font-size:26vw;font-weight:900;letter-spacing:-.05em;color:transparent;-webkit-text-stroke:1px rgba(148,163,184,.07);transform:translateY(-50%);pointer-events:none}
+#stage{position:absolute;left:50%;top:50%;width:1600px;height:900px;margin:-450px 0 0 -800px;transform-origin:50% 50%}
+/* chrome */
+.hd{position:absolute;left:100px;right:100px;top:44px;display:flex;justify-content:space-between;align-items:center;font-size:16px;color:var(--mut);z-index:2}
+.brand{display:flex;align-items:center;gap:14px}.brand b{font-size:19px;letter-spacing:.14em;color:var(--ink)}.brand i{width:1px;height:20px;background:var(--ln)}
+.ft{position:absolute;left:100px;right:100px;bottom:40px;display:flex;align-items:flex-end;gap:10px;z-index:2}
+.seg{flex:1;cursor:pointer;font-size:13px;letter-spacing:.06em;color:var(--dim);transition:color .5s}
+.seg:before{content:"";display:block;height:3px;border-radius:2px;margin-bottom:9px;background:rgba(148,163,184,.18);transition:background .5s}
+.seg.done:before{background:color-mix(in srgb,var(--a1) 45%,transparent)}.seg.on{color:var(--ink)}.seg.on:before{background:linear-gradient(90deg,var(--a1),var(--a2))}
+.num{min-width:90px;text-align:right;font-size:15px;font-variant-numeric:tabular-nums;color:var(--mut)}
+/* slides */
+.slide{position:absolute;inset:0;visibility:hidden;pointer-events:none}
+.slide.on{visibility:visible;pointer-events:auto}
+.col{position:absolute;display:flex;flex-direction:column;gap:22px}
+.k{margin:0;font-size:17px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--a1)}
+.h1,.h2{margin:0;font-weight:800;letter-spacing:-.035em;line-height:1.02}
+.h1{font-size:112px}.h2{font-size:62px}
+.h1>span,.h2>span{display:block}
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .02em .1em;margin-bottom:-.1em}
+.wi{display:inline-block;will-change:transform}
+.ac,.acr,.acg{background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.ac{background-image:linear-gradient(90deg,var(--a1),var(--a2))}
+.acr{background-image:linear-gradient(90deg,#FFB347,#FF5E3A)}
+.acg{background-image:linear-gradient(90deg,#9BF0CC,#2FBF8F)}
+.p{margin:0;font-size:26px;line-height:1.45;color:var(--mut)}.p b{color:var(--ink);font-weight:600}
+.met{margin:0;font-size:22px;color:var(--mut)}.met b{color:var(--a1)}.met i{font-style:normal;margin:0 .7em;opacity:.45}
+.foot{margin:0;font-size:15px;color:var(--dim)}
+.kpi{display:flex;align-items:baseline;gap:22px;padding:22px 30px;border-radius:20px;background:var(--card);border:1px solid var(--ln);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.kpi .v{font-size:88px;font-weight:800;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums;white-space:nowrap}
+.kpi .d{font-size:21px;line-height:1.35;color:var(--mut)}
+.li{display:flex;flex-direction:column;gap:14px}
+.li div{display:flex;align-items:center;gap:16px;font-size:22px}
+.li em{font-style:normal;min-width:92px;padding:5px 10px;border-radius:8px;font-family:var(--mono);font-size:16px;font-weight:700;text-align:center;background:rgba(251,113,133,.16);color:#FDA4AF;border:1px solid rgba(251,113,133,.4)}
+/* problem windows */
+.scene3d{position:absolute;left:960px;top:190px;width:620px;height:560px;perspective:1500px;transform-style:preserve-3d}
+.win3d{position:absolute;width:350px;border-radius:14px;background:rgba(14,18,28,.9);border:1px solid var(--ln);box-shadow:0 30px 80px rgba(0,0,0,.6);overflow:hidden;font-family:var(--mono)}
+.win3d h4{margin:0;padding:9px 14px;font-size:12px;font-weight:500;color:var(--dim);border-bottom:1px solid var(--ln);background:rgba(255,255,255,.04)}
+.row{display:flex;justify-content:space-between;padding:7px 14px;font-size:13px;color:#B8C0CC;border-bottom:1px solid rgba(255,255,255,.06)}
+.row .bad{padding:0 7px;border-radius:5px}
+/* reveal */
+#iso{position:absolute;left:630px;top:150px;width:920px;height:654px;overflow:visible}
+.states{display:flex;flex-direction:column;gap:12px;margin-top:6px}
+.stt{display:grid;grid-template-columns:190px 1fr;column-gap:16px;padding:16px 20px;border-radius:16px;border:1px solid var(--ln);background:var(--card);opacity:.38;transition:opacity .5s,border-color .5s,transform .5s}
+.stt b{font-size:20px}.stt span{grid-row:span 2;font-size:17px;line-height:1.35;color:var(--mut)}.stt em{font-style:normal;font-family:var(--mono);font-size:15px;font-weight:700}
+.stt.m b,.stt.m em{color:#FDBA74}.stt.a b,.stt.a em{color:#6EE7B7}
+.stt.on{opacity:1;transform:translateX(8px)}.stt.m.on{border-color:rgba(251,146,60,.6)}.stt.a.on{border-color:rgba(52,211,153,.6)}
+.ctl{display:flex;gap:12px;align-items:center}
+.btn{font:700 17px var(--font);padding:12px 20px;border-radius:999px;border:1px solid var(--ln);background:rgba(148,163,184,.12);color:var(--ink);cursor:pointer}
+.btn.pri{background:linear-gradient(90deg,#9BF0CC,#2FBF8F);color:#04130D;border:0}
+.rng{font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
+.rng input{flex:1;accent-color:#34D399;height:28px;cursor:pointer}
+.pill{position:absolute;left:1090px;top:112px;transform:translateX(-50%);padding:9px 20px;border-radius:999px;font:700 14px var(--font);letter-spacing:.24em;white-space:nowrap;border:1px solid rgba(251,146,60,.6);color:#FDBA74;background:rgba(124,45,18,.35);transition:all .5s}
+.pill.auto{border-color:rgba(52,211,153,.6);color:#6EE7B7;background:rgba(6,78,59,.4)}
+.cap2{position:absolute;left:1090px;top:812px;transform:translateX(-50%);font-size:13px;color:var(--dim);white-space:nowrap}
+/* metric */
+.center{left:0;width:1600px;align-items:center;text-align:center}
+.ba{display:flex;align-items:center;gap:40px;font-weight:800;letter-spacing:-.03em;font-size:84px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.old{position:relative;color:var(--mut)}
+.strike{position:absolute;left:-2%;right:-2%;top:52%;height:9px;border-radius:5px;background:var(--bad);transform-origin:left center;box-shadow:0 0 18px var(--bad)}
+.arr{font-size:60px;color:var(--dim)}
+.hero{margin:0;font-weight:900;letter-spacing:-.06em;line-height:.9;font-size:300px;font-variant-numeric:tabular-nums;white-space:nowrap;position:relative}
+.ring{position:absolute;left:50%;top:50%;width:300px;height:300px;margin:-150px 0 0 -150px;border-radius:50%;border:4px solid #34D399;opacity:0;pointer-events:none}
+/* flow */
+.track{position:absolute;left:101px;top:470px;width:1398px;height:4px;border-radius:2px;background:linear-gradient(90deg,#9BF0CC,#2FBF8F);transform-origin:left center;opacity:.6}
+.pk{position:absolute;top:462px;left:101px;width:20px;height:20px;margin-left:-10px;border-radius:50%;background:radial-gradient(circle,#fff,#34D399 45%,transparent 70%);opacity:0}
+.steps{position:absolute;left:101px;top:520px;width:1398px;display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+.card{padding:26px 28px;border-radius:20px;background:var(--card);border:1px solid var(--ln);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.card .n{font-size:64px;font-weight:900;line-height:1;letter-spacing:-.04em}
+.card h3{margin:12px 0 6px;font-size:36px;font-weight:800;letter-spacing:-.02em}
+.card p{margin:0;font-size:20px;color:var(--mut)}
+.dot{position:absolute;top:458px;width:28px;height:28px;margin-left:-14px;border-radius:50%;background:#071a17;border:3px solid #34D399}
+/* video */
+.vid{position:absolute;left:350px;top:270px;width:900px;height:506px;border-radius:22px;overflow:hidden;background:linear-gradient(160deg,#0B1830,#060D1C);border:1.5px solid rgba(52,211,153,.55);box-shadow:0 0 0 6px rgba(52,211,153,.06),0 0 60px rgba(52,211,153,.22),0 30px 90px rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center}
+.vid video{display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000}
+.vid.has video{display:block}.vid.has .ph{display:none}
+.ph{display:flex;flex-direction:column;align-items:center;gap:16px;color:var(--mut);font-size:22px}
+.ld{position:absolute;right:16px;bottom:16px;padding:9px 16px;border-radius:999px;background:rgba(148,163,184,.14);border:1px solid var(--ln);font-size:15px;color:var(--mut);cursor:pointer}
+.ld input{display:none}
+/* savings */
+.big{margin:0;font-weight:900;letter-spacing:-.05em;line-height:.95;font-variant-numeric:tabular-nums;white-space:nowrap;font-size:116px}
+.red{position:absolute;left:880px;top:300px;width:620px;display:flex;flex-direction:column;gap:22px}
+.rr{display:grid;grid-template-columns:1fr 140px;row-gap:8px;column-gap:16px;align-items:end}
+.rr .nm{font-size:20px;font-weight:700}.rr .nm small{display:block;font-size:15px;font-weight:500;color:var(--mut);margin-top:3px;font-family:var(--mono)}
+.rr .pc{font-size:38px;font-weight:900;letter-spacing:-.03em;text-align:right;font-variant-numeric:tabular-nums;color:#6EE7B7}
+.rr .tk{grid-column:1/-1;height:12px;border-radius:7px;background:rgba(148,163,184,.12);overflow:hidden}
+.rr .tk i{display:block;height:100%;border-radius:7px;background:linear-gradient(90deg,#9BF0CC,#2FBF8F);transform-origin:left center}
+.rr.top .pc{font-size:52px;background:linear-gradient(90deg,#FFE29A,#FFB347);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.rr.top .tk i{background:linear-gradient(90deg,#FFE29A,#FFB347)}
+.hl{background-image:linear-gradient(90deg,#FFE29A,#FFB347)!important;background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+/* ask */
+.chips{display:flex;gap:14px;flex-wrap:wrap}
+.chip{display:flex;align-items:center;gap:10px;padding:12px 20px;border-radius:999px;background:var(--card);border:1px solid var(--ln);font-size:20px;font-weight:600}
+.chip:before{content:"";width:10px;height:10px;border-radius:50%;background:var(--a1);box-shadow:0 0 10px var(--a1)}
+#db{position:absolute;left:960px;top:260px;width:560px;height:420px}
+/* table */
+.tbl{position:absolute;left:100px;top:260px;width:1400px;border-radius:18px;overflow:hidden;background:var(--card);border:1px solid var(--ln)}
+.tr{display:grid;grid-template-columns:2.3fr .8fr 1.1fr 1.1fr 1.2fr 1fr;gap:14px;align-items:center;padding:15px 24px;border-bottom:1px solid var(--ln);font-size:22px;color:var(--mut)}
+.tr span:nth-child(n+2){text-align:right;font-variant-numeric:tabular-nums}
+.tr span:first-child{color:var(--ink);font-weight:600}
+.tr.th{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}.tr.th span:first-child{color:var(--dim)}
+.tr .s2{color:#6EE7B7;font-weight:700}.tr.na span{color:#475569!important;font-style:italic;font-weight:400!important}
+.tr.tot{border-bottom:0;background:rgba(52,211,153,.07);font-weight:700}.tr.tot .neg{color:#FDA4AF}.tr.tot small{font-size:15px;font-style:italic;color:var(--dim);font-weight:400}
+/* presenter */
+#pres{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:9;width:min(92vw,960px);padding:16px 20px;border-radius:16px;background:rgba(4,10,20,.95);border:1px solid var(--ln);display:none;gap:18px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+#pres.show{display:flex}#pres .tm{font-size:32px;font-weight:700;font-variant-numeric:tabular-nums;min-width:100px}#pres .tm.late{color:var(--bad)}
+#pres .nt{font-size:15px;line-height:1.45;color:var(--mut)}#pres .nx{display:block;margin-top:6px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+#turn{position:fixed;left:14px;right:14px;top:calc(14px + env(safe-area-inset-top,0px));z-index:9;display:none;padding:10px 14px;border-radius:12px;background:rgba(15,23,42,.92);border:1px solid var(--ln);font-size:13px;color:var(--mut);text-align:center}
+@media (orientation:portrait) and (max-width:700px){#turn{display:block}}
+</style>
+</head>
+<body>
+<div class="orb o1" aria-hidden="true"></div><div class="orb o2" aria-hidden="true"></div>
+<div class="tex" aria-hidden="true"></div>
+<div class="ghost" id="ghost" aria-hidden="true">AUTOMATIZAR · CONCILIAR · VALIDAR · AUTOMATIZAR · CONCILIAR · VALIDAR ·</div>
+<div id="stage">
+ <div class="hd">
+  <div class="brand"><svg width="30" height="30" viewBox="0 0 30 30" aria-label="Logo CONT-AI"><polygon points="15,2 27,9 27,21 15,28 3,21 3,9" fill="none" stroke="#34D399" stroke-width="2"/><circle cx="15" cy="9" r="2.6" fill="#FFB347"/><circle cx="9.5" cy="18.5" r="2.6" fill="#34D399"/><circle cx="20.5" cy="18.5" r="2.6" fill="#34D399"/><path d="M15 9 L9.5 18.5 L20.5 18.5 Z" fill="none" stroke="#9BF0CC" stroke-width="1.2"/></svg><b>CONT·AI</b><i></i><span>Contabilidad + IA</span></div>
+  <span>Grupo Euromotors · Champions IA 2026</span>
+ </div>
+
+ <!-- 0 · Portada -->
+ <section class="slide" data-k="cover" data-t="o" data-title="Portada" data-notes="Buenas tardes. Somos el equipo CONT-AI, de Contraloría. En tres minutos les mostramos cómo automatizamos las tareas operativas de Contabilidad: menos tiempos operativos, más control y menos errores. (10 s)">
+  <div class="col" style="left:100px;top:190px;width:1300px">
+   <p class="k it">Champions IA 2026 · Grupo Euromotors</p>
+   <h1 class="h1 kt"><span>Automatización de</span><span>tareas operativas</span><span class="ac">en Contabilidad</span></h1>
+   <p class="p it" style="font-size:30px;color:var(--ink)">Equipo CONT-AI · Contraloría</p>
+   <p class="met it"><b>↓</b> tiempos operativos <i>|</i> <b>↑</b> control <i>|</i> <b>↓</b> errores</p>
+  </div>
+ </section>
+
+ <!-- 1 · Problema -->
+ <section class="slide" data-k="prob" data-t="o" data-title="Problema" data-notes="Todos los días, antes de analizar, limpiamos datos en Excel. Vínculos que se rompen, cruces con BUSCARV que fallan y ningún registro de lo revisado. Solo SIRE – Ventas son 65 horas al mes en 25 empresas. La sobrecarga operativa le quita tiempo al análisis. (25 s)">
+  <div class="col" style="left:100px;top:150px;width:720px;gap:20px">
+   <p class="k it">01 — El problema</p>
+   <h2 class="h2 kt"><span>La sobrecarga operativa</span><span class="acr">le quita tiempo al análisis.</span></h2>
+   <div class="kpi it"><span class="v acr" data-count="65" data-from="0" data-suf=" h">65 h</span><span class="d">al mes revisando a mano<br>las ventas de 25 empresas</span></div>
+   <div class="li it"><div><em>#¡REF!</em>Vínculos rotos que se rastrean a mano</div><div><em>#N/A</em>Cruces con BUSCARV que fallan</div><div><em>—</em>Sin registro de lo revisado</div></div>
+   <p class="foot it">Filas ilustrativas, datos ficticios · Horas según resultados del equipo CONT-AI</p>
+  </div>
+  <div class="scene3d" id="wins"></div>
+ </section>
+
+ <!-- 2 · Revelado manual vs automatizado -->
+ <section class="slide" data-k="reveal" data-t="o" data-title="Antes / Después" data-notes="Esto es lo que cambia. A la izquierda, el proceso manual: carpetas de facturas, hojas con errores, cruces a mano. Al automatizar, la herramienta lee todo, cruza con una sola llave y valida campo por campo: queda un tablero limpio con cada comprobante conciliado y las diferencias listas para corregir. SIRE – Ventas pasa de 65 h a 19 h 25 min al mes. (Arrastra el control o pulsa Automatizar.) (30 s)">
+  <div class="col" style="left:100px;top:150px;width:540px;gap:20px">
+   <p class="k it">02 — Antes vs. después</p>
+   <h2 class="h2 kt" style="font-size:48px"><span>Del caos de carpetas</span><span class="acg">a la conciliación instantánea.</span></h2>
+   <div class="states it">
+    <div class="stt m on" id="stM"><b>Manual</b><span>Carpetas de facturas, BUSCARV y vínculos rotos.</span><em>65 h / mes</em></div>
+    <div class="stt a" id="stA"><b>Automatizado</b><span>Cruce y validación al instante, diferencias listas para corregir.</span><em>19 h 25 min / mes</em></div>
+   </div>
+   <div class="ctl it"><button class="btn pri" id="bAuto">▶ Automatizar</button><button class="btn" id="bMan">↺ Volver a manual</button></div>
+   <div class="ctl rng it"><span>Manual</span><input type="range" id="rv" min="0" max="1000" value="0" aria-label="Manual a automatizado"><span>Auto</span></div>
+  </div>
+  <div class="pill" id="pill">PROCESO MANUAL</div>
+  <svg id="iso" viewBox="0 0 900 640" aria-label="Escena isométrica: proceso manual frente a automatizado"></svg>
+  <div class="cap2">SIRE – Ventas · 25 empresas · comprobantes ilustrativos, datos ficticios</div>
+ </section>
+
+ <!-- 3 · Métrica 70% -->
+ <section class="slide" data-k="m70" data-t="g" data-title="70%" data-notes="El resultado en números: en conjunto pasamos de 73 h 30 min a 22 h 20 min al mes. Es casi 70% menos tiempo en tareas operativas. (15 s)">
+  <div class="col center" style="top:140px;gap:26px">
+   <p class="k it">03 — Tiempo de procesamiento mensual</p>
+   <div class="ba">
+    <span class="old" id="old">73 h 30 min<i class="strike" id="strike"></i></span>
+    <span class="arr" id="arr">→</span>
+    <span class="acg" id="new">22 h 20 min</span>
+   </div>
+   <p class="hero acg" id="hero"><span>−</span><span id="h70">70</span><span>%</span><i class="ring" id="ring"></i><i class="ring" id="ring2"></i></p>
+   <h2 class="h2 kt" style="font-size:44px;color:var(--ink)"><span>menos tiempo en tareas operativas</span></h2>
+   <p class="foot it">4 automatizaciones en Contraloría · 69,6% exacto, redondeado</p>
+  </div>
+ </section>
+
+ <!-- 4 · Cómo funciona -->
+ <section class="slide" data-k="flow" data-t="g" data-title="Cómo funciona" data-notes="Ya tenemos 4 automatizaciones funcionando en Contraloría. Ejemplo: SIRE – Ventas, en 25 empresas. Reúne 4 fuentes, las cruza con una sola llave (tipo, serie y número), valida campo por campo y entrega Excel de diferencias, formato SIRE y TXT. (25 s)">
+  <div class="col" style="left:100px;top:140px;width:1400px;gap:14px">
+   <p class="k it">04 — Cómo funciona</p>
+   <h2 class="h2 kt" style="font-size:58px"><span>4 automatizaciones</span><span class="acg">ya funcionan en Contraloría</span></h2>
+   <p class="p it" style="font-size:22px">Ejemplo: <b>SIRE – Ventas</b> · la revisión de ventas de 25 empresas del grupo</p>
+  </div>
+  <i class="track" id="track"></i>
+  <i class="pk"></i><i class="pk"></i><i class="pk"></i>
+  <div class="steps">
+   <div class="card"><div class="n acg">1</div><h3>Reúne</h3><p>4 fuentes</p></div>
+   <div class="card"><div class="n acg">2</div><h3>Cruza</h3><p>una sola llave: tipo, serie y número</p></div>
+   <div class="card"><div class="n acg">3</div><h3>Valida</h3><p>campo por campo</p></div>
+   <div class="card"><div class="n acg">4</div><h3>Entrega</h3><p>Excel de diferencias, SIRE y TXT</p></div>
+  </div>
+ </section>
+
+ <!-- 5 · Demo -->
+ <section class="slide" data-k="demo" data-t="g" data-title="Demo" data-notes="Veamos cómo se usa SIRE – Ventas: se cargan los archivos, se compara y en minutos salen las observaciones listas para corregir, más el formato SIRE y el TXT. (30 s)">
+  <div class="col center" style="top:140px;gap:10px">
+   <p class="k it">05 — Demo · 30 segundos</p>
+   <h2 class="h2 kt" style="font-size:54px"><span>Así se usa SIRE – Ventas</span></h2>
+  </div>
+  <div class="vid" id="vid">
+   <video id="demo" muted loop playsinline></video>
+   <div class="ph"><svg width="96" height="96" viewBox="0 0 84 84" aria-label="Reproducir"><circle cx="42" cy="42" r="39" fill="none" stroke="#34D399" stroke-width="3"/><polygon points="34,26 34,58 60,42" fill="#34D399"/></svg><span>Aquí va el video de la herramienta</span></div>
+   <label class="ld">Cargar video…<input type="file" id="file" accept="video/mp4,video/webm"></label>
+  </div>
+ </section>
+
+ <!-- 6 · Ahorro / 91% -->
+ <section class="slide" data-k="sav" data-t="g" data-title="Ahorro" data-notes="Por herramienta, la reducción llega hasta 91%: el Libro de Reclamaciones de Euroshop pasa de 1 h 50 min a 10 minutos. SIRE – Ventas baja 70% y aporta 45 h 35 min, el 89% del ahorro. En total, 51 horas y 10 minutos ahorradas cada mes. (30 s)">
+  <div class="col" style="left:100px;top:150px;width:740px;gap:20px">
+   <p class="k it">06 — El ahorro</p>
+   <h2 class="h2 kt" style="font-size:62px"><span>Hasta <b class="hl">91%</b> menos</span><span class="acg">tiempo de procesamiento.</span></h2>
+   <p class="big acg it" style="margin-top:20px"><span data-count="3070" data-from="0" data-fmt="hm">51 h 10 min</span></p>
+   <p class="p it" style="color:var(--ink);font-size:28px;font-weight:600">horas ahorradas cada mes</p>
+   <p class="foot it">SIRE – Ventas aporta el 89% del ahorro · Las empresas no se suman: se repiten entre proyectos</p>
+  </div>
+  <div class="red" id="red">
+   <p class="k" style="font-size:14px;color:var(--mut)">Reducción de tiempo por automatización</p>
+   <div class="rr top"><div class="nm">Libro Reclamaciones Euroshop<small>1 h 50 min → 10 min · ahorra 1 h 40 min</small></div><div class="pc" data-p="91">91%</div><div class="tk"><i style="width:91%"></i></div></div>
+   <div class="rr"><div class="nm">SIRE – Ventas<small>65 h → 19 h 25 min · ahorra 45 h 35 min</small></div><div class="pc" data-p="70">70%</div><div class="tk"><i style="width:70%"></i></div></div>
+   <div class="rr"><div class="nm">Indicadores Lavado de Activos<small>4 h 40 min → 1 h 45 min · ahorra 2 h 55 min</small></div><div class="pc" data-p="63">63%</div><div class="tk"><i style="width:62.5%"></i></div></div>
+   <div class="rr"><div class="nm">SIRE – No Domiciliado<small>2 h → 1 h · ahorra 1 h</small></div><div class="pc" data-p="50">50%</div><div class="tk"><i style="width:50%"></i></div></div>
+  </div>
+ </section>
+
+ <!-- 7 · Petición -->
+ <section class="slide" data-k="ask" data-t="o" data-title="Pedido" data-notes="Les pedimos una sola cosa: acceso a una copia de la base de datos, en un entorno interno. No se toca producción y los datos no salen de la empresa. Así las automatizaciones reciben los datos solas. Cierres más rápidos, menos riesgo de multas y replicable en las 16 empresas. Hoy son 4; hay más de 70 procesos por delante. Gracias. (20 s)">
+  <div class="col" style="left:100px;top:170px;width:820px">
+   <p class="k it">07 — Una sola petición</p>
+   <h2 class="h2 kt" style="font-size:72px"><span>Acceso a una copia</span><span class="ac">de la base de datos.</span></h2>
+   <p class="p it">En un entorno interno: sin tocar producción<br>y sin que los datos salgan de la empresa.</p>
+   <div class="chips it"><span class="chip">Cierres más rápidos</span><span class="chip">Menos riesgo de multas</span><span class="chip">Replicable en las 16 empresas</span></div>
+   <h2 class="h2 kt" style="font-size:40px;margin-top:10px"><span class="ac">4 hoy. Más de 70 por delante. Gracias.</span></h2>
+  </div>
+  <svg id="db" viewBox="0 0 560 420" aria-label="Producción y copia interna"></svg>
+ </section>
+
+ <!-- 8 · Anexo -->
+ <section class="slide" data-k="annex" data-t="g" data-annex="1" data-title="Anexo" data-notes="Anexo para preguntas: detalle por automatización. Las empresas no se suman porque se repiten entre proyectos. Pendientes de medir: Descarga masiva SUNAT y Revisión de lotes de pago.">
+  <div class="col" style="left:100px;top:150px;width:1400px;gap:12px">
+   <p class="k it">Anexo</p>
+   <h2 class="h2 kt" style="font-size:52px"><span>Detalle por automatización</span></h2>
+  </div>
+  <div class="tbl">
+   <div class="tr th"><span>Proyecto</span><span>Empresas</span><span>Antes (h/mes)</span><span>Ahora (h/mes)</span><span>Ahorro mensual</span><span>Reducción</span></div>
+   <div class="tr"><span>SIRE – Ventas</span><span>25</span><span>65 h</span><span>19 h 25 min</span><span class="s2">45 h 35 min</span><span class="s2">70%</span></div>
+   <div class="tr"><span>Indicadores Lavado de Activos</span><span>7</span><span>4 h 40 min</span><span>1 h 45 min</span><span class="s2">2 h 55 min</span><span class="s2">63%</span></div>
+   <div class="tr"><span>SIRE – No Domiciliado</span><span>1</span><span>2 h</span><span>1 h</span><span class="s2">1 h</span><span class="s2">50%</span></div>
+   <div class="tr"><span>Libro Reclamaciones Euroshop</span><span>1</span><span>1 h 50 min</span><span>10 min</span><span class="s2">1 h 40 min</span><span class="s2">91%</span></div>
+   <div class="tr na"><span>Descarga masiva SUNAT</span><span>—</span><span>—</span><span>—</span><span>—</span><span>—</span></div>
+   <div class="tr na"><span>Revisión lotes de pago</span><span>—</span><span>—</span><span>—</span><span>—</span><span>—</span></div>
+   <div class="tr tot"><span>Totales</span><span><small>no acumulable</small></span><span class="neg">73 h 30 min</span><span>22 h 20 min</span><span class="s2">51 h 10 min</span><span class="s2">70%</span></div>
+  </div>
+ </section>
+
+ <div class="ft" id="ft"></div>
+</div>
+<div id="pres"><div class="tm" id="tm">0:00</div><div class="nt"><span id="nt"></span><span class="nx" id="nx"></span></div></div>
+<div id="turn">Gira el teléfono para ver la presentación en horizontal</div>
+<script>
+(function(){
+var G=window.gsap,reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+var SL=[].slice.call(document.querySelectorAll('.slide')),stage=document.getElementById('stage'),ft=document.getElementById('ft'),root=document.documentElement;
+function $(s,c){return (c||document).querySelector(s)}function $$(s,c){return [].slice.call((c||document).querySelectorAll(s))}
+function rng(seed){return function(){seed=(seed+0x6D2B79F5)|0;var t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function fmt(v,type,suf){if(type==='hm'){var h=Math.floor(v/60),m=Math.round(v-h*60);if(m===60){h++;m=0}return h+' h '+String(m).padStart(2,'0')+' min'}return Math.round(v)+(suf||'')}
+
+/* ---------- scale ---------- */
+function size(){var s=Math.min(innerWidth/1600,innerHeight/900);stage.style.transform='scale('+s+')'}
+size();addEventListener('resize',size);
+
+/* ---------- kinetic split: every line of .kt becomes masked words ---------- */
+$$('.kt').forEach(function(h){var lines=$$(':scope>span',h);if(!lines.length)lines=[h];
+ lines.forEach(function(line){var cls=line.className,out=[];line.className='';
+  [].slice.call(line.childNodes).forEach(function(n){var c=(n.nodeType===1?n.className+' ':'')+cls;n.textContent.split(/\s+/).forEach(function(w){if(w)out.push('<span class="w"><span class="wi '+c+'">'+w+'</span></span>')})});
+  line.innerHTML=out.join(' ')})});
+
+/* ---------- problem windows ---------- */
+var W=[['Registro_Ventas_14.1.xlsx',[['F001-00000101','1,863.00'],['F001-00000102','14,481.42'],['F001-00000103','#N/A'],['F001-00000104','3,115.60'],['F001-00000105','7,302.85'],['F001-00000106','#N/A'],['F001-00000107','2,375.13']],-18,0,40],
+ ['EERR_Mensual.xlsx',[['Ventas','8,420,310'],['Costo de ventas','4,061,114'],['Utilidad bruta','#¡REF!'],['Gastos de venta','2,175,044'],['Gastos de adm.','#¡REF!'],['Utilidad operativa','9,749,162'],['Impuestos','1,204,390']],-12,240,0],
+ ['Depreciacion_Activos.xlsx',[['DEPRECIA-31581','LINEAL'],['DEPRECIA-31584','LINEAL'],['DEPRECIA-31587','#N/A'],['DEPRECIA-31590','LINEAL'],['DEPRECIA-31593','#DIV/0!'],['DEPRECIA-31596','LINEAL'],['DEPRECIA-31599','LINEAL']],-8,90,250]];
+var wn=document.getElementById('wins');
+W.forEach(function(w){var d=document.createElement('div');d.className='win3d';d.style.left=w[3]+'px';d.style.top=w[4]+'px';d.dataset.ry=w[2];
+ var h='<h4>'+w[0]+'</h4>';w[1].forEach(function(r){h+='<div class="row"><span>'+r[0]+'</span><span'+(r[1].charAt(0)==='#'?' class="bad"':'')+'>'+r[1]+'</span></div>'});d.innerHTML=h;wn.appendChild(d)});
+
+/* ---------- isometric reveal scene ---------- */
+var NS='http://www.w3.org/2000/svg',svg=document.getElementById('iso');
+function mk(tag,a,p){var e=document.createElementNS(NS,tag);for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+function tx(p,x,y,t,a){a=a||{};a.x=x;a.y=y;var e=mk('text',a,p);e.textContent=t;return e}
+var O=[450,170];
+function P(x,y,z){return[O[0]+(x-y)*.866,O[1]+(x+y)*.5-(z||0)]}
+function pts(a){return a.map(function(p){return p[0].toFixed(1)+','+p[1].toFixed(1)}).join(' ')}
+function cub(g,x,y,z,w,d,h,c){var s={stroke:c[3]||'rgba(0,0,0,.25)','stroke-width':.8,'stroke-linejoin':'round'};
+ mk('polygon',Object.assign({points:pts([P(x,y+d,z),P(x+w,y+d,z),P(x+w,y+d,z+h),P(x,y+d,z+h)]),fill:c[1]},s),g);
+ mk('polygon',Object.assign({points:pts([P(x+w,y,z),P(x+w,y+d,z),P(x+w,y+d,z+h),P(x+w,y,z+h)]),fill:c[2]},s),g);
+ mk('polygon',Object.assign({points:pts([P(x,y,z+h),P(x+w,y,z+h),P(x+w,y+d,z+h),P(x,y+d,z+h)]),fill:c[0]},s),g)}
+var MT={fy:[.866,.5,0,1],fx:[.866,-.5,0,1],top:[.866,.5,-.866,.5]};
+function plane(p,type,x,y,z){var o=P(x,y,z);return mk('g',{transform:'matrix('+MT[type].join(' ')+' '+o[0].toFixed(1)+' '+o[1].toFixed(1)+')'},p)}
+var R=rng(11),S={};
+(function build(){
+ var df=mk('defs',{},svg);
+ var lg=mk('linearGradient',{id:'scanG',x1:0,y1:0,x2:0,y2:1},df);mk('stop',{offset:0,'stop-color':'#34D399','stop-opacity':0},lg);mk('stop',{offset:1,'stop-color':'#34D399','stop-opacity':.45},lg);
+ ['#FB923C','#34D399'].forEach(function(c,i){var rg=mk('radialGradient',{id:'glow'+i},df);mk('stop',{offset:0,'stop-color':c,'stop-opacity':.32},rg);mk('stop',{offset:1,'stop-color':c,'stop-opacity':0},rg)});
+ S.glowM=mk('ellipse',{cx:450,cy:390,rx:450,ry:260,fill:'url(#glow0)'},svg);
+ S.glowA=mk('ellipse',{cx:450,cy:390,rx:450,ry:260,fill:'url(#glow1)',opacity:0},svg);
+ /* floor + grid */
+ cub(svg,0,0,-16,420,420,16,['#0D1A2E','#08111F','#0B1627','rgba(148,163,184,.25)']);
+ var gr=plane(svg,'top',0,0,0);for(var i=30;i<420;i+=30){mk('line',{x1:i,y1:0,x2:i,y2:420,stroke:'rgba(148,163,184,.10)','stroke-width':1},gr);mk('line',{x1:0,y1:i,x2:420,y2:i,stroke:'rgba(148,163,184,.10)','stroke-width':1},gr)}
+ /* automated platform */
+ S.plat=mk('g',{opacity:0},svg);cub(S.plat,30,30,0,360,360,7,['rgba(52,211,153,.10)','rgba(16,94,72,.55)','rgba(6,64,48,.6)','rgba(52,211,153,.5)']);
+ var pt=plane(S.plat,'top',30,30,7);mk('rect',{x:6,y:6,width:348,height:348,rx:10,fill:'none',stroke:'#34D399','stroke-width':1.5,'stroke-dasharray':'6 6',opacity:.7},pt);
+ /* back sheet: manual version */
+ S.sheetM=mk('g',{},svg);var sm=plane(S.sheetM,'fy',50,40,190);
+ mk('rect',{x:0,y:0,width:320,height:190,rx:4,fill:'#111827',stroke:'#475569'},sm);mk('rect',{x:0,y:0,width:320,height:18,rx:4,fill:'#1E293B'},sm);
+ tx(sm,8,13,'Registro_Ventas_FINAL_v7(2).xlsx',{'font-size':9,fill:'#94A3B8','font-family':'JetBrains Mono,monospace'});
+ var vals=['1,863.00','14,481.42','9,540.10','3,115.60','7,302.85','12,998.00','2,375.13','4,061.11','8,420.31','2,175.04'],errs={5:'#N/A',13:'#¡REF!',20:'#N/A',26:'#DIV/0!',34:'#N/A',40:'¿?'};S.err=[];
+ for(var r=0;r<9;r++)for(var c=0;c<6;c++){var id=r*6+c,x=c*53.3,y=22+r*18.5,e=errs[id];
+  if(e)S.err.push(mk('rect',{x:x+1,y:y+1,width:51,height:16,fill:'rgba(251,113,133,.35)'},sm));else if(R()<.12)mk('rect',{x:x+1,y:y+1,width:51,height:16,fill:'rgba(250,204,21,.16)'},sm);
+  mk('rect',{x:x,y:y,width:53.3,height:18.5,fill:'none',stroke:'rgba(148,163,184,.18)','stroke-width':.6},sm);
+  tx(sm,x+49,y+12.5,e||vals[Math.floor(R()*vals.length)],{'font-size':e?8.5:7.5,'text-anchor':'end',fill:e?'#FDA4AF':'#64748B','font-weight':e?700:400,'font-family':'JetBrains Mono,monospace'})}
+ /* back sheet: automated version */
+ S.sheetA=mk('g',{opacity:0},svg);var sa=plane(S.sheetA,'fy',50,40,190);
+ mk('rect',{x:0,y:0,width:320,height:190,rx:5,fill:'#05201A',stroke:'#34D399','stroke-width':1.3},sa);mk('rect',{x:0,y:0,width:320,height:20,rx:5,fill:'rgba(52,211,153,.18)'},sa);
+ tx(sa,8,14,'Conciliación automática · SIRE – Ventas',{'font-size':9.5,'font-weight':700,fill:'#A7F3D0'});tx(sa,312,14,'● listo',{'font-size':8,'text-anchor':'end',fill:'#34D399'});
+ [['Comprobante',8],['Registro',150],['SIRE',212],['Estado',250]].forEach(function(h){tx(sa,h[1],36,h[0].toUpperCase(),{'font-size':7,'letter-spacing':1,fill:'#6EE7B7'})});
+ var rows=[['F001-00000101','1,863.00','1,863.00',1],['F001-00000102','14,481.42','14,481.42',1],['F001-00000103','9,540.10','9,540.10',1],['F001-00000104','3,115.60','3,151.60',0],['F001-00000105','7,302.85','7,302.85',1],['F001-00000106','12,998.00','12,998.00',1],['F001-00000107','2,375.13','2,375.13',1]];S.st=[];
+ rows.forEach(function(q,i){var y=52+i*16;mk('line',{x1:6,y1:y+4,x2:314,y2:y+4,stroke:'rgba(52,211,153,.14)'},sa);
+  [[q[0],8,'start'],[q[1],196,'end'],[q[2],240,'end']].forEach(function(t){tx(sa,t[1],y,t[0],{'font-size':7.5,'text-anchor':t[2],fill:'#CBD5E1','font-family':'JetBrains Mono,monospace'})});
+  var g=mk('g',{opacity:0},sa);mk('rect',{x:250,y:y-9,width:62,height:12,rx:6,fill:q[3]?'rgba(52,211,153,.22)':'rgba(251,191,36,.22)'},g);
+  tx(g,281,y,q[3]?'✓ Cuadra':'⚠ Diferencia',{'font-size':7,'font-weight':700,'text-anchor':'middle',fill:q[3]?'#6EE7B7':'#FCD34D'});S.st.push(g)});
+ mk('rect',{x:8,y:166,width:304,height:6,rx:3,fill:'rgba(255,255,255,.08)'},sa);S.prog=mk('rect',{x:8,y:166,width:0,height:6,rx:3,fill:'#34D399'},sa);
+ tx(sa,8,183,'Validado campo por campo · diferencias exportadas a Excel',{'font-size':7.5,fill:'#6EE7B7'});
+ /* side KPI panel */
+ S.side=mk('g',{opacity:0},svg);var sp=plane(S.side,'fx',392,340,150);
+ mk('rect',{x:0,y:0,width:230,height:150,rx:6,fill:'#05201A',stroke:'#34D399','stroke-width':1.3},sp);
+ tx(sp,12,20,'Horas al mes · 4 automatizaciones',{'font-size':9,'font-weight':700,fill:'#A7F3D0'});
+ tx(sp,12,42,'Antes',{'font-size':8.5,fill:'#94A3B8'});tx(sp,218,42,'73 h 30 min',{'font-size':8.5,'text-anchor':'end',fill:'#CBD5E1','font-family':'JetBrains Mono,monospace'});
+ mk('rect',{x:12,y:47,width:206,height:10,rx:5,fill:'rgba(255,255,255,.07)'},sp);S.barA=mk('rect',{x:12,y:47,width:0,height:10,rx:5,fill:'#64748B'},sp);
+ tx(sp,12,78,'Ahora',{'font-size':8.5,fill:'#94A3B8'});tx(sp,218,78,'22 h 20 min',{'font-size':8.5,'text-anchor':'end',fill:'#6EE7B7','font-family':'JetBrains Mono,monospace'});
+ mk('rect',{x:12,y:83,width:206,height:10,rx:5,fill:'rgba(255,255,255,.07)'},sp);S.barB=mk('rect',{x:12,y:83,width:0,height:10,rx:5,fill:'#34D399'},sp);
+ S.pct=tx(sp,12,134,'−70%',{'font-size':34,'font-weight':900,fill:'#6EE7B7','letter-spacing':-1});tx(sp,112,134,'tiempo operativo',{'font-size':9,fill:'#94A3B8'});
+ /* output tiles */
+ S.tiles=[];[['XLSX',0],['SIRE',66],['TXT',132]].forEach(function(t){var g=mk('g',{opacity:0},svg),tp=plane(g,'top',80+t[1],300,7);
+  mk('rect',{x:0,y:0,width:54,height:54,rx:7,fill:'rgba(52,211,153,.22)',stroke:'#34D399','stroke-width':1.3},tp);tx(tp,27,32,t[0],{'font-size':12,'font-weight':800,'text-anchor':'middle',fill:'#D1FAE5'});S.tiles.push(g)});
+ /* manual stacks (back to front) */
+ S.stacks=[];
+ function binders(x,y,n,col){var g=mk('g',{},svg);for(var k=0;k<n;k++)cub(g,x+(R()-.5)*10,y+(R()-.5)*10,k*15,72,48,14,col[k%col.length]);S.stacks.push(g)}
+ var OR=[['#FDBA74','#C2410C','#9A3412'],['#FCD34D','#B45309','#92400E'],['#FB923C','#C2410C','#7C2D12']];
+ binders(110,170,3,OR);binders(50,245,5,OR);
+ var box=mk('g',{},svg);cub(box,240,225,0,84,62,48,['#C08A4B','#8B5E34','#6F4A28']);cub(box,236,221,48,92,70,6,['#D19A5A','#9A6A3C','#7A5230']);
+ var bl=plane(box,'fy',252,287,40);mk('rect',{x:0,y:0,width:60,height:18,fill:'#F5E6D3'},bl);tx(bl,30,12,'FACTURAS 2026',{'font-size':7,'font-weight':800,'text-anchor':'middle',fill:'#7C2D12'});S.stacks.push(box);
+ var pile=mk('g',{},svg);for(var k=0;k<5;k++)cub(pile,160+(R()-.5)*12,315+(R()-.5)*12,k*7,44,58,6,['#F1F5F9','#CBD5E1','#94A3B8']);S.stacks.push(pile);
+ /* flying invoices */
+ S.papers=[];var tgt=P(210,40,95);S.tgt=tgt;
+ function rel(x,y){return[(x-y)*.866,(x+y)*.5]}
+ for(var n=0;n<18;n++){var g=mk('g',{},svg),inner=mk('g',{},g),pp=P(30+R()*350,110+R()*290,40+R()*170);
+  mk('polygon',{points:pts([rel(-15,-20),rel(15,-20),rel(15,20),rel(-15,20)]),fill:'#E8EDF5',stroke:'#94A3B8','stroke-width':.6},inner);
+  for(var l=0;l<4;l++){var a=rel(-10,-13+l*7),b=rel(l?8:2,-13+l*7);mk('line',{x1:a[0],y1:a[1],x2:b[0],y2:b[1],stroke:l?'#94A3B8':'#475569','stroke-width':l?1:1.6},inner)}
+  if(R()<.3){var c2=rel(6,11);mk('circle',{cx:c2[0],cy:c2[1],r:5,fill:'none',stroke:'#FB7185','stroke-width':1.4},inner)}
+  S.papers.push({g:g,inner:inner,x:pp[0],y:pp[1],r:(R()-.5)*80})}
+ /* error badges */
+ S.badges=[];[['#N/A',P(120,40,165)],['#¡REF!',P(330,40,120)],['¿cuadra?',P(70,270,100)],['#DIV/0!',P(300,260,80)],['Duplicado',P(190,380,45)]].forEach(function(b){
+  var w=mk('g',{transform:'translate('+b[1][0].toFixed(1)+','+b[1][1].toFixed(1)+')'},svg),bad=mk('g',{},w),pu=mk('g',{},bad),bw=18+b[0].length*8;
+  mk('rect',{x:-bw/2,y:-13,width:bw,height:26,rx:7,fill:'#3F1D24',stroke:'#FB7185','stroke-width':1.5},pu);tx(pu,0,5,b[0],{'font-size':13,'font-weight':700,'text-anchor':'middle',fill:'#FDA4AF','font-family':'JetBrains Mono,monospace'});
+  var ok=mk('g',{opacity:0},w);mk('circle',{r:13,fill:'#064E3B',stroke:'#34D399','stroke-width':1.5},ok);mk('path',{d:'M-5.5 0.5 L-1.5 4.5 L6 -4',fill:'none',stroke:'#6EE7B7','stroke-width':2.4,'stroke-linecap':'round','stroke-linejoin':'round'},ok);
+  S.badges.push({bad:bad,pulse:pu,ok:ok})});
+ /* scanner plane */
+ S.scan=mk('g',{opacity:0,style:'mix-blend-mode:screen'},svg);var sc=plane(S.scan,'fx',0,420,230);
+ mk('rect',{x:0,y:0,width:420,height:230,fill:'url(#scanG)'},sc);mk('line',{x1:0,y1:230,x2:420,y2:230,stroke:'#A7F3D0','stroke-width':3},sc);mk('line',{x1:0,y1:0,x2:420,y2:0,stroke:'#6EE7B7','stroke-width':1,opacity:.6},sc);
+})();
+var revealTL=null,revealAuto=-1,rv=document.getElementById('rv'),dragging=false,revealDelay=null;
+function setReveal(auto){if(auto===revealAuto)return;revealAuto=auto;$('#pill').textContent=auto?'PROCESO AUTOMATIZADO':'PROCESO MANUAL';$('#pill').classList.toggle('auto',auto);
+ $('#stM').classList.toggle('on',!auto);$('#stA').classList.toggle('on',auto);if(SL[idx]&&SL[idx].dataset.k==='reveal')theme(auto?'g':'o')}
+if(G){
+ S.papers.forEach(function(p){G.set(p.g,{x:p.x,y:p.y,rotation:p.r,transformOrigin:'50% 50%'});
+  if(!reduce)G.to(p.inner,{x:'random(-7,7)',y:'random(-10,10)',rotation:'random(-12,12)',duration:'random(1.1,2)',repeat:-1,yoyo:true,ease:'sine.inOut'})});
+ if(!reduce){S.badges.forEach(function(b,i){G.to(b.pulse,{scale:1.12,transformOrigin:'50% 50%',duration:.5,repeat:-1,yoyo:true,ease:'sine.inOut',delay:i*.17})});
+  G.to(S.err,{opacity:.25,duration:.45,repeat:-1,yoyo:true,stagger:{each:.15,repeat:-1,yoyo:true}})}
+ var t=G.timeline({paused:true,defaults:{ease:'power2.inOut'},onUpdate:function(){var p=t.progress();if(!dragging)rv.value=Math.round(p*1000);setReveal(p>.32)}});
+ t.fromTo(S.scan,{x:0,y:0,opacity:0},{x:364,y:210,opacity:1,duration:1.8,ease:'none'},0).to(S.scan,{opacity:0,duration:.3},1.6);
+ S.badges.forEach(function(b,i){t.to(b.bad,{scale:0,opacity:0,transformOrigin:'50% 50%',duration:.3,ease:'back.in(2)'},.25+i*.22).fromTo(b.ok,{scale:0,opacity:0,transformOrigin:'50% 50%'},{scale:1,opacity:1,duration:.35,ease:'back.out(3)'},.45+i*.22).to(b.ok,{opacity:0,scale:.6,duration:.3},1.9+i*.05)});
+ S.papers.forEach(function(p,i){var at=.3+i*.06;t.to(p.g,{y:'-=60',rotation:0,duration:.4,ease:'power2.out'},at).to(p.g,{x:S.tgt[0],y:S.tgt[1],scale:.12,opacity:0,duration:.75,ease:'power3.in'},at+.4)});
+ S.stacks.forEach(function(g,i){t.to(g,{y:50,opacity:0,duration:.6,ease:'power3.in'},.7+i*.12)});
+ t.to(S.sheetM,{opacity:0,duration:.5},1.15).fromTo(S.sheetA,{opacity:0},{opacity:1,duration:.5},1.25);
+ t.to(S.glowM,{opacity:0,duration:1},.9).to(S.glowA,{opacity:1,duration:1},.9);
+ t.fromTo(S.plat,{opacity:0,y:24},{opacity:1,y:0,duration:.7,ease:'power3.out'},1.1);
+ t.to(S.st,{opacity:1,duration:.22,stagger:.14},1.6).to(S.prog,{attr:{width:304},duration:1.1,ease:'power1.inOut'},1.6);
+ t.fromTo(S.side,{opacity:0,y:30},{opacity:1,y:0,duration:.6,ease:'power3.out'},1.9).to(S.barA,{attr:{width:206},duration:.6},2.2).to(S.barB,{attr:{width:62.6},duration:.6},2.45);
+ t.fromTo(S.tiles,{opacity:0,y:30},{opacity:1,y:0,duration:.5,ease:'back.out(2)',stagger:.12},2.3);
+ revealTL=t;
+ rv.addEventListener('input',function(){dragging=true;t.pause();t.progress(rv.value/1000);dragging=false});
+ $('#bAuto').addEventListener('click',function(){if(revealDelay)revealDelay.kill();if(t.progress()>=1)t.progress(0);t.timeScale(1).play()});
+ $('#bMan').addEventListener('click',function(){if(revealDelay)revealDelay.kill();t.timeScale(1.8).reverse()});
+}
+
+/* ---------- database SVG for the ask slide ---------- */
+(function(){var d=document.getElementById('db');
+ function cyl(cx,col,lab,dim){var g=mk('g',{opacity:dim?.55:1},d),rx=90,ry=24,top=110,bot=300;
+  mk('path',{d:'M'+(cx-rx)+' '+top+' V'+bot+' A'+rx+' '+ry+' 0 0 0 '+(cx+rx)+' '+bot+' V'+top,fill:'rgba(15,23,42,.8)',stroke:col,'stroke-width':2},g);
+  [170,235].forEach(function(y){mk('path',{d:'M'+(cx-rx)+' '+y+' A'+rx+' '+ry+' 0 0 0 '+(cx+rx)+' '+y,fill:'none',stroke:col,'stroke-width':1.5,opacity:.7},g)});
+  mk('ellipse',{cx:cx,cy:top,rx:rx,ry:ry,fill:'rgba(30,41,59,.9)',stroke:col,'stroke-width':2},g);
+  tx(g,cx,360,lab,{'font-size':22,'font-weight':700,'text-anchor':'middle',fill:dim?'#94A3B8':col});return g}
+ S.db1=cyl(110,'#94A3B8','Producción',1);S.db2=cyl(450,'#FFB347','Copia interna',0);
+ S.dbl=mk('path',{d:'M215 205 H345',stroke:'#FFB347','stroke-width':4,'stroke-dasharray':'10 10',fill:'none'},d);
+ mk('path',{d:'M335 193 L350 205 L335 217',stroke:'#FFB347','stroke-width':4,fill:'none','stroke-linecap':'round'},d);
+ tx(d,280,182,'solo lectura',{'font-size':15,'text-anchor':'middle',fill:'#94A3B8'})})();
+
+/* ---------- theme ---------- */
+var TH={o:['#FFB347','#FF5E3A'],g:['#9BF0CC','#2FBF8F']};
+function theme(t){var c=TH[t];if(G)G.to(root,{'--a1':c[0],'--a2':c[1],duration:1.2,ease:'power2.out'});else{root.style.setProperty('--a1',c[0]);root.style.setProperty('--a2',c[1])}}
+if(G&&!reduce){G.to('.o1',{x:'12vw',y:'8vh',duration:14,repeat:-1,yoyo:true,ease:'sine.inOut'});G.to('.o2',{x:'-10vw',y:'-6vh',duration:17,repeat:-1,yoyo:true,ease:'sine.inOut'});G.fromTo('#ghost',{xPercent:0},{xPercent:-50,duration:90,repeat:-1,ease:'none'})}
+
+/* ---------- per-slide animation ---------- */
+function count(tl,el,from,to,at,dur){var o={v:from};el.textContent=fmt(from,el.dataset.fmt,el.dataset.suf);tl.to(o,{v:to,duration:dur||1.6,ease:'power3.out',onUpdate:function(){el.textContent=fmt(o.v,el.dataset.fmt,el.dataset.suf)}},at)}
+var HOOK={
+ cover:function(tl){tl.from('.slide.on .h1 .wi',{yPercent:120,rotate:8,duration:1.1,ease:'expo.out',stagger:.09},.2)},
+ prob:function(tl,sl,loops){var v=$('.v',sl);count(tl,v,0,65,.9,1.8);
+  $$('.win3d',sl).forEach(function(w,i){tl.fromTo(w,{opacity:0,z:-700,rotationY:+w.dataset.ry-40,rotationX:20},{opacity:1,z:0,rotationY:+w.dataset.ry,rotationX:7,duration:1.3,ease:'expo.out'},.4+i*.2);
+   loops.push(G.to(w,{y:-14,duration:3,repeat:-1,yoyo:true,ease:'sine.inOut',delay:i*.8}))});
+  tl.fromTo($$('.bad',sl),{backgroundColor:'rgba(251,113,133,0)',color:'#B8C0CC'},{backgroundColor:'#FB7185',color:'#0A0A0C',duration:.25,stagger:.3},1.6);
+  tl.add(function(){loops.push(G.to($$('.bad',sl),{opacity:.45,duration:.5,repeat:-1,yoyo:true,stagger:.12}))})},
+ reveal:function(tl){if(!revealTL)return;revealTL.pause(0);if(reduce){revealTL.progress(1);return}revealDelay=G.delayedCall(2.4,function(){revealTL.timeScale(1).play()})},
+ m70:function(tl,sl){var st=$('#strike'),nw=$('#new'),h=$('#h70');
+  tl.from('#old',{x:-80,opacity:0,duration:.8,ease:'expo.out'},.3).fromTo(st,{scaleX:0},{scaleX:1,duration:.5,ease:'power4.inOut'},1).to('#old',{opacity:.4,duration:.4},1.4)
+   .from('#arr',{x:-30,opacity:0,duration:.5},1.3).from(nw,{x:60,opacity:0,duration:.6,ease:'expo.out'},1.4);
+  var o={v:4410};nw.textContent=fmt(4410,'hm');tl.to(o,{v:1340,duration:1.4,ease:'power3.out',onUpdate:function(){nw.textContent=fmt(o.v,'hm')}},1.45);
+  var o2={v:0};h.textContent='0';
+  tl.fromTo('#hero',{scale:2.8,opacity:0,filter:'blur(30px)'},{scale:1,opacity:1,filter:'blur(0px)',duration:.9,ease:'expo.out'},2.6)
+   .to(o2,{v:70,duration:1.1,ease:'power4.out',onUpdate:function(){h.textContent=Math.round(o2.v)}},2.6)
+   .to('#hero',{x:'+=10',duration:.05,repeat:5,yoyo:true,ease:'none'},3.3).set('#hero',{x:0})
+   .fromTo('#ring',{scale:.3,opacity:.9},{scale:3.2,opacity:0,duration:1.2,ease:'power2.out'},3.3).fromTo('#ring2',{scale:.3,opacity:.6},{scale:4.5,opacity:0,duration:1.6,ease:'power2.out'},3.45);
+  return 3.6},
+ flow:function(tl,sl,loops){tl.fromTo('#track',{scaleX:0},{scaleX:1,duration:1.2,ease:'power3.inOut'},.6).from($$('.card',sl),{y:60,opacity:0,rotationX:-30,duration:.8,ease:'back.out(1.6)',stagger:.18},.9)
+   .from($$('.card .n',sl),{scale:3,opacity:0,duration:.6,ease:'expo.out',stagger:.18},1);
+  tl.add(function(){$$('.pk',sl).forEach(function(p,i){loops.push(G.timeline({repeat:-1,delay:i*1.07}).fromTo(p,{x:0,opacity:0},{x:1398,duration:3.2,ease:'none'},0).to(p,{opacity:1,duration:.3},0).to(p,{opacity:0,duration:.3},2.9))});
+   var gl=G.timeline({repeat:-1});$$('.card',sl).forEach(function(c,i){gl.to(c,{borderColor:'rgba(52,211,153,.85)',boxShadow:'0 0 40px rgba(52,211,153,.28)',duration:.35},i*.8).to(c,{borderColor:'rgba(148,163,184,.18)',boxShadow:'0 0 0 rgba(52,211,153,0)',duration:.5},i*.8+.6)});loops.push(gl)},1.8)},
+ demo:function(tl){tl.fromTo('#vid',{scale:.85,opacity:0,rotationX:18,transformPerspective:1200},{scale:1,opacity:1,rotationX:0,duration:1.1,ease:'expo.out'},.5)},
+ sav:function(tl,sl){var h=$('.big span',sl);count(tl,h,0,3070,1.2,2);
+  $$('.rr',sl).forEach(function(r,i){var at=.8+i*.22,pc=$('.pc',r),o={v:0};
+   tl.from(r,{x:60,opacity:0,duration:.7,ease:'expo.out'},at).fromTo($('.tk i',r),{scaleX:0},{scaleX:1,duration:1.2,ease:'power3.out'},at+.2)
+    .to(o,{v:+pc.dataset.p,duration:1.2,ease:'power3.out',onStart:function(){pc.textContent='0%'},onUpdate:function(){pc.textContent=Math.round(o.v)+'%'}},at+.2)});
+  tl.fromTo($('.rr.top .pc',sl),{scale:1},{scale:1.25,duration:.18,yoyo:true,repeat:1,ease:'power2.out',transformOrigin:'100% 80%'},2.3);
+  tl.fromTo('.slide.on .hl',{scale:1},{scale:1.18,duration:.2,yoyo:true,repeat:1,transformOrigin:'50% 70%'},1.1)},
+ ask:function(tl,sl,loops){tl.from(S.db1,{opacity:0,y:30,duration:.8},.8).from(S.db2,{opacity:0,y:30,duration:.8},1.2).from(S.dbl,{opacity:0,duration:.4},1.6);
+  loops.push(G.to(S.dbl,{attr:{'stroke-dashoffset':-40},duration:1,repeat:-1,ease:'none'}))},
+ annex:function(tl,sl){tl.from($$('.tr',sl),{opacity:0,x:-30,duration:.5,stagger:.08,ease:'power3.out'},.4)}
+};
+var cur={tl:null,loops:[]};
+function enter(sl){if(!G){$$('[data-count]',sl).forEach(function(e){e.textContent=fmt(+e.dataset.count,e.dataset.fmt,e.dataset.suf)});return}
+ var tl=G.timeline(),loops=[];cur={tl:tl,loops:loops};
+ tl.from($$('.kt .wi',sl).filter(function(w){return !w.closest('.h1')}),{yPercent:120,rotate:6,duration:.95,ease:'expo.out',stagger:.055},.15);
+ var its=$$('.it',sl);if(its.length)tl.from(its,{y:28,opacity:0,duration:.8,ease:'power3.out',stagger:.1},.35);
+ var h=HOOK[sl.dataset.k];if(h)h(tl,sl,loops);
+ if(reduce)tl.progress(1)}
+function leave(){if(revealDelay){revealDelay.kill();revealDelay=null}if(cur.tl){cur.tl.progress(1);cur.tl.kill()}cur.loops.forEach(function(l){l.kill()});
+ if(G&&SL[idx]){G.set($$('.bad',SL[idx]),{opacity:1});G.set($$('.pk',SL[idx]),{opacity:0});G.set($$('.card',SL[idx]),{clearProps:'borderColor,boxShadow'});G.set(S.dbl,{attr:{'stroke-dashoffset':0}})}}
+
+/* ---------- navigation ---------- */
+var mains=SL.filter(function(x){return !x.dataset.annex}).length,idx=-1,t0=null;
+SL.forEach(function(sl,i){if(sl.dataset.annex)return;var d=document.createElement('div');d.className='seg';d.textContent=sl.dataset.title;d.onclick=function(e){e.stopPropagation();go(i)};ft.appendChild(d)});
+var nm=document.createElement('div');nm.className='num';ft.appendChild(nm);
+function go(i){i=Math.max(0,Math.min(SL.length-1,i));if(i===idx)return;if(idx>=0){leave();SL[idx].classList.remove('on')}idx=i;var sl=SL[i];sl.classList.add('on');
+ theme(sl.dataset.k==='reveal'&&revealTL&&revealTL.progress()>.32?'g':sl.dataset.t);if(sl.dataset.k==='reveal')revealAuto=-1;enter(sl);
+ $$('.seg',ft).forEach(function(d,j){d.classList.toggle('on',j===i);d.classList.toggle('done',j<i)});
+ nm.textContent=sl.dataset.annex?'Anexo':String(i+1).padStart(2,'0')+' / '+String(mains).padStart(2,'0');
+ if(i>0&&t0===null)t0=Date.now();notes()}
+function notes(){$('#nt').textContent=SL[idx].dataset.notes||'';var nx=SL[idx+1];$('#nx').textContent=nx?'Siguiente: '+nx.dataset.title:'Fin'}
+setInterval(function(){if(t0===null)return;var q=Math.floor((Date.now()-t0)/1000),el=$('#tm');el.textContent=Math.floor(q/60)+':'+String(q%60).padStart(2,'0');el.classList.toggle('late',q>=180)},500);
+addEventListener('keydown',function(e){if(e.target&&e.target.tagName==='INPUT')return;var k=e.key;
+ if(k==='ArrowRight'||k==='ArrowDown'||k==='PageDown'||k===' '||k==='Enter'){e.preventDefault();go(idx+1)}
+ else if(k==='ArrowLeft'||k==='ArrowUp'||k==='PageUp'||k==='Backspace'){e.preventDefault();go(idx-1)}
+ else if(k==='Home')go(0);else if(k==='End')go(SL.length-1);
+ else if((k==='a'||k==='A')&&SL[idx].dataset.k==='reveal')$('#bAuto').click();
+ else if(k==='p'||k==='P'){$('#pres').classList.toggle('show');if(t0===null)t0=Date.now();notes()}
+ else if(k==='f'||k==='F'){var d=document.documentElement;if(document.fullscreenElement)document.exitFullscreen();else if(d.requestFullscreen)d.requestFullscreen()}});
+addEventListener('click',function(e){if(e.target.closest('.ld,video,input,button,.ctl,.seg,#pres,#iso'))return;go(e.clientX<innerWidth*.25?idx-1:idx+1)});
+var wl=0;addEventListener('wheel',function(e){var n=Date.now();if(n-wl<1000||Math.abs(e.deltaY)<25)return;wl=n;go(idx+(e.deltaY>0?1:-1))},{passive:true});
+var sx=null,sy=null;addEventListener('touchstart',function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
+addEventListener('touchend',function(e){if(sx===null||(e.target.closest&&e.target.closest('.ctl')))return;var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.max(Math.abs(dx),Math.abs(dy))>40)go(idx+((Math.abs(dx)>Math.abs(dy)?dx:dy)<0?1:-1));sx=null},{passive:true});
+var fi=document.getElementById('file'),v=document.getElementById('demo'),vb=document.getElementById('vid');
+fi.addEventListener('change',function(){var fl=fi.files&&fi.files[0];if(!fl)return;try{v.src=URL.createObjectURL(fl);v.muted=true;v.play();vb.classList.add('has')}catch(err){}});
+go(0);
+})();
+</script>
+</body>
+</html>
