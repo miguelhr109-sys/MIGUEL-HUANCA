@@ -108,15 +108,46 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
 .arr{font-size:60px;color:var(--dim)}
 .hero{margin:0;font-weight:900;letter-spacing:-.06em;line-height:.9;font-size:300px;font-variant-numeric:tabular-nums;white-space:nowrap;position:relative}
 .ring{position:absolute;left:50%;top:50%;width:300px;height:300px;margin:-150px 0 0 -150px;border-radius:50%;border:4px solid #34D399;opacity:0;pointer-events:none}
-/* flow */
-.track{position:absolute;left:101px;top:470px;width:1398px;height:4px;border-radius:2px;background:linear-gradient(90deg,#9BF0CC,#2FBF8F);transform-origin:left center;opacity:.6}
-.pk{position:absolute;top:462px;left:101px;width:20px;height:20px;margin-left:-10px;border-radius:50%;background:radial-gradient(circle,#fff,#34D399 45%,transparent 70%);opacity:0}
-.steps{position:absolute;left:101px;top:520px;width:1398px;display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
-.card{padding:26px 28px;border-radius:20px;background:var(--card);border:1px solid var(--ln);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
-.card .n{font-size:64px;font-weight:900;line-height:1;letter-spacing:-.04em}
-.card h3{margin:12px 0 6px;font-size:36px;font-weight:800;letter-spacing:-.02em}
-.card p{margin:0;font-size:20px;color:var(--mut)}
-.dot{position:absolute;top:458px;width:28px;height:28px;margin-left:-14px;border-radius:50%;background:#071a17;border:3px solid #34D399}
+/* flow: SIRE – Ventas diagram */
+.wires{position:absolute;left:0;top:0;width:1600px;height:900px;pointer-events:none;overflow:visible}
+.wires path{fill:none;stroke:#34D399;stroke-width:1.6;opacity:.55}
+.wires path.fl{stroke:#A7F3D0;stroke-width:2.2;stroke-dasharray:3 16;opacity:0}
+.stg{position:absolute;top:252px;display:flex;align-items:center;gap:10px;font-size:18px;font-weight:700}
+.stg b{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#9BF0CC,#2FBF8F);color:#04130D;display:inline-flex;align-items:center;justify-content:center;font-size:14px}
+.stg span{color:var(--mut);font-weight:500}
+.fs{position:absolute;left:100px;width:280px;height:70px;padding:0 16px;border-radius:12px;background:var(--card);border:1px solid var(--ln);border-left:3px solid #34D399;display:flex;flex-direction:column;justify-content:center;box-sizing:border-box}
+.fs h4{margin:0;font-size:18px;font-weight:700}.fs p{margin:3px 0 0;font-size:14px;color:var(--mut)}
+.fs.opt{border-style:dashed;border-left:3px dashed var(--dim);background:transparent}.fs.opt h4{color:var(--mut)}
+.key{position:absolute;left:470px;top:395px;width:220px;height:190px;padding:20px 14px;box-sizing:border-box;border-radius:14px;background:linear-gradient(160deg,#0B3B2E,#05201A);border:1.5px solid #34D399;box-shadow:0 0 50px rgba(52,211,153,.25);text-align:center}
+.key h4{margin:0;font-size:22px;font-weight:800;color:#A7F3D0}
+.keys{display:flex;gap:8px;justify-content:center;margin:16px 0 12px}
+.keys div{display:flex;flex-direction:column;align-items:center;gap:6px}
+.keys i{font-style:normal;font-family:var(--mono);font-size:17px;font-weight:700;padding:6px 8px;border-radius:6px;background:rgba(52,211,153,.14);border:1px solid rgba(52,211,153,.5)}
+.keys small{font-size:12px;color:var(--mut)}
+.key p{margin:0;font-size:13.5px;color:#A7B4C2;line-height:1.35}
+.ck{position:absolute;left:780px;width:330px;height:86px;padding:0 16px 0 64px;box-sizing:border-box;border-radius:12px;background:var(--card);border:1px solid var(--ln);display:flex;flex-direction:column;justify-content:center}
+.ck svg{position:absolute;left:18px;top:28px}
+.ck h4{margin:0;font-size:18px;font-weight:700}.ck p{margin:4px 0 0;font-size:13.5px;color:var(--mut);line-height:1.35}
+.res2{position:absolute;left:1190px;top:296px;width:310px;height:398px;padding:18px 22px;box-sizing:border-box;border-radius:14px;background:var(--card);border:1px solid var(--ln);border-top:3px solid #34D399}
+.res2 .lb{font-size:13px;color:var(--mut)}
+.res2 .bg{font-size:46px;font-weight:900;letter-spacing:-.03em;font-variant-numeric:tabular-nums;line-height:1.1}
+.res2 .bg small{font-size:15px;font-weight:500;color:var(--mut);letter-spacing:0}
+.rbar{display:flex;height:14px;border-radius:7px;overflow:hidden;background:rgba(148,163,184,.12);margin:10px 0 10px}
+.rbar i{display:block;height:100%;transform-origin:left center}
+.lg{list-style:none;margin:0;padding:0}
+.lg li{display:flex;justify-content:space-between;font-size:15px;padding:5px 0;border-bottom:1px solid rgba(148,163,184,.12);color:#CBD5E1}
+.lg li span{display:flex;align-items:center;gap:10px}.lg li span:before{content:"";width:10px;height:10px;border-radius:3px;background:var(--c)}
+.lg li b{font-variant-numeric:tabular-nums}.lg li.x b{color:#FDBA74}
+.outs{display:flex;gap:8px;margin-top:12px}
+.outs div{flex:1;text-align:center;padding:8px 4px;border-radius:8px;border:1px solid rgba(52,211,153,.45);background:rgba(52,211,153,.08);font-size:14px;font-weight:700}
+.outs div em{display:block;font-style:normal;font-size:11px;font-weight:500;color:var(--mut);margin-top:2px}
+.vs{position:absolute;left:100px;top:712px;width:1400px;height:92px;padding:0 30px;box-sizing:border-box;border-radius:14px;background:linear-gradient(90deg,rgba(6,78,59,.55),rgba(15,23,42,.7));border:1px solid rgba(52,211,153,.4);display:flex;align-items:center;gap:26px}
+.vs .t{font-size:12px;color:var(--mut);letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
+.vs .bf{font-size:40px;font-weight:800;color:#FDA4AF;text-decoration:line-through;text-decoration-thickness:3px}
+.vs .af{font-size:40px;font-weight:800;color:#6EE7B7;font-variant-numeric:tabular-nums;white-space:nowrap}
+.vs .pc2{font-size:22px;font-weight:800;color:#6EE7B7;border:1px solid rgba(52,211,153,.5);border-radius:8px;padding:4px 12px}
+.vs .ms{flex:1;font-size:22px;line-height:1.35;border-left:1px solid var(--ln);padding-left:26px}.vs .ms b{color:#6EE7B7}
+.ilus{position:absolute;right:100px;top:812px;margin:0;font-size:12px;color:var(--dim)}
 /* video */
 .vid{position:absolute;left:350px;top:270px;width:900px;height:506px;border-radius:22px;overflow:hidden;background:linear-gradient(160deg,#0B1830,#060D1C);border:1.5px solid rgba(52,211,153,.55);box-shadow:0 0 0 6px rgba(52,211,153,.06),0 0 60px rgba(52,211,153,.22),0 30px 90px rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center}
 .vid video{display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000}
@@ -195,11 +226,11 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
    <p class="cap"><b>4</b>Y a veces la fórmula falla…</p>
    <p class="cap"><b>5</b>…o Excel se cuelga con tantos datos</p>
    <p class="cap"><b>6</b>…o el error no se ve, y pasamos horas validando</p>
-   <div class="src" style="left:0;top:110px;width:310px"><h4><i style="background:#15803D">XLSX</i>ventas_area.xlsx</h4><pre>Fecha       Comprob.     Total
+   <div class="src" style="left:0;top:110px;width:310px"><h4><i style="background:#15803D">XLSX</i>registro_ventas_erp.xlsx</h4><pre>Fecha       Comprob.     Total
 01/03/2026  F001-101   1.863,00
 01/03/2026  F001-102  14.481,42
 02/03/2026  F001-103   9.540,10</pre><span class="tag">dd/mm/aaaa · coma decimal</span></div>
-   <div class="src" style="left:330px;top:150px;width:320px"><h4><i style="background:#0369A1">CSV</i>reporte_sistema.csv</h4><pre>fecha;serie;numero;total
+   <div class="src" style="left:330px;top:150px;width:320px"><h4><i style="background:#0369A1">CSV</i>estado_facturador.csv</h4><pre>fecha;serie;numero;total
 2026-03-01;F001;00000101;1863.00
 2026-03-01;F001;00000102;14481.42
 2026-03-02;F001;00000103;9540.1</pre><span class="tag">aaaa-mm-dd · separado por ;</span></div>
@@ -257,21 +288,48 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
   </div>
  </section>
 
- <!-- 4 · Cómo funciona -->
- <section class="slide" data-k="flow" data-t="g" data-title="Cómo funciona" data-notes="Ya tenemos 4 automatizaciones funcionando en Contraloría. Ejemplo: SIRE – Ventas, en 25 empresas. Reúne 4 fuentes, las cruza con una sola llave (tipo, serie y número), valida campo por campo y entrega Excel de diferencias, formato SIRE y TXT. (25 s)">
-  <div class="col" style="left:100px;top:140px;width:1400px;gap:14px">
+ <!-- 4 · Cómo funciona (SIRE – Ventas) -->
+ <section class="slide" data-k="flow" data-t="g" data-title="Cómo funciona" data-notes="Les muestro en 40 segundos qué hace la herramienta por dentro. Cada mes reunimos cuatro fuentes: lo que registramos en el ERP, lo que SUNAT ya tiene en el SIRE, el estado de cada factura en el facturador y el tipo de cambio oficial. Todo se une con una sola llave: tipo, serie y número, así un comprobante se encuentra en las cuatro fuentes a la vez. Se valida campo por campo: importes, cliente, moneda y tipo de cambio, y que no falte ni sobre ningún número. Resultado: el 100% de los comprobantes revisados, no una muestra; lo que coincide se aparta solo. El equipo pasa de 65 horas a menos de 20 al mes y dedica su tiempo a las excepciones, antes de declarar. (45 s)">
+  <div class="col" style="left:100px;top:118px;width:1400px;gap:12px">
    <p class="k it">04 — Cómo funciona</p>
-   <h2 class="h2 kt" style="font-size:58px"><span>4 automatizaciones</span><span class="acg">ya funcionan en Contraloría</span></h2>
-   <p class="p it" style="font-size:22px">Ejemplo: <b>SIRE – Ventas</b> · la revisión de ventas de 25 empresas del grupo</p>
+   <h2 class="h2 kt" style="font-size:50px"><span>SIRE – Ventas: <b class="acg">cómo funciona por dentro</b></span></h2>
   </div>
-  <i class="track" id="track"></i>
-  <i class="pk"></i><i class="pk"></i><i class="pk"></i>
-  <div class="steps">
-   <div class="card"><div class="n acg">1</div><h3>Reúne</h3><p>4 fuentes</p></div>
-   <div class="card"><div class="n acg">2</div><h3>Cruza</h3><p>una sola llave: tipo, serie y número</p></div>
-   <div class="card"><div class="n acg">3</div><h3>Valida</h3><p>campo por campo</p></div>
-   <div class="card"><div class="n acg">4</div><h3>Entrega</h3><p>Excel de diferencias, SIRE y TXT</p></div>
+  <svg class="wires" id="wires" viewBox="0 0 1600 900" aria-hidden="true"></svg>
+  <div class="stg" style="left:100px"><b>1</b>Reúne <span>4 fuentes</span></div>
+  <div class="stg" style="left:470px"><b>2</b>Cruza <span>una sola llave</span></div>
+  <div class="stg" style="left:780px"><b>3</b>Valida <span>campo por campo</span></div>
+  <div class="stg" style="left:1190px"><b>4</b>Clasifica <span>y entrega</span></div>
+  <div class="fs" style="top:296px"><h4>Registro de Ventas</h4><p>Exportado del ERP contable</p></div>
+  <div class="fs" style="top:376px"><h4>Propuesta SIRE</h4><p>Lo que SUNAT ya tiene registrado</p></div>
+  <div class="fs" style="top:456px"><h4>Facturador electrónico</h4><p>Estado de cada comprobante (TCI)</p></div>
+  <div class="fs" style="top:536px"><h4>Tipo de cambio SUNAT</h4><p>Tabla oficial del mes</p></div>
+  <div class="fs opt" style="top:616px"><h4>XML de vehículos</h4><p>Opcional, para revisar ISC</p></div>
+  <div class="key"><h4>Llave única</h4><div class="keys"><div><i>01</i><small>Tipo</small></div><div><i>F001</i><small>Serie</small></div><div><i>1234</i><small>Número</small></div></div><p>Cada comprobante se busca en todas las fuentes a la vez</p></div>
+  <div class="ck" style="top:296px"><svg width="30" height="30" viewBox="0 0 26 26"><circle cx="13" cy="13" r="12" fill="none" stroke="rgba(148,163,184,.35)" stroke-width="1.5"/><path d="M7.5 13.5l3.6 3.6 7.4-8" fill="none" stroke="#34D399" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="20" stroke-dashoffset="0"/></svg><h4>Importes</h4><p>Base imponible, IGV, ISC y total, al céntimo</p></div>
+  <div class="ck" style="top:396px"><svg width="30" height="30" viewBox="0 0 26 26"><circle cx="13" cy="13" r="12" fill="none" stroke="rgba(148,163,184,.35)" stroke-width="1.5"/><path d="M7.5 13.5l3.6 3.6 7.4-8" fill="none" stroke="#34D399" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="20" stroke-dashoffset="0"/></svg><h4>Cliente</h4><p>RUC y razón social iguales en ERP y SIRE</p></div>
+  <div class="ck" style="top:496px"><svg width="30" height="30" viewBox="0 0 26 26"><circle cx="13" cy="13" r="12" fill="none" stroke="rgba(148,163,184,.35)" stroke-width="1.5"/><path d="M7.5 13.5l3.6 3.6 7.4-8" fill="none" stroke="#34D399" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="20" stroke-dashoffset="0"/></svg><h4>Moneda y tipo de cambio</h4><p>TC venta SUNAT del día; en notas de crédito, el del documento de origen</p></div>
+  <div class="ck" style="top:596px"><svg width="30" height="30" viewBox="0 0 26 26"><circle cx="13" cy="13" r="12" fill="none" stroke="rgba(148,163,184,.35)" stroke-width="1.5"/><path d="M7.5 13.5l3.6 3.6 7.4-8" fill="none" stroke="#34D399" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="20" stroke-dashoffset="0"/></svg><h4>Integridad</h4><p>Sin duplicados y sin saltos en la numeración</p></div>
+  <div class="res2">
+   <div class="lb">Comprobantes revisados en el mes</div>
+   <div class="bg"><span class="n0" data-fmt="int">1 248</span> <small>al 100 %</small></div>
+   <div class="rbar"><i style="width:97.04%;background:#34D399"></i><i style="width:1.84%;background:#FBBF24"></i><i style="width:.56%;background:#60A5FA"></i><i style="width:.4%;background:#C4B5FD"></i><i style="width:.16%;background:#FB7185"></i></div>
+   <ul class="lg">
+    <li style="--c:#34D399"><span>Coinciden</span><b data-n="1211">1 211</b></li>
+    <li class="x" style="--c:#FBBF24"><span>Con diferencia</span><b data-n="23">23</b></li>
+    <li class="x" style="--c:#60A5FA"><span>Solo en el ERP</span><b data-n="7">7</b></li>
+    <li class="x" style="--c:#C4B5FD"><span>Solo en SUNAT</span><b data-n="5">5</b></li>
+    <li class="x" style="--c:#FB7185"><span>Número faltante</span><b data-n="2">2</b></li>
+   </ul>
+   <div class="outs"><div>Excel<em>diferencias</em></div><div>Excel<em>formato SIRE</em></div><div>TXT<em>para SUNAT</em></div></div>
   </div>
+  <div class="vs">
+   <div><div class="t">Antes, cada mes</div><div class="bf">65 h</div></div>
+   <svg width="34" height="16" viewBox="0 0 34 16" aria-hidden="true"><path d="M2 8h26M22 3l6 5-6 5" fill="none" stroke="#6EE7B7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+   <div><div class="t">Hoy, cada mes</div><div class="af" id="vsA">19 h 25 min</div></div>
+   <span class="pc2">−70%</span>
+   <div class="ms">El equipo ya no revisa <b>1 248 comprobantes</b>.<br>Revisa <b>37 excepciones</b>, antes de declarar.</div>
+  </div>
+  <p class="ilus">Conteos de comprobantes ilustrativos (datos ficticios) · horas según resultados del equipo CONT-AI</p>
  </section>
 
  <!-- 5 · Demo -->
@@ -334,7 +392,7 @@ var G=window.gsap,reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion:
 var SL=[].slice.call(document.querySelectorAll('.slide')),stage=document.getElementById('stage'),ft=document.getElementById('ft'),root=document.documentElement;
 function $(s,c){return (c||document).querySelector(s)}function $$(s,c){return [].slice.call((c||document).querySelectorAll(s))}
 function rng(seed){return function(){seed=(seed+0x6D2B79F5)|0;var t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
-function fmt(v,type,suf){if(type==='hm'){var h=Math.floor(v/60),m=Math.round(v-h*60);if(m===60){h++;m=0}return h+' h '+String(m).padStart(2,'0')+' min'}return Math.round(v)+(suf||'')}
+function fmt(v,type,suf){if(type==='int')return String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g,' ');if(type==='hm'){var h=Math.floor(v/60),m=Math.round(v-h*60);if(m===60){h++;m=0}return h+' h '+String(m).padStart(2,'0')+' min'}return Math.round(v)+(suf||'')}
 
 /* ---------- scale ---------- */
 function size(){var s=Math.min(innerWidth/1600,innerHeight/900);stage.style.transform='scale('+s+')'}
@@ -544,7 +602,7 @@ var HOOK={
  cover:function(tl){tl.from('.slide.on .h1 .wi',{yPercent:120,rotate:8,duration:1.1,ease:'expo.out',stagger:.09},.2)},
  prob:function(tl,sl,loops){count(tl,$('.v',sl),0,65,.9,1.8);if(reduce)return;
   var caps=$$('.cap',sl),chips=$$('.sc span',sl),srcs=$$('.src',sl),xl=$('#xl'),rows=$$('.xr:not(.h)',xl),errs=$$('.xr .e',xl),fx=$('#fxT'),t2=$('.t2',xl),kpi=$('.kpi',sl);
-  var F='=SI.ERROR(BUSCARV(CONCATENAR(B2;"-";TEXTO(C2;"00000000"));\'[reporte_sistema.csv]Hoja1\'!$A:$K;COINCIDIR("total";\'[reporte_sistema.csv]Hoja1\'!$1:$1;0);0);"revisar")';
+  var F='=SI.ERROR(BUSCARV(CONCATENAR(B2;"-";TEXTO(C2;"00000000"));\'[estado_facturador.csv]Hoja1\'!$A:$K;COINCIDIR("total";\'[estado_facturador.csv]Hoja1\'!$1:$1;0);0);"revisar")';
   var r4=rows[3],mag=$('#mag'),scan=$('#scan');mag.style.left=(r4.children[3].offsetLeft+4)+'px';mag.style.top=(r4.offsetTop+2)+'px';mag.style.width=(r4.children[3].offsetWidth-8)+'px';mag.style.height='32px';
   scan.style.top=rows[0].offsetTop+'px';var span=rows[5].offsetTop-rows[0].offsetTop;
   function init(){G.set(caps,{opacity:0,y:10});G.set(chips,{opacity:.3});G.set(srcs,{opacity:0,x:0,y:0,scale:1});G.set(xl,{opacity:0,scale:.92,x:0,filter:'grayscale(0)'});G.set(rows,{opacity:0});G.set(errs,{opacity:0,scale:.5});
@@ -584,10 +642,31 @@ var HOOK={
    .to('#hero',{x:'+=10',duration:.05,repeat:5,yoyo:true,ease:'none'},3.3).set('#hero',{x:0})
    .fromTo('#ring',{scale:.3,opacity:.9},{scale:3.2,opacity:0,duration:1.2,ease:'power2.out'},3.3).fromTo('#ring2',{scale:.3,opacity:.6},{scale:4.5,opacity:0,duration:1.6,ease:'power2.out'},3.45);
   return 3.6},
- flow:function(tl,sl,loops){tl.fromTo('#track',{scaleX:0},{scaleX:1,duration:1.2,ease:'power3.inOut'},.6).from($$('.card',sl),{y:60,opacity:0,rotationX:-30,duration:.8,ease:'back.out(1.6)',stagger:.18},.9)
-   .from($$('.card .n',sl),{scale:3,opacity:0,duration:.6,ease:'expo.out',stagger:.18},1);
-  tl.add(function(){$$('.pk',sl).forEach(function(p,i){loops.push(G.timeline({repeat:-1,delay:i*1.07}).fromTo(p,{x:0,opacity:0},{x:1398,duration:3.2,ease:'none'},0).to(p,{opacity:1,duration:.3},0).to(p,{opacity:0,duration:.3},2.9))});
-   var gl=G.timeline({repeat:-1});$$('.card',sl).forEach(function(c,i){gl.to(c,{borderColor:'rgba(52,211,153,.85)',boxShadow:'0 0 40px rgba(52,211,153,.28)',duration:.35},i*.8).to(c,{borderColor:'rgba(148,163,184,.18)',boxShadow:'0 0 0 rgba(52,211,153,0)',duration:.5},i*.8+.6)});loops.push(gl)},1.8)},
+ flow:function(tl,sl,loops){
+  var W=$('#wires',sl),fs=$$('.fs',sl),key=$('.key',sl),ck=$$('.ck',sl),res=$('.res2',sl);
+  if(!W.childNodes.length){var K={l:key.offsetLeft,t:key.offsetTop,r:key.offsetLeft+key.offsetWidth},Rl=res.offsetLeft,Rt=res.offsetTop;
+   function wire(x1,y1,x2,y2,g,opt){var m=(x1+x2)/2,d='M'+x1+','+y1+' C'+m+','+y1+' '+m+','+y2+' '+x2+','+y2;
+    [0,1].forEach(function(f){var e=mk('path',{d:d,'class':(f?'fl':'')+(opt&&!f?' opt':''),'data-g':g},W);if(opt&&!f)e.style.strokeDasharray='5 6'})}
+   fs.forEach(function(c,i){wire(c.offsetLeft+c.offsetWidth,c.offsetTop+35,K.l,K.t+55+i*20,1,c.classList.contains('opt'))});
+   ck.forEach(function(c,i){wire(K.r,K.t+65+i*20,c.offsetLeft,c.offsetTop+43,2);wire(c.offsetLeft+c.offsetWidth,c.offsetTop+43,Rl,Rt+150+i*14,3)})}
+  var P1=$$('path:not(.fl)[data-g="1"]',W),P2=$$('path:not(.fl)[data-g="2"]',W),P3=$$('path:not(.fl)[data-g="3"]',W),FL=$$('path.fl',W);
+  function draw(ps,at){ps.forEach(function(p,i){var L=Math.ceil(p.getTotalLength());if(p.classList.contains('opt')){tl.fromTo(p,{opacity:0},{opacity:.55,duration:.5},at+i*.08);return}
+   tl.fromTo(p,{strokeDasharray:L,strokeDashoffset:L},{strokeDashoffset:0,duration:.6,ease:'power2.inOut'},at+i*.08)})}
+  var stg=$$('.stg',sl);
+  tl.from(stg[0],{opacity:0,y:12,duration:.4},.7).from(fs,{opacity:0,x:-40,duration:.55,ease:'expo.out',stagger:.1},.8);
+  draw(P1,1.5);
+  tl.from(stg[1],{opacity:0,y:12,duration:.4},2).from(key,{opacity:0,scale:.85,duration:.6,ease:'back.out(1.8)'},2.1).from($$('.keys i',sl),{rotationX:-90,opacity:0,duration:.4,stagger:.15},2.4);
+  draw(P2,2.9);
+  tl.from(stg[2],{opacity:0,y:12,duration:.4},3.2).from(ck,{opacity:0,x:30,duration:.5,ease:'expo.out',stagger:.15},3.3).fromTo($$('.ck path',sl),{strokeDashoffset:20},{strokeDashoffset:0,duration:.4,stagger:.15},3.7);
+  draw(P3,4.3);
+  tl.from(stg[3],{opacity:0,y:12,duration:.4},4.6).from(res,{opacity:0,y:30,duration:.6,ease:'expo.out'},4.7).fromTo($$('.rbar i',sl),{scaleX:0},{scaleX:1,duration:.8,stagger:.08},5.1);
+  count(tl,$('.n0',sl),0,1248,5.0,1.4);$$('.lg b',sl).forEach(function(b){b.dataset.fmt='int';count(tl,b,0,+b.dataset.n,5.1,1.3)});
+  tl.from($$('.outs div',sl),{opacity:0,y:14,duration:.4,ease:'back.out(2)',stagger:.1},5.9);
+  var va=$('#vsA');va.dataset.fmt='hm';tl.from('.slide.on .vs',{opacity:0,y:30,duration:.6,ease:'expo.out'},6.4);count(tl,va,3900,1165,6.6,1.6);
+  tl.from('.slide.on .ilus',{opacity:0,duration:.5},7);
+  tl.add(function(){loops.push(G.fromTo(FL,{opacity:0},{opacity:.9,duration:.6}),G.to(FL,{strokeDashoffset:-38,duration:1.1,repeat:-1,ease:'none'}),
+   G.to($$('.keys i',sl),{boxShadow:'0 0 18px rgba(52,211,153,.7)',duration:.6,repeat:-1,yoyo:true,stagger:.2}))},5.2);
+  if(reduce)G.set(FL,{opacity:.9})},
  demo:function(tl){tl.fromTo('#vid',{scale:.85,opacity:0,rotationX:18,transformPerspective:1200},{scale:1,opacity:1,rotationX:0,duration:1.1,ease:'expo.out'},.5)},
  sav:function(tl,sl){var h=$('.big span',sl);count(tl,h,0,3070,1.2,2);
   $$('.rr',sl).forEach(function(r,i){var at=.8+i*.22,pc=$('.pc',r),o={v:0};
@@ -605,7 +684,7 @@ function enter(sl){if(!G){$$('[data-count]',sl).forEach(function(e){e.textConten
  var h=HOOK[sl.dataset.k];if(h)h(tl,sl,loops);
  if(reduce)tl.progress(1)}
 function leave(){if(revealDelay){revealDelay.kill();revealDelay=null}if(cur.tl){cur.tl.progress(1);cur.tl.kill()}cur.loops.forEach(function(l){l.kill()});
- if(G&&SL[idx]){G.set($$('.bad',SL[idx]),{opacity:1});G.set($$('.pk',SL[idx]),{opacity:0});G.set($$('.card',SL[idx]),{clearProps:'borderColor,boxShadow'})}}
+ if(G&&SL[idx]){G.set($$('.keys i,.wires .fl',SL[idx]),{clearProps:'boxShadow,opacity'})}}
 
 /* ---------- navigation ---------- */
 var mains=SL.filter(function(x){return !x.dataset.annex}).length,idx=-1,t0=null;
