@@ -271,13 +271,13 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
  </section>
 
  <!-- 2 · Revelado manual vs automatizado -->
- <section class="slide" data-k="reveal" data-t="o" data-title="Antes / Después" data-notes="Esto es lo que cambia. Antes: varios Excel por empresa, el mismo BUSCARV copiado una y otra vez, copiar y pegar 25 veces, errores #N/A y #¡REF!. Al automatizar, un bot RPA toma las 4 fuentes, las cruza con una sola llave y valida campo por campo: queda un tablero limpio con cada comprobante conciliado y las diferencias listas para corregir. SIRE – Ventas pasa de 65 h a 19 h 25 min al mes. (Arrastra el control o pulsa Automatizar.) (30 s)">
+ <section class="slide" data-k="reveal" data-t="o" data-title="Antes / Después" data-notes="Esto es lo que cambia. Antes: varios Excel por empresa, el mismo BUSCARV copiado una y otra vez, copiar y pegar 25 veces, errores #N/A y #¡REF!. Al automatizar, un bot toma las 4 fuentes, las cruza con una sola llave y valida campo por campo: queda un tablero limpio con cada comprobante conciliado y las diferencias listas para corregir. SIRE – Ventas pasa de 65 h a 19 h 25 min al mes. (Arrastra el control o pulsa Automatizar.) (30 s)">
   <div class="col" style="left:100px;top:150px;width:540px;gap:20px">
    <p class="k it">02 — Antes vs. después</p>
    <h2 class="h2 kt" style="font-size:48px"><span>De fórmulas repetidas</span><span class="acg">a un bot que concilia.</span></h2>
    <div class="states it">
     <div class="stt m on" id="stM"><b>Manual</b><span>Varios Excel, BUSCARV y copiar y pegar, empresa por empresa.</span><em>65 h / mes</em></div>
-    <div class="stt a" id="stA"><b>Automatizado</b><span>Un bot RPA reúne, cruza y valida; diferencias listas para corregir.</span><em>19 h 25 min / mes</em></div>
+    <div class="stt a" id="stA"><b>Automatizado</b><span>Un bot reúne, cruza y valida; diferencias listas para corregir.</span><em>19 h 25 min / mes</em></div>
    </div>
    <div class="ctl it"><button class="btn pri" id="bAuto">▶ Automatizar</button><button class="btn" id="bMan">↺ Volver a manual</button></div>
    <div class="ctl rng it"><span>Manual</span><input type="range" id="rv" min="0" max="1000" value="0" aria-label="Manual a automatizado"><span>Auto</span></div>
@@ -467,7 +467,7 @@ function excel(par,type,x,y,z,w,h,name,fx,errAt){var g=mk('g',{},par),pl=plane(g
  S.sheetA=mk('g',{opacity:0},svg);var sa=plane(S.sheetA,'fy',50,40,190);
  mk('rect',{x:0,y:0,width:320,height:190,rx:5,fill:'#05201A',stroke:'#34D399','stroke-width':1.3},sa);mk('rect',{x:0,y:0,width:320,height:20,rx:5,fill:'rgba(52,211,153,.18)'},sa);
  tx(sa,8,14,'Conciliación automática · SIRE – Ventas',{'font-size':9.5,'font-weight':700,fill:'#A7F3D0'});
- mk('rect',{x:252,y:5,width:62,height:11,rx:5.5,fill:'rgba(52,211,153,.25)'},sa);tx(sa,283,13.5,'● Bot RPA',{'font-size':7.5,'font-weight':700,'text-anchor':'middle',fill:'#34D399'});
+ mk('rect',{x:252,y:5,width:62,height:11,rx:5.5,fill:'rgba(52,211,153,.25)'},sa);tx(sa,283,13.5,'● BOT',{'font-size':7.5,'font-weight':700,'text-anchor':'middle',fill:'#34D399'});
  [['Comprobante',8],['Registro',150],['SIRE',212],['Estado',250]].forEach(function(h){tx(sa,h[1],36,h[0].toUpperCase(),{'font-size':7,'letter-spacing':1,fill:'#6EE7B7'})});
  var rows=[['F001-00000101','1,863.00','1,863.00',1],['F001-00000102','14,481.42','14,481.42',1],['F001-00000103','9,540.10','9,540.10',1],['F001-00000104','3,115.60','3,151.60',0],['F001-00000105','7,302.85','7,302.85',1],['F001-00000106','12,998.00','12,998.00',1],['F001-00000107','2,375.13','2,375.13',1]];S.st=[];
  rows.forEach(function(q,i){var y=52+i*16;mk('line',{x1:6,y1:y+4,x2:314,y2:y+4,stroke:'rgba(52,211,153,.14)'},sa);
@@ -493,7 +493,7 @@ function excel(par,type,x,y,z,w,h,name,fx,errAt){var g=mk('g',{},par),pl=plane(g
  var rb=mk('g',{},S.robot);cub(rb,203,178,7,54,50,8,['#1E293B','#0F172A','#111827','#34D399']);
  var rp=plane(rb,'top',203,178,15);S.ring=mk('ellipse',{cx:27,cy:25,rx:30,ry:30,fill:'none',stroke:'#34D399','stroke-width':1.5,opacity:.8},rp);S.rParts.push(rb);
  var rbo=mk('g',{},S.robot);cub(rbo,206,193,24,6,16,24,['#CBD5E1','#64748B','#94A3B8']);cub(rbo,212,186,15,36,34,40,['#E2E8F0','#94A3B8','#CBD5E1']);cub(rbo,248,193,24,7,16,24,['#CBD5E1','#64748B','#94A3B8']);
- var ch=plane(rbo,'fy',216,220,50);mk('rect',{x:0,y:0,width:28,height:22,rx:3,fill:'#0F172A'},ch);tx(ch,14,10,'RPA',{'font-size':8,'font-weight':800,'text-anchor':'middle',fill:'#34D399'});
+ var ch=plane(rbo,'fy',216,220,50);mk('rect',{x:0,y:0,width:28,height:22,rx:3,fill:'#0F172A'},ch);tx(ch,14,10,'BOT',{'font-size':8,'font-weight':800,'text-anchor':'middle',fill:'#34D399'});
  S.chest=mk('rect',{x:5,y:14,width:18,height:3,rx:1.5,fill:'#34D399'},ch);S.rParts.push(rbo);
  var rh=mk('g',{},S.robot),rhi=mk('g',{},rh);S.head=rhi;cub(rhi,214,188,57,32,30,24,['#F1F5F9','#94A3B8','#CBD5E1']);
  var vz=plane(rhi,'fy',217,218,77);mk('rect',{x:0,y:0,width:26,height:14,rx:3,fill:'#020617'},vz);
@@ -545,7 +545,7 @@ function excel(par,type,x,y,z,w,h,name,fx,errAt){var g=mk('g',{},par),pl=plane(g
  S.cnt=tx(S.man,62,29,'Empresa 01 / 25',{'font-size':16,'font-weight':700,fill:'#FDBA74','font-family':MONO});tx(S.man,62,49,'el mismo cruce, una y otra vez',{'font-size':11,fill:'#CBD5E1'});
  S.bot=mk('g',{transform:'translate(18,24)',opacity:0},svg);mk('rect',{x:0,y:0,width:250,height:64,rx:14,fill:'rgba(6,78,59,.5)',stroke:'#34D399'},S.bot);
  mk('rect',{x:16,y:18,width:32,height:26,rx:6,fill:'#E2E8F0'},S.bot);mk('rect',{x:21,y:25,width:22,height:10,rx:3,fill:'#020617'},S.bot);mk('rect',{x:24,y:28,width:5,height:4,fill:'#34D399'},S.bot);mk('rect',{x:35,y:28,width:5,height:4,fill:'#34D399'},S.bot);mk('line',{x1:32,y1:18,x2:32,y2:11,stroke:'#94A3B8','stroke-width':2},S.bot);mk('circle',{cx:32,cy:10,r:3,fill:'#FFB347'},S.bot);
- tx(S.bot,62,29,'Bot RPA · 25 empresas',{'font-size':15,'font-weight':700,fill:'#6EE7B7'});tx(S.bot,62,49,'un solo flujo, sin copiar y pegar',{'font-size':11,fill:'#CBD5E1'});
+ tx(S.bot,62,29,'BOT · 25 empresas',{'font-size':15,'font-weight':700,fill:'#6EE7B7'});tx(S.bot,62,49,'un solo flujo, sin copiar y pegar',{'font-size':11,fill:'#CBD5E1'});
  /* error badges */
  S.badges=[];[['#N/A',P(110,40,170)],['#¡REF!',P(345,40,190)],['¿cuadra?',P(75,330,95)],['#VALOR!',P(320,262,140)],['Duplicado',P(195,375,48)]].forEach(function(b){
   var w=mk('g',{transform:'translate('+b[1][0].toFixed(1)+','+b[1][1].toFixed(1)+')'},svg),bad=mk('g',{},w),pu=mk('g',{},bad),bw=18+b[0].length*8;
@@ -557,7 +557,7 @@ function excel(par,type,x,y,z,w,h,name,fx,errAt){var g=mk('g',{},par),pl=plane(g
  mk('rect',{x:0,y:0,width:420,height:230,fill:'url(#scanG)'},sc);mk('line',{x1:0,y1:230,x2:420,y2:230,stroke:'#A7F3D0','stroke-width':3},sc);mk('line',{x1:0,y1:0,x2:420,y2:0,stroke:'#6EE7B7','stroke-width':1,opacity:.6},sc);
 })();
 var revealTL=null,revealAuto=-1,rv=document.getElementById('rv'),dragging=false,revealDelay=null;
-function setReveal(auto){if(auto===revealAuto)return;revealAuto=auto;$('#pill').textContent=auto?'PROCESO AUTOMATIZADO · RPA':'PROCESO MANUAL · FÓRMULAS';$('#pill').classList.toggle('auto',auto);
+function setReveal(auto){if(auto===revealAuto)return;revealAuto=auto;$('#pill').textContent=auto?'PROCESO AUTOMATIZADO · BOT':'PROCESO MANUAL · FÓRMULAS';$('#pill').classList.toggle('auto',auto);
  $('#stM').classList.toggle('on',!auto);$('#stA').classList.toggle('on',auto);if(SL[idx]&&SL[idx].dataset.k==='reveal')theme(auto?'g':'o')}
 if(G){
  /* idle loops: always running, visible only in their own state */
