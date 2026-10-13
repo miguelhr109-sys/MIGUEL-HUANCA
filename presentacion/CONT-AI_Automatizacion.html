@@ -114,7 +114,6 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
 .chips{display:flex;gap:14px;flex-wrap:wrap}
 .chip{display:flex;align-items:center;gap:10px;padding:12px 20px;border-radius:999px;background:var(--card);border:1px solid var(--ln);font-size:20px;font-weight:600}
 .chip:before{content:"";width:10px;height:10px;border-radius:50%;background:var(--a1);box-shadow:0 0 10px var(--a1)}
-#db{position:absolute;left:960px;top:260px;width:560px;height:420px}
 /* table */
 .tbl{position:absolute;left:100px;top:260px;width:1400px;border-radius:18px;overflow:hidden;background:var(--card);border:1px solid var(--ln)}
 .tr{display:grid;grid-template-columns:2.3fr .8fr 1.1fr 1.1fr 1.2fr 1fr;gap:14px;align-items:center;padding:15px 24px;border-bottom:1px solid var(--ln);font-size:22px;color:var(--mut)}
@@ -244,18 +243,6 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
    <div class="rr"><div class="nm">Indicadores Lavado de Activos<small>4 h 40 min → 1 h 45 min · ahorra 2 h 55 min</small></div><div class="pc" data-p="63">63%</div><div class="tk"><i style="width:62.5%"></i></div></div>
    <div class="rr"><div class="nm">SIRE – No Domiciliado<small>2 h → 1 h · ahorra 1 h</small></div><div class="pc" data-p="50">50%</div><div class="tk"><i style="width:50%"></i></div></div>
   </div>
- </section>
-
- <!-- 7 · Petición -->
- <section class="slide" data-k="ask" data-t="o" data-title="Pedido" data-notes="Les pedimos una sola cosa: acceso a una copia de la base de datos, en un entorno interno. No se toca producción y los datos no salen de la empresa. Así las automatizaciones reciben los datos solas. Cierres más rápidos, menos riesgo de multas y replicable en las 16 empresas. Hoy son 4; hay más de 70 procesos por delante. Gracias. (20 s)">
-  <div class="col" style="left:100px;top:170px;width:820px">
-   <p class="k it">07 — Una sola petición</p>
-   <h2 class="h2 kt" style="font-size:72px"><span>Acceso a una copia</span><span class="ac">de la base de datos.</span></h2>
-   <p class="p it">En un entorno interno: sin tocar producción<br>y sin que los datos salgan de la empresa.</p>
-   <div class="chips it"><span class="chip">Cierres más rápidos</span><span class="chip">Menos riesgo de multas</span><span class="chip">Replicable en las 16 empresas</span></div>
-   <h2 class="h2 kt" style="font-size:40px;margin-top:10px"><span class="ac">4 hoy. Más de 70 por delante. Gracias.</span></h2>
-  </div>
-  <svg id="db" viewBox="0 0 560 420" aria-label="Producción y copia interna"></svg>
  </section>
 
  <!-- 8 · Anexo -->
@@ -494,18 +481,6 @@ if(G){
  $('#bMan').addEventListener('click',function(){if(revealDelay)revealDelay.kill();t.timeScale(1.8).reverse()});
 }
 
-/* ---------- database SVG for the ask slide ---------- */
-(function(){var d=document.getElementById('db');
- function cyl(cx,col,lab,dim){var g=mk('g',{opacity:dim?.55:1},d),rx=90,ry=24,top=110,bot=300;
-  mk('path',{d:'M'+(cx-rx)+' '+top+' V'+bot+' A'+rx+' '+ry+' 0 0 0 '+(cx+rx)+' '+bot+' V'+top,fill:'rgba(15,23,42,.8)',stroke:col,'stroke-width':2},g);
-  [170,235].forEach(function(y){mk('path',{d:'M'+(cx-rx)+' '+y+' A'+rx+' '+ry+' 0 0 0 '+(cx+rx)+' '+y,fill:'none',stroke:col,'stroke-width':1.5,opacity:.7},g)});
-  mk('ellipse',{cx:cx,cy:top,rx:rx,ry:ry,fill:'rgba(30,41,59,.9)',stroke:col,'stroke-width':2},g);
-  tx(g,cx,360,lab,{'font-size':22,'font-weight':700,'text-anchor':'middle',fill:dim?'#94A3B8':col});return g}
- S.db1=cyl(110,'#94A3B8','Producción',1);S.db2=cyl(450,'#FFB347','Copia interna',0);
- S.dbl=mk('path',{d:'M215 205 H345',stroke:'#FFB347','stroke-width':4,'stroke-dasharray':'10 10',fill:'none'},d);
- mk('path',{d:'M335 193 L350 205 L335 217',stroke:'#FFB347','stroke-width':4,fill:'none','stroke-linecap':'round'},d);
- tx(d,280,182,'solo lectura',{'font-size':15,'text-anchor':'middle',fill:'#94A3B8'})})();
-
 /* ---------- theme ---------- */
 var TH={o:['#FFB347','#FF5E3A'],g:['#9BF0CC','#2FBF8F']};
 function theme(t){var c=TH[t];if(G)G.to(root,{'--a1':c[0],'--a2':c[1],duration:1.2,ease:'power2.out'});else{root.style.setProperty('--a1',c[0]);root.style.setProperty('--a2',c[1])}}
@@ -542,8 +517,6 @@ var HOOK={
     .to(o,{v:+pc.dataset.p,duration:1.2,ease:'power3.out',onStart:function(){pc.textContent='0%'},onUpdate:function(){pc.textContent=Math.round(o.v)+'%'}},at+.2)});
   tl.fromTo($('.rr.top .pc',sl),{scale:1},{scale:1.25,duration:.18,yoyo:true,repeat:1,ease:'power2.out',transformOrigin:'100% 80%'},2.3);
   tl.fromTo('.slide.on .hl',{scale:1},{scale:1.18,duration:.2,yoyo:true,repeat:1,transformOrigin:'50% 70%'},1.1)},
- ask:function(tl,sl,loops){tl.from(S.db1,{opacity:0,y:30,duration:.8},.8).from(S.db2,{opacity:0,y:30,duration:.8},1.2).from(S.dbl,{opacity:0,duration:.4},1.6);
-  loops.push(G.to(S.dbl,{attr:{'stroke-dashoffset':-40},duration:1,repeat:-1,ease:'none'}))},
  annex:function(tl,sl){tl.from($$('.tr',sl),{opacity:0,x:-30,duration:.5,stagger:.08,ease:'power3.out'},.4)}
 };
 var cur={tl:null,loops:[]};
@@ -554,7 +527,7 @@ function enter(sl){if(!G){$$('[data-count]',sl).forEach(function(e){e.textConten
  var h=HOOK[sl.dataset.k];if(h)h(tl,sl,loops);
  if(reduce)tl.progress(1)}
 function leave(){if(revealDelay){revealDelay.kill();revealDelay=null}if(cur.tl){cur.tl.progress(1);cur.tl.kill()}cur.loops.forEach(function(l){l.kill()});
- if(G&&SL[idx]){G.set($$('.bad',SL[idx]),{opacity:1});G.set($$('.pk',SL[idx]),{opacity:0});G.set($$('.card',SL[idx]),{clearProps:'borderColor,boxShadow'});G.set(S.dbl,{attr:{'stroke-dashoffset':0}})}}
+ if(G&&SL[idx]){G.set($$('.bad',SL[idx]),{opacity:1});G.set($$('.pk',SL[idx]),{opacity:0});G.set($$('.card',SL[idx]),{clearProps:'borderColor,boxShadow'})}}
 
 /* ---------- navigation ---------- */
 var mains=SL.filter(function(x){return !x.dataset.annex}).length,idx=-1,t0=null;
