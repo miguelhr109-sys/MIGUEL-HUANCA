@@ -55,11 +55,36 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
 .li div{display:flex;align-items:center;gap:16px;font-size:22px}
 .li em{font-style:normal;min-width:92px;padding:5px 10px;border-radius:8px;font-family:var(--mono);font-size:16px;font-weight:700;text-align:center;background:rgba(251,113,133,.16);color:#FDA4AF;border:1px solid rgba(251,113,133,.4)}
 /* problem windows */
-.scene3d{position:absolute;left:960px;top:190px;width:620px;height:560px;perspective:1500px;transform-style:preserve-3d}
-.win3d{position:absolute;width:350px;border-radius:14px;background:rgba(14,18,28,.9);border:1px solid var(--ln);box-shadow:0 30px 80px rgba(0,0,0,.6);overflow:hidden;font-family:var(--mono)}
-.win3d h4{margin:0;padding:9px 14px;font-size:12px;font-weight:500;color:var(--dim);border-bottom:1px solid var(--ln);background:rgba(255,255,255,.04)}
-.row{display:flex;justify-content:space-between;padding:7px 14px;font-size:13px;color:#B8C0CC;border-bottom:1px solid rgba(255,255,255,.06)}
-.row .bad{padding:0 7px;border-radius:5px}
+.story{position:absolute;left:870px;top:140px;width:650px;height:660px;perspective:1400px}
+.sc{display:flex;gap:6px}
+.sc span{font:600 12px var(--font);letter-spacing:.04em;padding:6px 11px;border-radius:999px;border:1px solid rgba(251,146,60,.55);color:#FDBA74;background:rgba(124,45,18,.25);white-space:nowrap}
+.cap{position:absolute;left:0;top:46px;width:650px;font-size:22px;font-weight:700;letter-spacing:-.01em;color:var(--ink)}
+.cap b{color:#FDBA74;margin-right:8px}
+.src{position:absolute;border-radius:12px;background:rgba(14,18,28,.95);border:1px solid var(--ln);box-shadow:0 24px 60px rgba(0,0,0,.55);overflow:hidden;font-family:var(--mono)}
+.src h4{margin:0;padding:8px 12px;font-size:12px;font-weight:600;color:#CBD5E1;border-bottom:1px solid var(--ln);display:flex;align-items:center;gap:8px}
+.src h4 i{font:800 10px var(--font);font-style:normal;padding:3px 6px;border-radius:4px;color:#fff}
+.src pre{margin:0;padding:10px 12px;font-size:12px;line-height:1.6;color:#B8C0CC;white-space:pre}
+.src .tag{display:inline-block;margin:0 12px 12px;padding:4px 9px;border-radius:6px;font:600 12px var(--font);background:rgba(251,191,36,.14);color:#FCD34D;border:1px solid rgba(251,191,36,.35)}
+.xl{position:absolute;left:0;top:104px;width:650px;border-radius:12px;background:#0F141E;border:1px solid var(--ln);box-shadow:0 30px 80px rgba(0,0,0,.6);overflow:hidden;font-family:var(--mono)}
+.xl .tb{background:#15803D;color:#ECFDF5;padding:9px 14px;font:700 14px var(--font)}
+.xl .tb .t2{color:#FEF3C7}
+.xl .fx{display:flex;gap:12px;padding:8px 14px;height:64px;background:#111827;border-bottom:1px solid var(--ln);font-size:12.5px;line-height:1.45;color:#FDBA74;word-break:break-all;overflow:hidden}
+.xl .fx i{color:#64748B;font-weight:700;flex:none}
+.xr{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;height:36px;align-items:center;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;color:#CBD5E1}
+.xr>span{padding:0 14px;position:relative;height:100%;display:flex;align-items:center}
+.xr>span:nth-child(n+2){justify-content:flex-end}
+.xr.h{height:30px;font:600 11px var(--font);letter-spacing:.14em;text-transform:uppercase;color:#64748B;background:rgba(255,255,255,.03)}
+.xr .e{position:absolute;inset:4px 6px;border-radius:5px;background:#FB7185;color:#0A0A0C;font-weight:700;display:flex;align-items:center;justify-content:flex-end;padding-right:8px}
+.hang{position:absolute;inset:0;background:rgba(203,213,225,.22);display:flex;align-items:center;justify-content:center}
+.spin{width:52px;height:52px;border-radius:50%;border:5px solid rgba(255,255,255,.25);border-top-color:#fff}
+.dlg{position:absolute;left:155px;top:300px;width:340px;padding:18px 20px;border-radius:12px;background:#F8FAFC;color:#0F172A;font:500 15px/1.4 var(--font);box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.dlg b{display:block;font-size:17px;margin-bottom:4px}.dlg div{display:flex;gap:10px;justify-content:flex-end;margin-top:14px}
+.dlg div span{padding:6px 14px;border-radius:6px;border:1px solid #CBD5E1;font-weight:600;font-size:14px}.dlg div span:last-child{background:#DC2626;color:#fff;border-color:#DC2626}
+.mag{position:absolute;border:3px solid #FCD34D;border-radius:8px;box-shadow:0 0 24px rgba(252,211,77,.5)}
+.mag b{position:absolute;right:-3px;top:-34px;white-space:nowrap;font:700 13px var(--font);background:#FCD34D;color:#1C1917;padding:5px 9px;border-radius:6px}
+.scan{position:absolute;left:0;right:0;height:36px;background:rgba(251,146,60,.16);border-top:1px solid #FB923C;border-bottom:1px solid #FB923C}
+.val{position:absolute;left:0;top:580px;display:flex;gap:14px;align-items:center;padding:12px 18px;border-radius:14px;background:rgba(124,45,18,.5);border:1px solid #FB923C;color:#FDBA74;font:700 18px var(--font)}
+.val small{display:block;font-weight:500;font-size:14px;color:#CBD5E1}
 /* reveal */
 #iso{position:absolute;left:630px;top:150px;width:920px;height:654px;overflow:visible}
 .states{display:flex;flex-direction:column;gap:12px;margin-top:6px}
@@ -154,15 +179,50 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
  </section>
 
  <!-- 1 · Problema -->
- <section class="slide" data-k="prob" data-t="o" data-title="Problema" data-notes="Todos los días, antes de analizar, limpiamos datos en Excel. Vínculos que se rompen, cruces con BUSCARV que fallan y ningún registro de lo revisado. Solo SIRE – Ventas son 65 horas al mes en 25 empresas. La sobrecarga operativa le quita tiempo al análisis. (25 s)">
+ <section class="slide" data-k="prob" data-t="o" data-title="Problema" data-notes="Así era antes. Recibimos reportes de varias fuentes, cada uno con su formato: fechas distintas, separadores distintos, decimales con coma o con punto. Primero les dábamos formato a mano; luego armábamos fórmulas largas para cruzarlos. A veces la fórmula fallaba, a veces Excel se colgaba, y lo peor: a veces el error no se veía y pasábamos horas validando fila por fila. Solo SIRE – Ventas son 65 horas al mes en 25 empresas. La sobrecarga operativa le quita tiempo al análisis. (25 s)">
   <div class="col" style="left:100px;top:150px;width:720px;gap:20px">
    <p class="k it">01 — El problema</p>
    <h2 class="h2 kt"><span>La sobrecarga operativa</span><span class="acr">le quita tiempo al análisis.</span></h2>
    <div class="kpi it"><span class="v acr" data-count="65" data-from="0" data-suf=" h">65 h</span><span class="d">al mes revisando a mano<br>las ventas de 25 empresas</span></div>
-   <div class="li it"><div><em>#¡REF!</em>Vínculos rotos que se rastrean a mano</div><div><em>#N/A</em>Cruces con BUSCARV que fallan</div><div><em>—</em>Sin registro de lo revisado</div></div>
+   <div class="li it"><div><em>3+</em>Fuentes con formatos distintos</div><div><em>#N/A</em>Fórmulas complejas que fallan</div><div><em>⟳</em>Excel se cuelga o el error pasa sin verse</div></div>
    <p class="foot it">Filas ilustrativas, datos ficticios · Horas según resultados del equipo CONT-AI</p>
   </div>
-  <div class="scene3d" id="wins"></div>
+  <div class="story" id="story">
+   <div class="sc"><span>1 · Fuentes</span><span>2 · Formato</span><span>3 · Fórmulas</span><span>4 · Errores</span><span>5 · Se cuelga</span><span>6 · Validar a mano</span></div>
+   <p class="cap"><b>1</b>Reportes de varias fuentes, cada uno con su formato</p>
+   <p class="cap"><b>2</b>Darles formato a mano para poder cruzarlos</p>
+   <p class="cap"><b>3</b>Fórmulas largas y frágiles para cruzar todo</p>
+   <p class="cap"><b>4</b>Y a veces la fórmula falla…</p>
+   <p class="cap"><b>5</b>…o Excel se cuelga con tantos datos</p>
+   <p class="cap"><b>6</b>…o el error no se ve, y pasamos horas validando</p>
+   <div class="src" style="left:0;top:110px;width:310px"><h4><i style="background:#15803D">XLSX</i>ventas_area.xlsx</h4><pre>Fecha       Comprob.     Total
+01/03/2026  F001-101   1.863,00
+01/03/2026  F001-102  14.481,42
+02/03/2026  F001-103   9.540,10</pre><span class="tag">dd/mm/aaaa · coma decimal</span></div>
+   <div class="src" style="left:330px;top:150px;width:320px"><h4><i style="background:#0369A1">CSV</i>reporte_sistema.csv</h4><pre>fecha;serie;numero;total
+2026-03-01;F001;00000101;1863.00
+2026-03-01;F001;00000102;14481.42
+2026-03-02;F001;00000103;9540.1</pre><span class="tag">aaaa-mm-dd · separado por ;</span></div>
+   <div class="src" style="left:110px;top:345px;width:400px"><h4><i style="background:#475569">TXT</i>propuesta_sire.txt</h4><pre>202603|01|F001|00000101|1863.00|
+202603|01|F001|00000102|14481.42|
+202603|01|F001|00000103|9540.10|</pre><span class="tag">sin encabezados · separado por |</span></div>
+   <div class="xl" id="xl">
+    <div class="tb"><span>Consolidado_Ventas_FINAL_v7.xlsx</span><span class="t2"> (No responde)</span></div>
+    <div class="fx"><i>fx</i><span id="fxT"></span></div>
+    <div class="xr h"><span>Comprobante</span><span>Registro</span><span>SIRE</span><span>Dif.</span></div>
+    <div class="xr"><span>F001-00000101</span><span>1,863.00</span><span>1,863.00</span><span>0.00</span></div>
+    <div class="xr"><span>F001-00000102</span><span>14,481.42</span><span><i class="e">#N/A</i></span><span><i class="e">#N/A</i></span></div>
+    <div class="xr"><span>F001-00000103</span><span>9,540.10</span><span>9,540.10</span><span>0.00</span></div>
+    <div class="xr"><span>F001-00000104</span><span>3,115.60</span><span>3,151.60</span><span>0.00</span></div>
+    <div class="xr"><span>F001-00000105</span><span>7,302.85</span><span><i class="e">#¡REF!</i></span><span><i class="e">#VALOR!</i></span></div>
+    <div class="xr"><span>F001-00000106</span><span>12,998.00</span><span>12,998.00</span><span>0.00</span></div>
+    <i class="scan" id="scan"></i>
+    <i class="mag" id="mag"><b>−36.00 sin detectar</b></i>
+    <div class="hang" id="hang"><i class="spin" id="spin"></i></div>
+   </div>
+   <div class="dlg" id="dlg"><b>Excel no responde</b>Si cierras el programa, podrías perder los cambios no guardados.<div><span>Esperar</span><span>Cerrar</span></div></div>
+   <div class="val" id="val"><svg width="34" height="34" viewBox="0 0 34 34"><circle cx="17" cy="17" r="14" fill="none" stroke="#FDBA74" stroke-width="2.5"/><line id="vh" x1="17" y1="17" x2="17" y2="7" stroke="#FDBA74" stroke-width="2.5" stroke-linecap="round"/></svg><span>Validando fila por fila, empresa por empresa<small>así se van 65 h al mes solo en SIRE – Ventas</small></span></div>
+  </div>
  </section>
 
  <!-- 2 · Revelado manual vs automatizado -->
@@ -285,14 +345,6 @@ $$('.kt').forEach(function(h){var lines=$$(':scope>span',h);if(!lines.length)lin
  lines.forEach(function(line){var cls=line.className,out=[];line.className='';
   [].slice.call(line.childNodes).forEach(function(n){var c=(n.nodeType===1?n.className+' ':'')+cls;n.textContent.split(/\s+/).forEach(function(w){if(w)out.push('<span class="w"><span class="wi '+c+'">'+w+'</span></span>')})});
   line.innerHTML=out.join(' ')})});
-
-/* ---------- problem windows ---------- */
-var W=[['Registro_Ventas_14.1.xlsx',[['F001-00000101','1,863.00'],['F001-00000102','14,481.42'],['F001-00000103','#N/A'],['F001-00000104','3,115.60'],['F001-00000105','7,302.85'],['F001-00000106','#N/A'],['F001-00000107','2,375.13']],-18,0,40],
- ['EERR_Mensual.xlsx',[['Ventas','8,420,310'],['Costo de ventas','4,061,114'],['Utilidad bruta','#¡REF!'],['Gastos de venta','2,175,044'],['Gastos de adm.','#¡REF!'],['Utilidad operativa','9,749,162'],['Impuestos','1,204,390']],-12,240,0],
- ['Depreciacion_Activos.xlsx',[['DEPRECIA-31581','LINEAL'],['DEPRECIA-31584','LINEAL'],['DEPRECIA-31587','#N/A'],['DEPRECIA-31590','LINEAL'],['DEPRECIA-31593','#DIV/0!'],['DEPRECIA-31596','LINEAL'],['DEPRECIA-31599','LINEAL']],-8,90,250]];
-var wn=document.getElementById('wins');
-W.forEach(function(w){var d=document.createElement('div');d.className='win3d';d.style.left=w[3]+'px';d.style.top=w[4]+'px';d.dataset.ry=w[2];
- var h='<h4>'+w[0]+'</h4>';w[1].forEach(function(r){h+='<div class="row"><span>'+r[0]+'</span><span'+(r[1].charAt(0)==='#'?' class="bad"':'')+'>'+r[1]+'</span></div>'});d.innerHTML=h;wn.appendChild(d)});
 
 /* ---------- isometric reveal scene: many Excel files + formulas  ->  RPA bot ---------- */
 var NS='http://www.w3.org/2000/svg',svg=document.getElementById('iso'),MONO='JetBrains Mono,monospace';
@@ -490,11 +542,37 @@ if(G&&!reduce){G.to('.o1',{x:'12vw',y:'8vh',duration:14,repeat:-1,yoyo:true,ease
 function count(tl,el,from,to,at,dur){var o={v:from};el.textContent=fmt(from,el.dataset.fmt,el.dataset.suf);tl.to(o,{v:to,duration:dur||1.6,ease:'power3.out',onUpdate:function(){el.textContent=fmt(o.v,el.dataset.fmt,el.dataset.suf)}},at)}
 var HOOK={
  cover:function(tl){tl.from('.slide.on .h1 .wi',{yPercent:120,rotate:8,duration:1.1,ease:'expo.out',stagger:.09},.2)},
- prob:function(tl,sl,loops){var v=$('.v',sl);count(tl,v,0,65,.9,1.8);
-  $$('.win3d',sl).forEach(function(w,i){tl.fromTo(w,{opacity:0,z:-700,rotationY:+w.dataset.ry-40,rotationX:20},{opacity:1,z:0,rotationY:+w.dataset.ry,rotationX:7,duration:1.3,ease:'expo.out'},.4+i*.2);
-   loops.push(G.to(w,{y:-14,duration:3,repeat:-1,yoyo:true,ease:'sine.inOut',delay:i*.8}))});
-  tl.fromTo($$('.bad',sl),{backgroundColor:'rgba(251,113,133,0)',color:'#B8C0CC'},{backgroundColor:'#FB7185',color:'#0A0A0C',duration:.25,stagger:.3},1.6);
-  tl.add(function(){loops.push(G.to($$('.bad',sl),{opacity:.45,duration:.5,repeat:-1,yoyo:true,stagger:.12}))})},
+ prob:function(tl,sl,loops){count(tl,$('.v',sl),0,65,.9,1.8);if(reduce)return;
+  var caps=$$('.cap',sl),chips=$$('.sc span',sl),srcs=$$('.src',sl),xl=$('#xl'),rows=$$('.xr:not(.h)',xl),errs=$$('.xr .e',xl),fx=$('#fxT'),t2=$('.t2',xl),kpi=$('.kpi',sl);
+  var F='=SI.ERROR(BUSCARV(CONCATENAR(B2;"-";TEXTO(C2;"00000000"));\'[reporte_sistema.csv]Hoja1\'!$A:$K;COINCIDIR("total";\'[reporte_sistema.csv]Hoja1\'!$1:$1;0);0);"revisar")';
+  var r4=rows[3],mag=$('#mag'),scan=$('#scan');mag.style.left=(r4.children[3].offsetLeft+4)+'px';mag.style.top=(r4.offsetTop+2)+'px';mag.style.width=(r4.children[3].offsetWidth-8)+'px';mag.style.height='32px';
+  scan.style.top=rows[0].offsetTop+'px';var span=rows[5].offsetTop-rows[0].offsetTop;
+  function init(){G.set(caps,{opacity:0,y:10});G.set(chips,{opacity:.3});G.set(srcs,{opacity:0,x:0,y:0,scale:1});G.set(xl,{opacity:0,scale:.92,x:0,filter:'grayscale(0)'});G.set(rows,{opacity:0});G.set(errs,{opacity:0,scale:.5});
+   G.set([t2,'#hang','#scan','#mag','#val','#dlg'],{opacity:0});fx.textContent='';G.set(kpi,{clearProps:'boxShadow,borderColor'})}
+  init();
+  var st=G.timeline({repeat:-1,repeatDelay:3,delay:.8});loops.push(st);st.call(init,null,0);
+  function step(i,a,b){st.to(chips[i],{opacity:1,duration:.3},a).fromTo(caps[i],{opacity:0,y:10},{opacity:1,y:0,duration:.4,immediateRender:false},a).to(caps[i],{opacity:0,y:-8,duration:.3},b)}
+  step(0,.1,2.9);step(1,3,4.9);step(2,5,7.6);step(3,7.7,9.4);step(4,9.5,12);step(5,12.1,17.5);
+  /* 1 · sources fly in from different directions */
+  [[-160,-60,-14,-30],[200,-40,12,30],[0,180,-8,0]].forEach(function(d,i){st.fromTo(srcs[i],{opacity:0,x:d[0],y:d[1],rotation:d[2],rotationY:d[3]},{opacity:1,x:0,y:0,rotation:[-3,2.5,-1.5][i],rotationY:0,duration:.9,ease:'expo.out',immediateRender:false},.2+i*.3)});
+  /* 2 · manual formatting: cards jiggle and get squeezed into the workbook */
+  st.to(srcs,{rotation:0,duration:.3,stagger:.1},3).to(srcs,{x:'+=6',duration:.06,repeat:5,yoyo:true,stagger:.15},3.3);
+  srcs.forEach(function(c,i){var dx=325-(c.offsetLeft+c.offsetWidth/2),dy=290-(c.offsetTop+c.offsetHeight/2);st.to(c,{x:dx,y:dy,scale:.2,opacity:0,duration:.7,ease:'power3.in'},4.2+i*.15)});
+  st.to(xl,{opacity:1,scale:1,duration:.6,ease:'back.out(1.4)'},4.6).to(rows,{opacity:1,duration:.25,stagger:.1},4.9);
+  /* 3 · the long formula gets typed */
+  var o={n:0};st.to(o,{n:F.length,duration:2.4,ease:'none',onUpdate:function(){fx.textContent=F.slice(0,Math.round(o.n))}},5.1);
+  /* 4 · errors */
+  st.to(errs,{opacity:1,scale:1,duration:.35,ease:'back.out(3)',stagger:.3},7.8).to(xl,{x:8,duration:.05,repeat:7,yoyo:true},8.9).set(xl,{x:0});
+  /* 5 · Excel hangs */
+  st.to(t2,{opacity:1,duration:.2},9.6).to(xl,{filter:'grayscale(.85)',duration:.5},9.6).to('#hang',{opacity:1,duration:.4},9.7)
+    .fromTo('#dlg',{opacity:0,y:20,scale:.9},{opacity:1,y:0,scale:1,duration:.4,ease:'back.out(2)',immediateRender:false},10.3)
+    .to('#dlg',{opacity:0,scale:.95,duration:.25},11.6).to(['#hang',t2],{opacity:0,duration:.3},11.7).to(xl,{filter:'grayscale(0)',duration:.4},11.7);
+  /* 6 · the error that nobody sees + hours validating */
+  st.fromTo('#mag',{opacity:0,scale:1.6},{opacity:1,scale:1,duration:.5,ease:'back.out(2)',immediateRender:false},12.3)
+    .to('#scan',{opacity:1,duration:.2},13).fromTo('#scan',{y:0},{y:span,duration:2,ease:'steps(5)',repeat:1,immediateRender:false},13)
+    .fromTo('#val',{opacity:0,y:20},{opacity:1,y:0,duration:.5,ease:'back.out(2)',immediateRender:false},13.4)
+    .to(kpi,{boxShadow:'0 0 60px rgba(251,113,133,.45)',borderColor:'rgba(251,113,133,.75)',duration:.45,yoyo:true,repeat:3},14.4).to({},{duration:1.4});
+  loops.push(G.to('#spin',{rotation:360,duration:.8,repeat:-1,ease:'none'}),G.to('#vh',{rotation:360,svgOrigin:'17 17',duration:2,repeat:-1,ease:'none'}))},
  reveal:function(tl){if(!revealTL)return;revealTL.pause(0);revealAuto=-1;setReveal(false);rv.value=0;if(reduce){revealTL.progress(1);return}revealDelay=G.delayedCall(2.4,function(){revealTL.timeScale(1).play()})},
  m70:function(tl,sl){var st=$('#strike'),nw=$('#new'),h=$('#h70');
   tl.from('#old',{x:-80,opacity:0,duration:.8,ease:'expo.out'},.3).fromTo(st,{scaleX:0},{scaleX:1,duration:.5,ease:'power4.inOut'},1).to('#old',{opacity:.4,duration:.4},1.4)
