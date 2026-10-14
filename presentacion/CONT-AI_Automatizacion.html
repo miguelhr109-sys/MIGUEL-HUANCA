@@ -183,6 +183,11 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
 .chips{display:flex;gap:14px;flex-wrap:wrap}
 .chip{display:flex;align-items:center;gap:10px;padding:12px 20px;border-radius:999px;background:var(--card);border:1px solid var(--ln);font-size:20px;font-weight:600}
 .chip:before{content:"";width:10px;height:10px;border-radius:50%;background:var(--a1);box-shadow:0 0 10px var(--a1)}
+.tbl2{position:absolute;left:680px;top:200px;width:820px;border-radius:16px;overflow:hidden;background:var(--card);border:1px solid var(--ln)}
+.tbl2 .cap3{margin:0;padding:16px 18px 6px;font-size:20px;font-weight:800;color:var(--ink)}
+.tbl2 .tr{grid-template-columns:2.7fr .7fr 1fr 1.1fr 1.15fr .75fr;gap:8px;padding:13px 18px;font-size:16px}
+.tbl2 .tr.th{font-size:10.5px;letter-spacing:.12em;padding:10px 18px}
+.tbl2 .tr.tot small{font-size:11px;white-space:nowrap}
 /* table */
 .tbl{position:absolute;left:100px;top:260px;width:1400px;border-radius:18px;overflow:hidden;background:var(--card);border:1px solid var(--ln)}
 .tr{display:grid;grid-template-columns:2.3fr .8fr 1.1fr 1.1fr 1.2fr 1fr;gap:14px;align-items:center;padding:15px 24px;border-bottom:1px solid var(--ln);font-size:22px;color:var(--mut)}
@@ -288,19 +293,31 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
   <div class="cap2">SIRE – Ventas · 25 empresas · comprobantes ilustrativos, datos ficticios</div>
  </section>
 
- <!-- 3 · Métrica 70% -->
- <section class="slide" data-k="m70" data-t="g" data-title="70%" data-notes="El resultado en números: en conjunto pasamos de 73 h 30 min a 22 h 20 min al mes. Es casi 70% menos tiempo en tareas operativas. (15 s)">
-  <div class="col center" style="top:140px;gap:26px">
-   <p class="k it">03 — Tiempo de procesamiento mensual</p>
-   <div class="ba">
-    <span class="old" id="old">73 h 30 min<i class="strike" id="strike"></i></span>
-    <span class="arr" id="arr">→</span>
+ <!-- 3 · Resultados: 70% + detalle por automatización -->
+ <section class="slide" data-k="m70" data-t="g" data-title="Resultados" data-notes="El resultado en números: en conjunto pasamos de 73 h 30 min a 22 h 20 min al mes, casi 70% menos tiempo en tareas operativas. A la derecha, el detalle: SIRE – Ventas aporta la mayor parte, 45 h 35 min al mes; Libro de Reclamaciones baja 91%. Las empresas no se suman porque se repiten entre proyectos, y hay dos automatizaciones más pendientes de medir. (25 s)">
+  <div class="col" style="left:100px;top:140px;width:560px;gap:18px">
+   <p class="k it">03 — Resultados</p>
+   <div class="ba" style="font-size:38px;gap:18px">
+    <span class="old" id="old">73 h 30 min<i class="strike" id="strike" style="height:6px"></i></span>
+    <span class="arr" id="arr" style="font-size:30px">→</span>
     <span class="acg" id="new">22 h 20 min</span>
    </div>
-   <p class="hero acg" id="hero"><span>−</span><span id="h70">70</span><span>%</span><i class="ring" id="ring"></i><i class="ring" id="ring2"></i></p>
-   <h2 class="h2 kt" style="font-size:44px;color:var(--ink)"><span>menos tiempo en tareas operativas</span></h2>
-   <p class="foot it">4 automatizaciones en Contraloría · 69,6% exacto, redondeado</p>
+   <p class="hero acg" id="hero" style="font-size:172px;align-self:flex-start"><span>−</span><span id="h70">70</span><span>%</span><i class="ring" id="ring"></i><i class="ring" id="ring2"></i></p>
+   <h2 class="h2 kt" style="font-size:38px;color:var(--ink)"><span>menos tiempo en</span><span>tareas operativas</span></h2>
+   <div class="kpi it" style="padding:16px 22px;gap:16px;align-self:flex-start"><span class="v acg" style="font-size:52px">51 h 10 min</span><span class="d" style="font-size:17px">ahorradas<br>cada mes</span></div>
   </div>
+  <div class="tbl2" id="tbl2">
+   <p class="cap3">Detalle por automatización</p>
+   <div class="tr th"><span>Proyecto</span><span>Empresas</span><span>Antes (h/mes)</span><span>Ahora (h/mes)</span><span>Ahorro mensual</span><span>Reducción</span></div>
+   <div class="tr"><span>SIRE – Ventas</span><span>25</span><span>65 h</span><span>19 h 25 min</span><span class="s2">45 h 35 min</span><span class="s2">70%</span></div>
+   <div class="tr"><span>Indicadores Lavado de Activos</span><span>7</span><span>4 h 40 min</span><span>1 h 45 min</span><span class="s2">2 h 55 min</span><span class="s2">63%</span></div>
+   <div class="tr"><span>SIRE – No Domiciliado</span><span>1</span><span>2 h</span><span>1 h</span><span class="s2">1 h</span><span class="s2">50%</span></div>
+   <div class="tr"><span>Libro Reclamaciones Euroshop</span><span>1</span><span>1 h 50 min</span><span>10 min</span><span class="s2">1 h 40 min</span><span class="s2">91%</span></div>
+   <div class="tr na"><span>Descarga masiva SUNAT</span><span>—</span><span>—</span><span>—</span><span>—</span><span>—</span></div>
+   <div class="tr na"><span>Revisión lotes de pago</span><span>—</span><span>—</span><span>—</span><span>—</span><span>—</span></div>
+   <div class="tr tot"><span>Totales</span><span><small>no acumulable</small></span><span class="neg">73 h 30 min</span><span>22 h 20 min</span><span class="s2">51 h 10 min</span><span class="s2">70%</span></div>
+    </div>
+  <p class="foot" style="position:absolute;left:680px;top:642px;width:820px">Las empresas no se suman: se repiten entre proyectos · 69,6% exacto, redondeado · horas según resultados del equipo CONT-AI</p>
  </section>
 
  <!-- 4 · Cómo funciona: fuentes -> motor -> entregables -->
@@ -384,24 +401,6 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
    <div class="rr"><div class="nm">SIRE – Ventas<small>65 h → 19 h 25 min · ahorra 45 h 35 min</small></div><div class="pc" data-p="70">70%</div><div class="tk"><i style="width:70%"></i></div></div>
    <div class="rr"><div class="nm">Indicadores Lavado de Activos<small>4 h 40 min → 1 h 45 min · ahorra 2 h 55 min</small></div><div class="pc" data-p="63">63%</div><div class="tk"><i style="width:62.5%"></i></div></div>
    <div class="rr"><div class="nm">SIRE – No Domiciliado<small>2 h → 1 h · ahorra 1 h</small></div><div class="pc" data-p="50">50%</div><div class="tk"><i style="width:50%"></i></div></div>
-  </div>
- </section>
-
- <!-- 8 · Anexo -->
- <section class="slide" data-k="annex" data-t="g" data-annex="1" data-title="Anexo" data-notes="Anexo para preguntas: detalle por automatización. Las empresas no se suman porque se repiten entre proyectos. Pendientes de medir: Descarga masiva SUNAT y Revisión de lotes de pago.">
-  <div class="col" style="left:100px;top:150px;width:1400px;gap:12px">
-   <p class="k it">Anexo</p>
-   <h2 class="h2 kt" style="font-size:52px"><span>Detalle por automatización</span></h2>
-  </div>
-  <div class="tbl">
-   <div class="tr th"><span>Proyecto</span><span>Empresas</span><span>Antes (h/mes)</span><span>Ahora (h/mes)</span><span>Ahorro mensual</span><span>Reducción</span></div>
-   <div class="tr"><span>SIRE – Ventas</span><span>25</span><span>65 h</span><span>19 h 25 min</span><span class="s2">45 h 35 min</span><span class="s2">70%</span></div>
-   <div class="tr"><span>Indicadores Lavado de Activos</span><span>7</span><span>4 h 40 min</span><span>1 h 45 min</span><span class="s2">2 h 55 min</span><span class="s2">63%</span></div>
-   <div class="tr"><span>SIRE – No Domiciliado</span><span>1</span><span>2 h</span><span>1 h</span><span class="s2">1 h</span><span class="s2">50%</span></div>
-   <div class="tr"><span>Libro Reclamaciones Euroshop</span><span>1</span><span>1 h 50 min</span><span>10 min</span><span class="s2">1 h 40 min</span><span class="s2">91%</span></div>
-   <div class="tr na"><span>Descarga masiva SUNAT</span><span>—</span><span>—</span><span>—</span><span>—</span><span>—</span></div>
-   <div class="tr na"><span>Revisión lotes de pago</span><span>—</span><span>—</span><span>—</span><span>—</span><span>—</span></div>
-   <div class="tr tot"><span>Totales</span><span><small>no acumulable</small></span><span class="neg">73 h 30 min</span><span>22 h 20 min</span><span class="s2">51 h 10 min</span><span class="s2">70%</span></div>
   </div>
  </section>
 
@@ -677,6 +676,8 @@ var HOOK={
    .to(o2,{v:70,duration:1.1,ease:'power4.out',onUpdate:function(){h.textContent=Math.round(o2.v)}},2.6)
    .to('#hero',{x:'+=10',duration:.05,repeat:5,yoyo:true,ease:'none'},3.3).set('#hero',{x:0})
    .fromTo('#ring',{scale:.3,opacity:.9},{scale:3.2,opacity:0,duration:1.2,ease:'power2.out'},3.3).fromTo('#ring2',{scale:.3,opacity:.6},{scale:4.5,opacity:0,duration:1.6,ease:'power2.out'},3.45);
+  tl.from('#tbl2',{opacity:0,x:40,duration:.7,ease:'expo.out'},3.6).from($$('#tbl2 .tr',sl),{opacity:0,x:30,duration:.45,stagger:.09,ease:'power3.out'},3.8)
+   .fromTo($$('#tbl2 .tr.tot',sl),{backgroundColor:'rgba(52,211,153,.07)'},{backgroundColor:'rgba(52,211,153,.28)',duration:.4,yoyo:true,repeat:1},4.6);
   return 3.6},
  flow:function(tl,sl,loops){
   var W=$('#wires',sl),fs=$$('.fs',sl),eng=$('.eng',sl),of=$$('.of',sl),mt=$('svg.mt',sl);
