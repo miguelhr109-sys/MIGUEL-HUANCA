@@ -180,6 +180,17 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
 .rr.top .pc{font-size:52px;background:linear-gradient(90deg,#FFE29A,#FFB347);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
 .rr.top .tk i{background:linear-gradient(90deg,#FFE29A,#FFB347)}
 .hl{background-image:linear-gradient(90deg,#FFE29A,#FFB347)!important;background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.vcs{position:absolute;left:100px;top:340px;width:1400px;display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.vc{padding:26px 24px;border-radius:18px;background:var(--card);border:1px solid var(--ln);min-height:300px;box-sizing:border-box;position:relative;overflow:hidden}
+.vc:before{content:"";position:absolute;left:0;top:0;right:0;height:3px;background:linear-gradient(90deg,#9BF0CC,#2FBF8F)}
+.vi{width:54px;height:54px;border-radius:14px;background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.4);display:flex;align-items:center;justify-content:center}
+.vc h4{margin:18px 0 6px;font-size:21px;font-weight:800;letter-spacing:-.01em}
+.vm{margin:0;font-size:44px;font-weight:900;letter-spacing:-.03em;line-height:1.1;font-variant-numeric:tabular-nums;white-space:nowrap}
+.vd{margin:10px 0 0;font-size:16.5px;line-height:1.45;color:var(--mut)}.vd b{color:var(--ink);font-weight:600}
+.cl{position:absolute;left:100px;top:690px;width:1400px;height:96px;box-sizing:border-box;padding:0 36px;border-radius:18px;background:linear-gradient(90deg,rgba(6,78,59,.6),rgba(15,23,42,.7));border:1px solid rgba(52,211,153,.45);display:flex;align-items:center;justify-content:space-between;font-size:26px;font-weight:600}
+.cl b{font-size:40px;font-weight:900;color:#6EE7B7;margin-right:6px;vertical-align:-4px}
+.cl i{width:1px;height:46px;background:var(--ln)}
+.cl .g{font-size:40px;font-weight:900;background:linear-gradient(90deg,#9BF0CC,#2FBF8F);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
 /* ask */
 .chips{display:flex;gap:14px;flex-wrap:wrap}
 .chip{display:flex;align-items:center;gap:10px;padding:12px 20px;border-radius:999px;background:var(--card);border:1px solid var(--ln);font-size:20px;font-weight:600}
@@ -378,22 +389,19 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
   </div>
  </section>
 
- <!-- 6 · Ahorro / 91% -->
- <section class="slide" data-k="sav" data-t="g" data-title="Ahorro" data-notes="Por herramienta, la reducción llega hasta 91%: el Libro de Reclamaciones de Euroshop pasa de 1 h 50 min a 10 minutos. SIRE – Ventas baja 70% y aporta 45 h 35 min, el 89% del ahorro. En total, 51 horas y 10 minutos ahorradas cada mes. (30 s)">
-  <div class="col" style="left:100px;top:150px;width:740px;gap:20px">
-   <p class="k it">06 — El ahorro</p>
-   <h2 class="h2 kt" style="font-size:62px"><span>Hasta <b class="hl">91%</b> menos</span><span class="acg">tiempo de procesamiento.</span></h2>
-   <p class="big acg it" style="margin-top:20px"><span data-count="3070" data-from="0" data-fmt="hm">51 h 10 min</span></p>
-   <p class="p it" style="color:var(--ink);font-size:28px;font-weight:600">horas ahorradas cada mes</p>
-   <p class="foot it">SIRE – Ventas aporta el 89% del ahorro · Las empresas no se suman: se repiten entre proyectos</p>
+ <!-- 6 · Impacto y valor de negocio (cierre) -->
+ <section class="slide" data-k="imp" data-t="g" data-title="Impacto" data-notes="¿Qué significa esto para el negocio? Eficiencia: 51 horas al mes liberadas, unas 614 al año, que el equipo dedica al análisis. Control: revisamos el 100%, detectamos los errores antes y ya no dependemos de archivos frágiles. Mejores decisiones: reportes validados a tiempo para Contraloría y Gerencia. Y es escalable: se puede replicar en las 16 empresas del grupo y, a futuro, podría ofrecerse como servicio. Hoy son 4 automatizaciones; hay más de 70 procesos por delante. Gracias. (30 s)">
+  <div class="col" style="left:100px;top:140px;width:1400px;gap:12px">
+   <p class="k it">06 — Impacto y valor de negocio</p>
+   <h2 class="h2 kt" style="font-size:60px"><span>Más que horas:</span><span class="acg">control y mejores decisiones.</span></h2>
   </div>
-  <div class="red" id="red">
-   <p class="k" style="font-size:14px;color:var(--mut)">Reducción de tiempo por automatización</p>
-   <div class="rr top"><div class="nm">Libro Reclamaciones Euroshop<small>1 h 50 min → 10 min · ahorra 1 h 40 min</small></div><div class="pc" data-p="91">91%</div><div class="tk"><i style="width:91%"></i></div></div>
-   <div class="rr"><div class="nm">SIRE – Ventas<small>65 h → 19 h 25 min · ahorra 45 h 35 min</small></div><div class="pc" data-p="70">70%</div><div class="tk"><i style="width:70%"></i></div></div>
-   <div class="rr"><div class="nm">Indicadores Lavado de Activos<small>4 h 40 min → 1 h 45 min · ahorra 2 h 55 min</small></div><div class="pc" data-p="63">63%</div><div class="tk"><i style="width:62.5%"></i></div></div>
-   <div class="rr"><div class="nm">SIRE – No Domiciliado<small>2 h → 1 h · ahorra 1 h</small></div><div class="pc" data-p="50">50%</div><div class="tk"><i style="width:50%"></i></div></div>
+  <div class="vcs">
+   <div class="vc"><div class="vi"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#6EE7B7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v5l3 2" /><circle cx="12" cy="12" r="9"/></svg></div><h4>Eficiencia operativa</h4><p class="vm acg"><span data-n="51">51</span> h/mes</p><p class="vd">liberadas para análisis de alto valor <b>(≈ 614 h al año)</b></p></div>
+   <div class="vc"><div class="vi"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#6EE7B7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div><h4>Control y confiabilidad</h4><p class="vm acg"><span data-n="100">100</span> %</p><p class="vd">de registros revisados: errores detectados antes, cruces exactos y sin depender de archivos frágiles</p></div>
+   <div class="vc"><div class="vi"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#6EE7B7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div><h4>Mejores decisiones</h4><p class="vm acg">A tiempo</p><p class="vd">reportes validados para Contraloría y Gerencia, sin esperar el cierre</p></div>
+   <div class="vc"><div class="vi"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#6EE7B7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="M12 7.5v4M12 11.5L6.5 17M12 11.5l5.5 5.5"/></svg></div><h4>Escalable</h4><p class="vm acg"><span data-n="16">16</span> empresas</p><p class="vd">replicable en todo el grupo y, a futuro, un servicio que podría ofrecerse a otras empresas</p></div>
   </div>
+  <div class="cl" id="cl"><span><b>4</b> automatizaciones hoy</span><i></i><span>más de <b>70</b> procesos por delante</span><i></i><span class="g">Gracias.</span></div>
  </section>
 
  <div class="ft" id="ft"></div>
@@ -709,12 +717,12 @@ var HOOK={
    loops.push(G.fromTo(FL,{opacity:0},{opacity:.9,duration:.6}),G.to(FL,{strokeDashoffset:-38,duration:1.1,repeat:-1,ease:'none'}),G.to($$('.keys i',sl),{boxShadow:'0 0 16px rgba(52,211,153,.7)',duration:.6,repeat:-1,yoyo:true,stagger:.2}))},2.4);
   if(reduce)G.set(FL,{opacity:.9})},
  demo:function(tl){tl.fromTo('#vid',{scale:.85,opacity:0,rotationX:18,transformPerspective:1200},{scale:1,opacity:1,rotationX:0,duration:1.1,ease:'expo.out'},.5)},
- sav:function(tl,sl){var h=$('.big span',sl);count(tl,h,0,3070,1.2,2);
-  $$('.rr',sl).forEach(function(r,i){var at=.8+i*.22,pc=$('.pc',r),o={v:0};
-   tl.from(r,{x:60,opacity:0,duration:.7,ease:'expo.out'},at).fromTo($('.tk i',r),{scaleX:0},{scaleX:1,duration:1.2,ease:'power3.out'},at+.2)
-    .to(o,{v:+pc.dataset.p,duration:1.2,ease:'power3.out',onStart:function(){pc.textContent='0%'},onUpdate:function(){pc.textContent=Math.round(o.v)+'%'}},at+.2)});
-  tl.fromTo($('.rr.top .pc',sl),{scale:1},{scale:1.25,duration:.18,yoyo:true,repeat:1,ease:'power2.out',transformOrigin:'100% 80%'},2.3);
-  tl.fromTo('.slide.on .hl',{scale:1},{scale:1.18,duration:.2,yoyo:true,repeat:1,transformOrigin:'50% 70%'},1.1)},
+ imp:function(tl,sl,loops){var vc=$$('.vc',sl);
+  tl.from(vc,{opacity:0,y:50,rotationX:-25,transformPerspective:900,duration:.8,ease:'expo.out',stagger:.15},.8).from($$('.vi',sl),{scale:0,rotation:-90,duration:.6,ease:'back.out(2)',stagger:.15},1);
+  $$('.vm span[data-n]',sl).forEach(function(e,i){count(tl,e,0,+e.dataset.n,1.2+i*.15,1.4)});
+  tl.from('#cl',{opacity:0,y:30,duration:.7,ease:'expo.out'},2.4).from($$('#cl > span',sl),{opacity:0,y:14,duration:.5,stagger:.25},2.6)
+   .fromTo('#cl .g',{scale:1},{scale:1.15,duration:.25,yoyo:true,repeat:1,transformOrigin:'50% 60%'},3.4);
+  tl.add(function(){loops.push(G.to(vc,{borderColor:'rgba(52,211,153,.6)',duration:.5,yoyo:true,repeat:-1,repeatDelay:2,stagger:{each:.6,repeat:-1,yoyo:true,repeatDelay:2}}))},3.6)},
  annex:function(tl,sl){tl.from($$('.tr',sl),{opacity:0,x:-30,duration:.5,stagger:.08,ease:'power3.out'},.4)}
 };
 var cur={tl:null,loops:[]};
