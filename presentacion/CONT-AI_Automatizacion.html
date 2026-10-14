@@ -240,11 +240,11 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
  </section>
 
  <!-- 1 · Problema -->
- <section class="slide" data-k="prob" data-t="o" data-title="Problema" data-notes="[Pulsa → o el botón para avanzar cada paso de la historia; tras el paso 6, → pasa a la siguiente diapositiva] Este no es un problema solo de Contabilidad: todas las áreas del grupo trabajan sus datos en Excel. Les muestro un solo proceso, de una sola área: 65 horas al mes. Ahora piensen en todas las áreas. Así era antes. Recibimos reportes de varias fuentes, cada uno con su formato: fechas distintas, separadores distintos, decimales con coma o con punto. Primero les dábamos formato a mano; luego armábamos fórmulas largas para cruzarlos. A veces la fórmula fallaba, a veces Excel se colgaba, y lo peor: a veces el error no se veía y pasábamos horas validando fila por fila. Solo SIRE – Ventas son 65 horas al mes en 25 empresas. La sobrecarga operativa le quita tiempo al análisis. (25 s)">
+ <section class="slide" data-k="prob" data-t="o" data-title="Problema" data-notes="[Pulsa → o el botón para avanzar cada paso de la historia; tras el paso 6, → pasa a la siguiente diapositiva] Este no es un problema solo de Contabilidad: todas las áreas del grupo trabajan sus datos en Excel. Les muestro un solo proceso, de una sola área: 65 horas al mes. Ahora piensen en todas las áreas. Así era antes. Recibimos reportes de varias fuentes, cada uno con su formato: fechas distintas, separadores distintos, decimales con coma o con punto. Primero les dábamos formato a mano; luego armábamos fórmulas largas para cruzarlos. A veces la fórmula fallaba, a veces Excel se colgaba, y lo peor: a veces el error no se veía y pasábamos horas validando fila por fila. Solo SIRE – Ventas son 65 horas al mes en 12 empresas. La sobrecarga operativa le quita tiempo al análisis. (25 s)">
   <div class="col" style="left:100px;top:150px;width:720px;gap:20px">
    <p class="k it">01 — El problema · en todo el grupo</p>
    <h2 class="h2 kt" style="font-size:58px"><span>Horas al mes atrapadas</span><span class="acr">cruzando información</span><span class="acr">y armando reportes.</span></h2>
-   <div class="kpi it"><span class="v acr" data-count="65" data-from="0" data-suf=" h">65 h</span><span class="d">al mes en <b style="color:var(--ink)">un solo proceso</b> de un área<br>(SIRE – Ventas, 25 empresas)</span></div>
+   <div class="kpi it"><span class="v acr" data-count="65" data-from="0" data-suf=" h">65 h</span><span class="d">al mes en <b style="color:var(--ink)">un solo proceso</b> de un área<br>(SIRE – Ventas, 12 empresas)</span></div>
    <div class="li it"><div><em>3+</em>Fuentes con formatos distintos</div><div><em>#N/A</em>Fórmulas complejas que fallan</div><div><em>⟳</em>Excel se cuelga o el error pasa sin verse</div></div>
    <p class="p it" style="font-size:22px;color:var(--ink)">Y cada área del grupo tiene sus propios Excel.</p>
    <p class="foot it">Filas ilustrativas, datos ficticios · Horas según resultados del equipo CONT-AI</p>
@@ -289,7 +289,7 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
  </section>
 
  <!-- 2 · Revelado manual vs automatizado -->
- <section class="slide" data-k="reveal" data-t="o" data-title="Antes / Después" data-notes="Esto es lo que cambia. Antes: varios Excel por empresa, el mismo BUSCARV copiado una y otra vez, copiar y pegar 25 veces, errores #N/A y #¡REF!. Al automatizar, un bot toma las 4 fuentes, las cruza con una sola llave y valida campo por campo: queda un tablero limpio con cada comprobante conciliado y las diferencias listas para corregir. SIRE – Ventas pasa de 65 h a 19 h 25 min al mes. (Arrastra el control o pulsa Automatizar.) (30 s)">
+ <section class="slide" data-k="reveal" data-t="o" data-title="Antes / Después" data-notes="Esto es lo que cambia. Antes: varios Excel por empresa, el mismo BUSCARV copiado una y otra vez, copiar y pegar 12 veces, errores #N/A y #¡REF!. Al automatizar, un bot toma las 4 fuentes, las cruza con una sola llave y valida campo por campo: queda un tablero limpio con cada comprobante conciliado y las diferencias listas para corregir. SIRE – Ventas pasa de 65 h a 19 h 25 min al mes. (Arrastra el control o pulsa Automatizar.) (30 s)">
   <div class="col" style="left:100px;top:150px;width:540px;gap:20px">
    <p class="k it">02 — Antes vs. después</p>
    <h2 class="h2 kt" style="font-size:48px"><span>De fórmulas repetidas</span><span class="acg">a un bot que concilia.</span></h2>
@@ -302,7 +302,7 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
   </div>
   <div class="pill" id="pill">PROCESO MANUAL</div>
   <svg id="iso" viewBox="0 0 900 640" aria-label="Escena isométrica: proceso manual frente a automatizado"></svg>
-  <div class="cap2">SIRE – Ventas · 25 empresas · comprobantes ilustrativos, datos ficticios</div>
+  <div class="cap2">SIRE – Ventas · 12 empresas · comprobantes ilustrativos, datos ficticios</div>
  </section>
 
  <!-- 3 · Resultados: 70% + detalle por automatización -->
@@ -321,7 +321,7 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
   <div class="tbl2" id="tbl2">
    <p class="cap3">Detalle por automatización</p>
    <div class="tr th"><span>Proyecto</span><span>Empresas</span><span>Antes (h/mes)</span><span>Ahora (h/mes)</span><span>Ahorro mensual</span><span>Reducción</span></div>
-   <div class="tr"><span>SIRE – Ventas</span><span>25</span><span>65 h</span><span>19 h 25 min</span><span class="s2">45 h 35 min</span><span class="s2">70%</span></div>
+   <div class="tr"><span>SIRE – Ventas</span><span>12</span><span>65 h</span><span>19 h 25 min</span><span class="s2">45 h 35 min</span><span class="s2">70%</span></div>
    <div class="tr"><span>Indicadores Lavado de Activos</span><span>7</span><span>4 h 40 min</span><span>1 h 45 min</span><span class="s2">2 h 55 min</span><span class="s2">63%</span></div>
    <div class="tr"><span>SIRE – No Domiciliado</span><span>1</span><span>2 h</span><span>1 h</span><span class="s2">1 h</span><span class="s2">50%</span></div>
    <div class="tr"><span>Libro Reclamaciones Euroshop</span><span>1</span><span>1 h 50 min</span><span>10 min</span><span class="s2">1 h 40 min</span><span class="s2">91%</span></div>
@@ -551,10 +551,10 @@ function excel(par,type,x,y,z,w,h,name,fx,errAt){var g=mk('g',{},par),pl=plane(g
  /* status chip: manual counter + clock  /  bot */
  S.man=mk('g',{transform:'translate(18,24)'},svg);mk('rect',{x:0,y:0,width:250,height:64,rx:14,fill:'rgba(124,45,18,.45)',stroke:'#FB923C'},S.man);
  mk('circle',{cx:32,cy:32,r:18,fill:'none',stroke:'#FDBA74','stroke-width':2},S.man);S.hand=mk('line',{x1:32,y1:32,x2:32,y2:19,stroke:'#FDBA74','stroke-width':2.4,'stroke-linecap':'round'},S.man);mk('circle',{cx:32,cy:32,r:2.5,fill:'#FDBA74'},S.man);
- S.cnt=tx(S.man,62,29,'Empresa 01 / 25',{'font-size':16,'font-weight':700,fill:'#FDBA74','font-family':MONO});tx(S.man,62,49,'el mismo cruce, una y otra vez',{'font-size':11,fill:'#CBD5E1'});
+ S.cnt=tx(S.man,62,29,'Empresa 01 / 12',{'font-size':16,'font-weight':700,fill:'#FDBA74','font-family':MONO});tx(S.man,62,49,'el mismo cruce, una y otra vez',{'font-size':11,fill:'#CBD5E1'});
  S.bot=mk('g',{transform:'translate(18,24)',opacity:0},svg);mk('rect',{x:0,y:0,width:250,height:64,rx:14,fill:'rgba(6,78,59,.5)',stroke:'#34D399'},S.bot);
  mk('rect',{x:16,y:18,width:32,height:26,rx:6,fill:'#E2E8F0'},S.bot);mk('rect',{x:21,y:25,width:22,height:10,rx:3,fill:'#020617'},S.bot);mk('rect',{x:24,y:28,width:5,height:4,fill:'#34D399'},S.bot);mk('rect',{x:35,y:28,width:5,height:4,fill:'#34D399'},S.bot);mk('line',{x1:32,y1:18,x2:32,y2:11,stroke:'#94A3B8','stroke-width':2},S.bot);mk('circle',{cx:32,cy:10,r:3,fill:'#FFB347'},S.bot);
- tx(S.bot,62,29,'BOT · 25 empresas',{'font-size':15,'font-weight':700,fill:'#6EE7B7'});tx(S.bot,62,49,'un solo flujo, sin copiar y pegar',{'font-size':11,fill:'#CBD5E1'});
+ tx(S.bot,62,29,'BOT · 12 empresas',{'font-size':15,'font-weight':700,fill:'#6EE7B7'});tx(S.bot,62,49,'un solo flujo, sin copiar y pegar',{'font-size':11,fill:'#CBD5E1'});
  /* error badges */
  S.badges=[];[['#N/A',P(110,40,170)],['#¡REF!',P(345,40,190)],['¿cuadra?',P(75,330,95)],['#VALOR!',P(320,262,140)],['Duplicado',P(195,375,48)]].forEach(function(b){
   var w=mk('g',{transform:'translate('+b[1][0].toFixed(1)+','+b[1][1].toFixed(1)+')'},svg),bad=mk('g',{},w),pu=mk('g',{},bad),bw=18+b[0].length*8;
@@ -578,7 +578,7 @@ if(G){
   G.to(S.ants,{attr:{'stroke-dashoffset':-10},duration:.5,repeat:-1,ease:'none'});
   G.to(S.arrP,{attr:{'stroke-dashoffset':-24},duration:.8,repeat:-1,ease:'none'});
   G.to(S.hand,{rotation:360,svgOrigin:'32 32',duration:2.4,repeat:-1,ease:'none'});
-  var n=1,steps=[[S.cW2,'Ctrl+C'],[S.cM,'Ctrl+V'],[S.cW1,'Ctrl+C'],[S.cM,'Ctrl+V'],[S.cW3,'Ctrl+C'],[S.cW1,'Ctrl+V']],ct=G.timeline({repeat:-1,onRepeat:function(){n=n%25+1;S.cnt.textContent='Empresa '+String(n).padStart(2,'0')+' / 25'}});
+  var n=1,steps=[[S.cW2,'Ctrl+C'],[S.cM,'Ctrl+V'],[S.cW1,'Ctrl+C'],[S.cM,'Ctrl+V'],[S.cW3,'Ctrl+C'],[S.cW1,'Ctrl+V']],ct=G.timeline({repeat:-1,onRepeat:function(){n=n%12+1;S.cnt.textContent='Empresa '+String(n).padStart(2,'0')+' / 12'}});
   G.set(S.cur,{x:S.cW2[0],y:S.cW2[1]});
   steps.forEach(function(s,i){ct.to(S.cur,{x:s[0][0],y:s[0][1],duration:.55,ease:'power2.inOut'}).call(function(){S.curTxt.textContent=s[1]}).to(S.curIn,{scale:.8,duration:.08,yoyo:true,repeat:1,transformOrigin:'0 0'}).to({},{duration:.18})});
   G.to(S.belt,{attr:{'stroke-dashoffset':-24},duration:.6,repeat:-1,ease:'none'});
