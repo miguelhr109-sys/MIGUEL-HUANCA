@@ -151,7 +151,7 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
 .o100 span{font-size:14px;color:var(--mut)}
 .of{position:absolute;left:1220px;width:280px;height:62px;padding:0 14px;box-sizing:border-box;border-radius:12px;background:var(--card);border:1px solid var(--ln);display:flex;align-items:center;gap:12px}
 .of .tg{flex:none;width:46px;padding:5px 0;border-radius:6px;text-align:center;font:800 11px var(--mono);color:#fff}
-.of h4{margin:0;font-size:15px;font-weight:800;white-space:nowrap}.of small{display:block;font-size:12.5px;color:var(--mut);font-weight:500}
+.of h4{margin:0;font-size:15px;font-weight:800;line-height:1.2}.of small{display:block;font-size:12.5px;color:var(--mut);font-weight:500}
 .of .ok{margin-left:auto;flex:none;width:24px;height:24px;border-radius:50%;background:#065F46;border:1.5px solid #34D399;color:#6EE7B7;font-size:13px;font-weight:900;display:flex;align-items:center;justify-content:center}
 .vs{position:absolute;left:100px;top:716px;width:1400px;height:88px;padding:0 30px;box-sizing:border-box;border-radius:14px;background:linear-gradient(90deg,rgba(6,78,59,.55),rgba(15,23,42,.7));border:1px solid rgba(52,211,153,.4);display:flex;align-items:center;gap:26px}
 .vs .t{font-size:12px;color:var(--mut);letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
@@ -303,7 +303,7 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
  </section>
 
  <!-- 4 · Cómo funciona: fuentes -> motor -> entregables -->
- <section class="slide" data-k="flow" data-t="g" data-title="Cómo funciona" data-notes="Así funciona por dentro. Primero, se conecta a las fuentes que ya usa el grupo: AX, SIMA, SAP, Dynamics 365, SUNAT y cualquier otra, sea Excel, CSV o TXT. Todo entra al motor CONT-AI, donde está la lógica y los parámetros: normaliza formatos, une cada comprobante con una sola llave —tipo, serie y número— y valida campo por campo: importes, cliente, moneda y tipo de cambio, sin duplicados ni saltos. Lo que sale son archivos y reportes ya validados: el Excel de diferencias, el formato SIRE, el TXT para SUNAT y reportes listos para gerencia. Se revisa el 100%, no una muestra, y el equipo solo atiende las excepciones. (45 s)">
+ <section class="slide" data-k="flow" data-t="g" data-title="Cómo funciona" data-notes="Así funciona por dentro. Primero, se conecta a las fuentes que ya usa el grupo: AX, SIMA, SAP, Dynamics 365, SUNAT y cualquier otra, sea Excel, CSV o TXT. Todo entra al motor CONT-AI, donde está la lógica y los parámetros: normaliza formatos, une cada comprobante con una sola llave —tipo, serie y número— y valida campo por campo: importes, cliente, moneda y tipo de cambio, sin duplicados ni saltos. Lo que sale son archivos y reportes ya validados: el Excel de diferencias, el análisis de ventas, el análisis de costos y gastos, y reportes listos para gerencia. Se revisa el 100%, no una muestra, y el equipo solo atiende las excepciones. (45 s)">
   <div class="col" style="left:100px;top:118px;width:1400px;gap:12px">
    <p class="k it">04 — Cómo funciona · ejemplo: SIRE – Ventas</p>
    <h2 class="h2 kt" style="font-size:50px"><span>Un motor que <b class="acg">conecta, transforma y valida</b></span></h2>
@@ -341,8 +341,8 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
   </div>
   <div class="o100"><b class="acg">100 %</b><span>de comprobantes revisados, no una muestra</span></div>
   <div class="of" style="top:394px"><span class="tg" style="background:#15803D">XLSX</span><div><h4>Excel de diferencias</h4><small>listo para corregir</small></div><span class="ok">✓</span></div>
-  <div class="of" style="top:472px"><span class="tg" style="background:#0F766E">SIRE</span><div><h4>Formato SIRE</h4><small>listo para cargar</small></div><span class="ok">✓</span></div>
-  <div class="of" style="top:550px"><span class="tg" style="background:#475569">TXT</span><div><h4>TXT para SUNAT</h4><small>listo para declarar</small></div><span class="ok">✓</span></div>
+  <div class="of" style="top:472px"><span class="tg" style="background:#0F766E">VTAS</span><div><h4>Análisis de ventas</h4><small>listo para revisar</small></div><span class="ok">✓</span></div>
+  <div class="of" style="top:550px"><span class="tg" style="background:#7C3AED">C&amp;G</span><div><h4>Análisis de costos<br>y gastos</h4></div><span class="ok">✓</span></div>
   <div class="of" style="top:628px"><span class="tg" style="background:#B45309">PDF</span><div><h4>Reportes validados</h4><small>listos para gerencia</small></div><span class="ok">✓</span></div>
   <div class="vs">
    <div><div class="t">Antes, cada mes</div><div class="bf">65 h</div></div>
