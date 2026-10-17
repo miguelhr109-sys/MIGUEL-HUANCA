@@ -199,10 +199,14 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
 .utab button{font:700 15px var(--font);color:var(--mut);background:none;border:0;padding:8px 20px;border-radius:999px;cursor:pointer;transition:background .25s,color .25s}
 .utab button.on{background:linear-gradient(90deg,#9BF0CC,#2FBF8F);color:#04130D}
 .uL{font-style:normal}
-.tbl2{position:absolute;left:680px;top:200px;width:820px;border-radius:16px;overflow:hidden;background:var(--card);border:1px solid var(--ln)}
+.tbl2{position:absolute;left:660px;top:186px;width:840px;border-radius:16px;overflow:hidden;background:var(--card);border:1px solid var(--ln)}
 .tbl2 .cap3{margin:0;padding:16px 18px 6px;font-size:20px;font-weight:800;color:var(--ink)}
-.tbl2 .tr{grid-template-columns:2.7fr .7fr 1fr 1.1fr 1.15fr .75fr;gap:8px;padding:13px 18px;font-size:16px}
-.tbl2 .tr.th{font-size:10.5px;letter-spacing:.12em;padding:10px 18px}
+.tbl2 .tr{grid-template-columns:2.35fr .6fr .95fr 1fr 1.05fr .72fr .95fr;gap:8px;padding:11px 16px;font-size:15px}
+.tbl2 .tr .an{color:#FDE68A;font-weight:800}
+.tbl2 .tr.dyn{background:rgba(59,130,246,.08)}
+.tbl2 .tr.dyn span:first-child small{display:block;font-size:11.5px;font-weight:500;color:var(--mut);margin-top:2px}
+.tbl2 .tr.dyn .an{font-size:12px;color:#93C5FD;font-weight:700}
+.tbl2 .tr.th{font-size:10px;letter-spacing:.1em;padding:10px 16px}
 .tbl2 .tr.tot small{font-size:11px;white-space:nowrap}
 /* table */
 .tbl{position:absolute;left:100px;top:260px;width:1400px;border-radius:18px;overflow:hidden;background:var(--card);border:1px solid var(--ln)}
@@ -293,7 +297,7 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
  </section>
 
  <!-- 3 · Resultados: 70% + detalle por automatización -->
- <section class="slide" data-k="m70" data-t="g" data-title="Resultados" data-notes="El resultado en números: en conjunto pasamos de 73 h 30 min a 22 h 20 min al mes, casi 70% menos tiempo en tareas operativas. A la derecha, el detalle: SIRE – Ventas aporta la mayor parte, 45 h 35 min al mes; Libro de Reclamaciones baja 91%. Las empresas no se suman porque se repiten entre proyectos, y hay dos automatizaciones más pendientes de medir. (25 s)">
+ <section class="slide" data-k="m70" data-t="g" data-title="Resultados" data-notes="El resultado en números: en conjunto pasamos de 73 h 30 min a 22 h 20 min al mes, casi 70% menos tiempo en tareas operativas. A la derecha, el detalle: SIRE – Ventas aporta la mayor parte, 45 h 35 min al mes; Libro de Reclamaciones baja 91%. En la última columna, el ahorro proyectado al año: 76,8 días de trabajo, casi 4 meses de una persona a tiempo completo. Además, en la migración de AX a Dynamics 365 validábamos a mano cientos de eventos y miles de líneas; ahora la herramienta cruza ambos sistemas y en segundos dice qué está OK y qué está observado. Las empresas no se suman porque se repiten entre proyectos, y hay dos automatizaciones más pendientes de medir. (35 s)">
   <div class="col" style="left:100px;top:140px;width:560px;gap:18px">
    <p class="k it">02 — Resultados</p>
    <div class="utab it" id="utab"><button class="on" data-u="h">Horas</button><button data-u="d">Días</button></div>
@@ -308,16 +312,17 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
   </div>
   <div class="tbl2" id="tbl2">
    <p class="cap3">Detalle por automatización</p>
-   <div class="tr th"><span>Proyecto</span><span>Empresas</span><span>Antes <i class="uL">(h/mes)</i></span><span>Ahora <i class="uL">(h/mes)</i></span><span>Ahorro mensual</span><span>Reducción</span></div>
-   <div class="tr"><span>SIRE – Ventas</span><span>12</span><span class="u" data-m="3900">65 h</span><span class="u" data-m="1165">19 h 25 min</span><span class="u s2" data-m="2735">45 h 35 min</span><span class="s2">70%</span></div>
-   <div class="tr"><span>Indicadores Lavado de Activos</span><span>7</span><span class="u" data-m="280">4 h 40 min</span><span class="u" data-m="105">1 h 45 min</span><span class="u s2" data-m="175">2 h 55 min</span><span class="s2">63%</span></div>
-   <div class="tr"><span>SIRE – No Domiciliado</span><span>1</span><span class="u" data-m="120">2 h</span><span class="u" data-m="60">1 h</span><span class="u s2" data-m="60">1 h</span><span class="s2">50%</span></div>
-   <div class="tr"><span>Libro Reclamaciones Euroshop</span><span>1</span><span class="u" data-m="110">1 h 50 min</span><span class="u" data-m="10">10 min</span><span class="u s2" data-m="100">1 h 40 min</span><span class="s2">91%</span></div>
-   <div class="tr na"><span>Descarga masiva SUNAT</span><span>—</span><span>—</span><span>—</span><span>—</span><span>—</span></div>
-   <div class="tr na"><span>Revisión lotes de pago</span><span>—</span><span>—</span><span>—</span><span>—</span><span>—</span></div>
-   <div class="tr tot"><span>Totales</span><span><small>no acumulable</small></span><span class="u neg" data-m="4410">73 h 30 min</span><span class="u" data-m="1340">22 h 20 min</span><span class="u s2" data-m="3070">51 h 10 min</span><span class="s2">70%</span></div>
+   <div class="tr th"><span>Proyecto</span><span>Empresas</span><span>Antes <i class="uL">(h/mes)</i></span><span>Ahora <i class="uL">(h/mes)</i></span><span>Ahorro mensual</span><span>Reducción</span><span>Ahorro anual <i style="font-style:normal">(días)</i></span></div>
+   <div class="tr"><span>SIRE – Ventas</span><span>12</span><span class="u" data-m="3900">65 h</span><span class="u" data-m="1165">19 h 25 min</span><span class="u s2" data-m="2735">45 h 35 min</span><span class="s2">70%</span><span class="s2 an">68,4 días</span></div>
+   <div class="tr"><span>Indicadores Lavado de Activos</span><span>7</span><span class="u" data-m="280">4 h 40 min</span><span class="u" data-m="105">1 h 45 min</span><span class="u s2" data-m="175">2 h 55 min</span><span class="s2">63%</span><span class="s2 an">4,4 días</span></div>
+   <div class="tr"><span>SIRE – No Domiciliado</span><span>1</span><span class="u" data-m="120">2 h</span><span class="u" data-m="60">1 h</span><span class="u s2" data-m="60">1 h</span><span class="s2">50%</span><span class="s2 an">1,5 días</span></div>
+   <div class="tr"><span>Libro Reclamaciones Euroshop</span><span>1</span><span class="u" data-m="110">1 h 50 min</span><span class="u" data-m="10">10 min</span><span class="u s2" data-m="100">1 h 40 min</span><span class="s2">91%</span><span class="s2 an">2,5 días</span></div>
+   <div class="tr dyn"><span>Dynamics 365<small>validación AX vs D365 · migración de ERP</small></span><span>—</span><span>semanas</span><span>segundos</span><span class="s2">semanas</span><span class="s2">&gt; 99%</span><span class="s2 an">proyecto único</span></div>
+   <div class="tr na"><span>Descarga masiva SUNAT</span><span>—</span><span>—</span><span>—</span><span>—</span><span>—</span><span>—</span></div>
+   <div class="tr na"><span>Revisión lotes de pago</span><span>—</span><span>—</span><span>—</span><span>—</span><span>—</span><span>—</span></div>
+   <div class="tr tot"><span>Totales</span><span><small>no acumulable</small></span><span class="u neg" data-m="4410">73 h 30 min</span><span class="u" data-m="1340">22 h 20 min</span><span class="u s2" data-m="3070">51 h 10 min</span><span class="s2">70%</span><span class="s2 an">76,8 días</span></div>
     </div>
-  <p class="foot" style="position:absolute;left:680px;top:642px;width:820px">Las empresas no se suman: se repiten entre proyectos · 69,6% exacto, redondeado<span id="uNote"></span> · horas según resultados del equipo CONT-AI</p>
+  <p class="foot" style="position:absolute;left:660px;top:646px;width:840px">Ahorro anual = ahorro mensual × 12, en días de 8 h (lunes a viernes) · Dynamics 365 es un proyecto único y no entra en los totales · Las empresas no se suman: se repiten entre proyectos · 69,6% exacto, redondeado<span id="uNote"></span> · horas según resultados del equipo CONT-AI</p>
  </section>
 
  <!-- 4 · Cómo funciona: fuentes -> motor -> entregables -->
