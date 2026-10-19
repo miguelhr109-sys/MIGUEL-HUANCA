@@ -253,7 +253,7 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
  </section>
 
  <!-- 1 · Problema -->
- <section class="slide" data-k="prob" data-t="o" data-title="Problema" data-notes="[Pulsa → o el botón para avanzar cada paso de la historia; tras el paso 6, → pasa a Resultados] Este no es un problema solo de Contabilidad: todas las áreas del grupo trabajan sus datos en Excel. Les muestro un solo proceso, de una sola área: 65 horas al mes. Ahora piensen en todas las áreas. Así era antes. Recibimos reportes de varias fuentes, cada uno con su formato: fechas distintas, separadores distintos, decimales con coma o con punto. Primero les dábamos formato a mano; luego armábamos fórmulas largas para cruzarlos. A veces la fórmula fallaba, a veces Excel se colgaba, y lo peor: a veces el error no se veía y pasábamos horas validando fila por fila. Solo SIRE – Ventas son 65 horas al mes en 12 empresas. La sobrecarga operativa le quita tiempo al análisis. (25 s)">
+ <section class="slide" data-k="prob" data-t="o" data-title="Problema" data-notes="[Pulsa → o el botón: la historia corre sola los 6 pasos (~20 s). El botón pausa/continúa; → durante la historia la termina; al final, → pasa a Resultados] Este no es un problema solo de Contabilidad: todas las áreas del grupo trabajan sus datos en Excel. Les muestro un solo proceso, de una sola área: 65 horas al mes. Ahora piensen en todas las áreas. Así era antes. Recibimos reportes de varias fuentes, cada uno con su formato: fechas distintas, separadores distintos, decimales con coma o con punto. Primero les dábamos formato a mano; luego armábamos fórmulas largas para cruzarlos. A veces la fórmula fallaba, a veces Excel se colgaba, y lo peor: a veces el error no se veía y pasábamos horas validando fila por fila. Solo SIRE – Ventas son 65 horas al mes en 12 empresas. La sobrecarga operativa le quita tiempo al análisis. (25 s)">
   <div class="col" style="left:100px;top:150px;width:720px;gap:20px">
    <p class="k it">01 — El problema · en todo el grupo</p>
    <h2 class="h2 kt" style="font-size:58px"><span>Horas al mes atrapadas</span><span class="acr">cruzando información</span><span class="acr">y armando reportes.</span></h2>
@@ -470,16 +470,19 @@ var HOOK={
     .to('#scan',{opacity:1,duration:.2},13.2).fromTo('#scan',{y:0},{y:span,duration:2,ease:'steps(5)',repeat:1,immediateRender:false},13.2)
     .fromTo('#val',{opacity:0,y:20},{opacity:1,y:0,duration:.5,ease:'back.out(2)',immediateRender:false},13.6)
     .to(kpi,{boxShadow:'0 0 60px rgba(251,113,133,.45)',borderColor:'rgba(251,113,133,.75)',duration:.45,yoyo:true,repeat:3},14.6);
-  var END=[0,2.95,4.95,7.65,9.45,12.05,st.duration()],n=0,tw=null;
-  function label(){btn.textContent=n===0?'▶ Reproducir historia':n<6?'▶ Siguiente paso ('+(n+1)+'/6)':'↺ Repetir';chips.forEach(function(c,i){c.classList.toggle('now',i===n-1)})}
-  function seek(t){if(tw){tw.kill();tw=null}st.pause(t);syncFx()}
-  function playTo(k){n=k;label();if(tw)tw.kill();tw=st.tweenTo(END[k],{duration:Math.max(.2,END[k]-st.time()),ease:'none',onUpdate:syncFx,onComplete:function(){tw=null}})}
-  stepNext=function(){if(tw){seek(END[n]);return true}if(n<6){playTo(n+1);return true}return false};
-  stepPrev=function(){if(n===0)return false;seek(END[n-1]);n--;label();return true};
-  btn.onclick=function(e){e.stopPropagation();if(n>=6&&!tw){seek(0);n=0}stepNext()};
-  chips.forEach(function(c,i){c.onclick=function(e){e.stopPropagation();seek(END[i]);playTo(i+1)}});
+  /* plays like a video: one press runs all 6 steps; button pauses/resumes */
+  var END=[0,2.95,4.95,7.65,9.45,12.05,st.duration()],D=st.duration();st.timeScale(.9);
+  function stepAt(t){var k=0;for(var i=1;i<6;i++)if(t>=END[i])k=i;return k}
+  function done(){return st.time()>=D-.01}
+  function label(){var t=st.time();btn.textContent=done()?'↺ Repetir':st.isActive()?'❚❚ Pausa':t>0?'▶ Continuar':'▶ Reproducir historia';chips.forEach(function(c,i){c.classList.toggle('now',t>0&&i===stepAt(t))})}
+  st.eventCallback('onUpdate',function(){syncFx();label()});st.eventCallback('onComplete',label);
+  function play(){if(done())st.seek(0);st.play();label()}
+  stepNext=function(){if(done())return false;if(st.time()>0){st.pause(D);syncFx();label();return true}play();return true};
+  stepPrev=function(){if(st.time()<=0)return false;st.pause(0);syncFx();label();return true};
+  btn.onclick=function(e){e.stopPropagation();if(st.isActive()){st.pause();label()}else play()};
+  chips.forEach(function(c,i){c.onclick=function(e){e.stopPropagation();st.seek(END[i]);syncFx();st.play();label()}});
   label();
-  if(reduce){seek(st.duration());n=6;label()}
+  if(reduce){st.pause(D);syncFx();label()}
   loops.push(G.to('#spin',{rotation:360,duration:.8,repeat:-1,ease:'none'}),G.to('#vh',{rotation:360,svgOrigin:'17 17',duration:2,repeat:-1,ease:'none'}))},
  m70:function(tl,sl){var st=$('#strike'),nw=$('#new'),h=$('#h70');
   tl.from('#old',{x:-80,opacity:0,duration:.8,ease:'expo.out'},.3).fromTo(st,{scaleX:0},{scaleX:1,duration:.5,ease:'power4.inOut'},1).to('#old',{opacity:.4,duration:.4},1.4)
