@@ -98,6 +98,19 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
 .sc span{cursor:pointer;transition:box-shadow .3s}.sc span.now{box-shadow:0 0 0 2px #FB923C,0 0 18px rgba(251,146,60,.5)}
 .val{position:absolute;left:0;top:580px;display:flex;gap:14px;align-items:center;padding:12px 18px;border-radius:14px;background:rgba(124,45,18,.5);border:1px solid #FB923C;color:#FDBA74;font:700 18px var(--font)}
 .val small{display:block;font-weight:500;font-size:14px;color:#CBD5E1}
+.tw{position:absolute;left:690px;top:136px;width:810px}
+.twh{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:14px}
+.twk{margin:0;font-size:14px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#FDBA74}
+.twn{margin:4px 0 0;font-size:40px;font-weight:900;letter-spacing:-.03em;line-height:1}.twn span{background:linear-gradient(90deg,#FFB347,#FF5E3A);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;font-variant-numeric:tabular-nums}
+.twl{display:flex;gap:8px;font-size:13px;font-weight:700}.twl span{padding:5px 11px;border-radius:999px}
+.lg1{background:rgba(52,211,153,.18);color:#6EE7B7;border:1px solid rgba(52,211,153,.5)}.lg2{background:rgba(148,163,184,.1);color:var(--mut);border:1px solid var(--ln)}
+.tg{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tm{padding:12px 12px 13px;border-radius:14px;background:var(--card);border:1px solid var(--ln)}
+.tm h5{margin:0 0 9px;display:flex;justify-content:space-between;align-items:center;font-size:14px;font-weight:800;color:var(--ink)}
+.tm h5 b{font-size:12px;padding:2px 9px;border-radius:999px;background:rgba(251,146,60,.16);color:#FDBA74;border:1px solid rgba(251,146,60,.4)}
+.tl{display:flex;flex-wrap:wrap;gap:4px}
+.tk{font-size:11px;line-height:1.25;padding:3px 7px;border-radius:6px;background:rgba(148,163,184,.08);border:1px solid rgba(148,163,184,.16);color:#CBD5E1;white-space:nowrap}
+.tk.ok{background:rgba(52,211,153,.2);border-color:rgba(52,211,153,.7);color:#A7F3D0;font-weight:700}
 /* reveal */
 #iso{position:absolute;left:630px;top:150px;width:920px;height:654px;overflow:visible}
 .states{display:flex;flex-direction:column;gap:12px;margin-top:6px}
@@ -253,16 +266,21 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
  </section>
 
  <!-- 1 · Problema -->
- <section class="slide" data-k="prob" data-t="o" data-title="Problema" data-notes="[Pulsa → o el botón: la historia corre sola los 6 pasos (~20 s). El botón pausa/continúa; → durante la historia la termina; al final, → pasa a Resultados] Este no es un problema solo de Contabilidad: todas las áreas del grupo trabajan sus datos en Excel. Les muestro un solo proceso, de una sola área: 65 horas al mes. Ahora piensen en todas las áreas. Así era antes. Recibimos reportes de varias fuentes, cada uno con su formato: fechas distintas, separadores distintos, decimales con coma o con punto. Primero les dábamos formato a mano; luego armábamos fórmulas largas para cruzarlos. A veces la fórmula fallaba, a veces Excel se colgaba, y lo peor: a veces el error no se veía y pasábamos horas validando fila por fila. Solo SIRE – Ventas son 65 horas al mes en 12 empresas. La sobrecarga operativa le quita tiempo al análisis. (25 s)">
-  <div class="col" style="left:100px;top:150px;width:720px;gap:20px">
+ <section class="slide" data-k="prob" data-t="o" data-title="Problema" data-notes="[Pulsa → o el botón: la historia corre sola los 6 pasos (~20 s). El botón pausa/continúa; → durante la historia la termina; al final, → pasa a Resultados] A la derecha, la lista real: 76 tareas operativas de Contabilidad en 4 módulos —EEFF y SUNAT, Clientes y Bancos, Costos y Activo Fijo, Gastos y Proveedores—; las 4 en verde ya están automatizadas. Este no es un problema solo de Contabilidad: todas las áreas del grupo trabajan sus datos en Excel. Les muestro un solo proceso, de una sola área: 65 horas al mes. Ahora piensen en todas las áreas. Así era antes. Recibimos reportes de varias fuentes, cada uno con su formato: fechas distintas, separadores distintos, decimales con coma o con punto. Primero les dábamos formato a mano; luego armábamos fórmulas largas para cruzarlos. A veces la fórmula fallaba, a veces Excel se colgaba, y lo peor: a veces el error no se veía y pasábamos horas validando fila por fila. Solo SIRE – Ventas son 65 horas al mes en 12 empresas. La sobrecarga operativa le quita tiempo al análisis. (25 s)">
+  <div class="col" style="left:100px;top:136px;width:560px;gap:14px">
    <p class="k it">01 — El problema · en todo el grupo</p>
-   <h2 class="h2 kt" style="font-size:58px"><span>Horas al mes atrapadas</span><span class="acr">cruzando información</span><span class="acr">y armando reportes.</span></h2>
-   <div class="kpi it"><span class="v acr" data-count="65" data-from="0" data-suf=" h">65 h</span><span class="d">al mes en <b style="color:var(--ink)">un solo proceso</b> de un área<br>(SIRE – Ventas, 12 empresas)</span></div>
-   <div class="li it"><div><em>3+</em>Fuentes con formatos distintos</div><div><em>#N/A</em>Fórmulas complejas que fallan</div><div><em>⟳</em>Excel se cuelga o el error pasa sin verse</div></div>
-   <p class="p it" style="font-size:22px;color:var(--ink)">Y cada área del grupo tiene sus propios Excel.</p>
-   <p class="foot it">Filas ilustrativas, datos ficticios · Horas según resultados del equipo CONT-AI</p>
+   <h2 class="h2 kt" style="font-size:46px"><span>Horas al mes atrapadas</span><span class="acr">cruzando información</span><span class="acr">y armando reportes.</span></h2>
   </div>
-  <div class="story" id="story">
+  <div class="tw" id="tw">
+   <div class="twh"><div><p class="twk">Tareas operativas de Contabilidad</p><p class="twn"><span id="twN" data-n="76">76</span> procesos manuales</p></div><div class="twl"><span class="lg1">✓ 4 ya automatizados</span><span class="lg2">72 por automatizar</span></div></div>
+   <div class="tg">
+    <div class="tm"><h5>EEFF y SUNAT<b>24</b></h5><div class="tl"><span class="tk ok">✓ SIRE – Ventas</span><span class="tk ok">✓ Indicadores lavado de activos</span><span class="tk ok">✓ SIRE – No domiciliado</span><span class="tk">Balance</span><span class="tk">PDT 621</span><span class="tk">Libro de inventario y balances</span><span class="tk">Libro de activo fijo</span><span class="tk">Informe mensual correo</span><span class="tk">EEFF</span><span class="tk">Estado de resultado mensual</span><span class="tk">Estado de situación financiera</span><span class="tk">Estado de cambios al patrimonio</span><span class="tk">Flujo de fondos</span><span class="tk">Flujo de efectivo</span><span class="tk">Excel data Power BI</span><span class="tk">Actualizar Power BI</span><span class="tk">Tipo de cambio</span><span class="tk">Anexos de cuentas contables</span><span class="tk">Libro kardex</span><span class="tk">Libro diario</span><span class="tk">Libro mayor</span><span class="tk">Alerta de contratos</span><span class="tk">Buzón electrónico</span><span class="tk">IA: consultas y capacitaciones</span></div></div>
+    <div class="tm"><h5>Clientes y Bancos<b>10</b></h5><div class="tl"><span class="tk">Revisión registro de ventas</span><span class="tk">Conciliación bancarias</span><span class="tk">Anexos de cuentas contables</span><span class="tk">Comisión de tarjetas</span><span class="tk">Comisión gastos bancarios</span><span class="tk">Precio de transferencia intercompany</span><span class="tk">Facturas intercompany y terceros</span><span class="tk">Cobranza dudosa</span><span class="tk">Data manual bancos (BIF, Pichincha, Santander)</span><span class="tk">Diferido</span></div></div>
+    <div class="tm"><h5>Costos y Activo Fijo<b>19</b></h5><div class="tl"><span class="tk">Activos procesos</span><span class="tk">Depreciación</span><span class="tk">Alta de AF</span><span class="tk">Baja</span><span class="tk">Libro Excel AF</span><span class="tk">Stock</span><span class="tk">Servicios en proceso</span><span class="tk">Stock vehículos</span><span class="tk">Stock de repuestos</span><span class="tk">Costo talleres</span><span class="tk">Costo repuesto taller</span><span class="tk">Costo recambios</span><span class="tk">Costo de vehículos</span><span class="tk">Margen de vehículos</span><span class="tk">Stock en transito</span><span class="tk">Garantías importadores</span><span class="tk">Anexos de cuentas contables</span><span class="tk">Desvalorización de existencias</span><span class="tk">Detalle del vehículo</span></div></div>
+    <div class="tm"><h5>Gastos y Proveedores<b>23</b></h5><div class="tl"><span class="tk ok">✓ Libro reclamaciones Euroshop</span><span class="tk">Lotes (retención y detracción)</span><span class="tk">Reporte CxP</span><span class="tk">Provisiones</span><span class="tk">Anticipos</span><span class="tk">Gastos financieros</span><span class="tk">ITBID</span><span class="tk">Rindegastos</span><span class="tk">Devengos de seguro</span><span class="tk">Reporte de gasto por local</span><span class="tk">Resumen de gastos</span><span class="tk">Cajas chicas externas</span><span class="tk">SIRE – Compras</span><span class="tk">Ximple – SAP</span><span class="tk">Facturas intercompany</span><span class="tk">Precio de transferencia</span><span class="tk">Validación SUNAT facturas y proveedores</span><span class="tk">Detracciones</span><span class="tk">Validación de DUAs</span><span class="tk">Anexos</span><span class="tk">Anexos de cuentas contables</span><span class="tk">Agente IA: revisión de facturas</span><span class="tk">Validación RUC</span></div></div>
+   </div>
+  </div>
+  <div class="story" id="story" style="left:100px;top:372px;transform:scale(.66);transform-origin:0 0">
    <div class="sc"><span>1 · Fuentes</span><span>2 · Formato</span><span>3 · Fórmulas</span><span>4 · Errores</span><span>5 · Se cuelga</span><span>6 · Validar a mano</span></div>
    <p class="cap"><b>1</b>Reportes de varias fuentes, cada uno con su formato</p>
    <p class="cap"><b>2</b>Darles formato a mano para poder cruzarlos</p>
@@ -436,13 +454,13 @@ if(G&&!reduce){G.to('.o1',{x:'12vw',y:'8vh',duration:14,repeat:-1,yoyo:true,ease
 function count(tl,el,from,to,at,dur){var o={v:from};el.textContent=fmt(from,el.dataset.fmt,el.dataset.suf);tl.to(o,{v:to,duration:dur||1.6,ease:'power3.out',onUpdate:function(){el.textContent=fmt(o.v,el.dataset.fmt,el.dataset.suf)}},at)}
 var HOOK={
  cover:function(tl){tl.from('.slide.on .h1 .wi',{yPercent:120,rotate:8,duration:1.1,ease:'expo.out',stagger:.09},.2)},
- prob:function(tl,sl,loops){count(tl,$('.v',sl),0,65,.9,1.8);
-  var caps=$$('.cap',sl),chips=$$('.sc span',sl),srcs=$$('.src',sl),xl=$('#xl'),rows=$$('.xr:not(.h)',xl),errs=$$('.xr .e',xl),fx=$('#fxT'),t2=$('.t2',xl),kpi=$('.kpi',sl),btn=$('#sPlay');
+ prob:function(tl,sl,loops){var tk=$$('.tk',sl);tl.from('#tw .twh',{opacity:0,y:20,duration:.6},.5).from($$('.tm',sl),{opacity:0,y:24,duration:.5,stagger:.1},.6).from(tk,{opacity:0,scale:.6,duration:.3,stagger:.012,ease:'back.out(2)'},.8);count(tl,$('#twN'),0,76,.8,1.6);tl.fromTo($$('.tk.ok',sl),{boxShadow:'0 0 0 rgba(52,211,153,0)'},{boxShadow:'0 0 18px rgba(52,211,153,.8)',duration:.4,yoyo:true,repeat:3,stagger:.15},2.2);
+  var caps=$$('.cap',sl),chips=$$('.sc span',sl),srcs=$$('.src',sl),xl=$('#xl'),rows=$$('.xr:not(.h)',xl),errs=$$('.xr .e',xl),fx=$('#fxT'),t2=$('.t2',xl),kpi=[],btn=$('#sPlay');
   var F='=SI.ERROR(BUSCARV(CONCATENAR(B2;"-";TEXTO(C2;"00000000"));\'[estado_facturador.csv]Hoja1\'!$A:$K;COINCIDIR("total";\'[estado_facturador.csv]Hoja1\'!$1:$1;0);0);"revisar")';
   var r4=rows[3],mag=$('#mag'),scan=$('#scan');mag.style.left=(r4.children[3].offsetLeft+4)+'px';mag.style.top=(r4.offsetTop+2)+'px';mag.style.width=(r4.children[3].offsetWidth-8)+'px';mag.style.height='32px';
   scan.style.top=rows[0].offsetTop+'px';var span=rows[5].offsetTop-rows[0].offsetTop;
   G.set(caps,{opacity:0,y:10});G.set(chips,{opacity:.3});G.set(srcs,{opacity:0,x:0,y:0,scale:1});G.set(xl,{opacity:0,scale:.92,x:0,filter:'grayscale(0)'});G.set(rows,{opacity:0});G.set(errs,{opacity:0,scale:.5});
-  G.set([t2,'#hang','#scan','#mag','#val','#dlg'],{opacity:0});fx.textContent='';G.set(kpi,{clearProps:'boxShadow,borderColor'});
+  G.set([t2,'#hang','#scan','#mag','#val','#dlg'],{opacity:0});fx.textContent='';
   /* presenter-driven: one paused timeline, each press plays one step and stops */
   var st=G.timeline({paused:true}),o={n:0};loops.push(st);
   function syncFx(){fx.textContent=F.slice(0,Math.round(o.n))}
@@ -466,8 +484,7 @@ var HOOK={
   st.to('#dlg',{opacity:0,scale:.95,duration:.25},12.1).to(['#hang',t2],{opacity:0,duration:.3},12.2).to(xl,{filter:'grayscale(0)',duration:.4},12.2)
     .fromTo('#mag',{opacity:0,scale:1.6},{opacity:1,scale:1,duration:.5,ease:'back.out(2)',immediateRender:false},12.6)
     .to('#scan',{opacity:1,duration:.2},13.2).fromTo('#scan',{y:0},{y:span,duration:2,ease:'steps(5)',repeat:1,immediateRender:false},13.2)
-    .fromTo('#val',{opacity:0,y:20},{opacity:1,y:0,duration:.5,ease:'back.out(2)',immediateRender:false},13.6)
-    .to(kpi,{boxShadow:'0 0 60px rgba(251,113,133,.45)',borderColor:'rgba(251,113,133,.75)',duration:.45,yoyo:true,repeat:3},14.6);
+    .fromTo('#val',{opacity:0,y:20},{opacity:1,y:0,duration:.5,ease:'back.out(2)',immediateRender:false},13.6);
   /* plays like a video: one press runs all 6 steps; button pauses/resumes */
   var END=[0,2.95,4.95,7.65,9.45,12.05,st.duration()],D=st.duration();st.timeScale(.9);
   function stepAt(t){var k=0;for(var i=1;i<6;i++)if(t>=END[i])k=i;return k}
