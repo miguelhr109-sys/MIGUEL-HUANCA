@@ -217,13 +217,23 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
 .utab button{font:700 15px var(--font);color:var(--mut);background:none;border:0;padding:8px 20px;border-radius:999px;cursor:pointer;transition:background .25s,color .25s}
 .utab button.on{background:linear-gradient(90deg,#9BF0CC,#2FBF8F);color:#04130D}
 .uL{font-style:normal}
-.tbl2{position:absolute;left:660px;top:186px;width:840px;border-radius:16px;overflow:hidden;background:var(--card);border:1px solid var(--ln)}
+.tbl2{position:absolute;left:660px;top:150px;width:840px;border-radius:16px;overflow:hidden;background:var(--card);border:1px solid var(--ln)}
 .tbl2 .cap3{margin:0;padding:16px 18px 6px;font-size:20px;font-weight:800;color:var(--ink)}
 .tbl2 .tr{grid-template-columns:2.35fr .6fr .95fr 1fr 1.05fr .72fr .95fr;gap:8px;padding:11px 16px;font-size:15px}
 .tbl2 .tr .an{color:#FDE68A;font-weight:800}
 .tbl2 .tr.dyn{background:rgba(59,130,246,.08)}
 .tbl2 .tr.dyn span:first-child small{display:block;font-size:11.5px;font-weight:500;color:var(--mut);margin-top:2px}
 .tbl2 .tr.dyn .an{font-size:14px;color:#93C5FD;font-weight:800}
+.tbl2 .tr.grp{background:rgba(148,163,184,.06);font-weight:800;padding-top:9px;padding-bottom:9px}
+.tbl2 .tr.grp span{color:var(--ink)}
+.tbl2 .tr.it2{padding-top:7px;padding-bottom:7px;font-size:14px}.tbl2 .tr.it2 span:first-child{padding-left:16px;font-weight:500;color:#CBD5E1}
+.gt{font-style:normal;display:inline-block;padding:3px 10px;border-radius:999px;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:800}
+.gt.ga{background:rgba(52,211,153,.16);color:#6EE7B7;border:1px solid rgba(52,211,153,.5)}
+.gt.gr{background:rgba(167,139,250,.16);color:#C4B5FD;border:1px solid rgba(167,139,250,.5)}
+.gt.gd{background:rgba(96,165,250,.16);color:#93C5FD;border:1px solid rgba(96,165,250,.5)}
+.tbl2 .opp{padding:12px 16px 4px;border-top:1px dashed rgba(252,211,77,.4)}
+.ot{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#FCD34D}
+.tbl2 .tr.dyn{border-bottom:0}
 .tbl2 .tr.th{font-size:10px;letter-spacing:.1em;padding:10px 16px}
 .tbl2 .tr.tot small{font-size:11px;white-space:nowrap}
 /* table */
@@ -334,18 +344,20 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
    <div class="kpi it" style="padding:16px 22px;gap:16px;align-self:flex-start"><span class="v acg u" style="font-size:52px" data-m="3070">51 h 10 min</span><span class="d" style="font-size:17px" id="kpiD">ahorradas<br>cada mes</span></div>
   </div>
   <div class="tbl2" id="tbl2">
-   <p class="cap3">Detalle por automatización</p>
+   <p class="cap3">Detalle por tipo de solución</p>
    <div class="tr th"><span>Proyecto</span><span>Empresas</span><span>Antes <i class="uL">(h/mes)</i></span><span>Ahora <i class="uL">(h/mes)</i></span><span>Ahorro mensual</span><span>Reducción</span><span>Ahorro anual <i style="font-style:normal">(días)</i></span></div>
-   <div class="tr"><span>SIRE – Ventas</span><span>12</span><span class="u" data-m="3900">65 h</span><span class="u" data-m="1165">19 h 25 min</span><span class="u s2" data-m="2735">45 h 35 min</span><span class="s2">70%</span><span class="s2 an">68,4 días</span></div>
-   <div class="tr"><span>Indicadores Lavado de Activos</span><span>7</span><span class="u" data-m="280">4 h 40 min</span><span class="u" data-m="105">1 h 45 min</span><span class="u s2" data-m="175">2 h 55 min</span><span class="s2">63%</span><span class="s2 an">4,4 días</span></div>
-   <div class="tr"><span>SIRE – No Domiciliado</span><span>1</span><span class="u" data-m="120">2 h</span><span class="u" data-m="60">1 h</span><span class="u s2" data-m="60">1 h</span><span class="s2">50%</span><span class="s2 an">1,5 días</span></div>
-   <div class="tr"><span>Libro Reclamaciones Euroshop</span><span>1</span><span class="u" data-m="110">1 h 50 min</span><span class="u" data-m="10">10 min</span><span class="u s2" data-m="100">1 h 40 min</span><span class="s2">91%</span><span class="s2 an">2,5 días</span></div>
-   <div class="tr dyn"><span>Dynamics 365<small>validación AX vs D365 · migración de ERP</small></span><span>—</span><span>semanas</span><span>segundos</span><span class="s2">semanas</span><span class="s2">50%</span><span class="s2 an">meses <i style="font-style:normal;font-weight:500;opacity:.8">(proyección)</i></span></div>
-   <div class="tr na"><span>Descarga masiva SUNAT</span><span>—</span><span>—</span><span>—</span><span>—</span><span>—</span><span>—</span></div>
-   <div class="tr na"><span>Revisión lotes de pago</span><span>—</span><span>—</span><span>—</span><span>—</span><span>—</span><span>—</span></div>
+   <div class="tr grp"><span><i class="gt ga">Automatizaciones</i></span><span></span><span class="u" data-m="4020">67 h</span><span class="u" data-m="1225">20 h 25 min</span><span class="u s2" data-m="2795">46 h 35 min</span><span class="s2">70%</span><span class="s2 an">69,9 días</span></div>
+   <div class="tr it2"><span>SIRE – Ventas</span><span>12</span><span class="u" data-m="3900">65 h</span><span class="u" data-m="1165">19 h 25 min</span><span class="u s2" data-m="2735">45 h 35 min</span><span class="s2">70%</span><span class="s2 an">68,4 días</span></div>
+   <div class="tr it2"><span>SIRE – No Domiciliado</span><span>1</span><span class="u" data-m="120">2 h</span><span class="u" data-m="60">1 h</span><span class="u s2" data-m="60">1 h</span><span class="s2">50%</span><span class="s2 an">1,5 días</span></div>
+   <div class="tr grp"><span><i class="gt gr">RPA</i></span><span></span><span class="u" data-m="110">1 h 50 min</span><span class="u" data-m="10">10 min</span><span class="u s2" data-m="100">1 h 40 min</span><span class="s2">91%</span><span class="s2 an">2,5 días</span></div>
+   <div class="tr it2"><span>Libro Reclamaciones Euroshop</span><span>1</span><span class="u" data-m="110">1 h 50 min</span><span class="u" data-m="10">10 min</span><span class="u s2" data-m="100">1 h 40 min</span><span class="s2">91%</span><span class="s2 an">2,5 días</span></div>
+   <div class="tr grp"><span><i class="gt gd">Desarrollo</i></span><span></span><span class="u" data-m="280">4 h 40 min</span><span class="u" data-m="105">1 h 45 min</span><span class="u s2" data-m="175">2 h 55 min</span><span class="s2">63%</span><span class="s2 an">4,4 días</span></div>
+   <div class="tr it2"><span>Indicadores Lavado de Activos</span><span>7</span><span class="u" data-m="280">4 h 40 min</span><span class="u" data-m="105">1 h 45 min</span><span class="u s2" data-m="175">2 h 55 min</span><span class="s2">63%</span><span class="s2 an">4,4 días</span></div>
    <div class="tr tot"><span>Totales</span><span><small>no acumulable</small></span><span class="u neg" data-m="4410">73 h 30 min</span><span class="u" data-m="1340">22 h 20 min</span><span class="u s2" data-m="3070">51 h 10 min</span><span class="s2">70%</span><span class="s2 an">76,8 días</span></div>
+   <div class="opp"><span class="ot">Oportunidad de mejora</span></div>
+   <div class="tr dyn"><span>Dynamics 365<small>validación AX vs D365 · migración de ERP</small></span><span>—</span><span>semanas</span><span>segundos</span><span class="s2">semanas</span><span class="s2">50%</span><span class="s2 an">meses <i style="font-style:normal;font-weight:500;opacity:.8">(proyección)</i></span></div>
     </div>
-  <p class="foot" style="position:absolute;left:660px;top:646px;width:840px">Ahorro anual = ahorro mensual × 12, en días de 8 h (lunes a viernes) · Dynamics 365: proyección estimada, aún sin medir; no entra en los totales · Las empresas no se suman: se repiten entre proyectos · 69,6% exacto, redondeado<span id="uNote"></span> · horas según resultados del equipo CONT-AI</p>
+  <p class="foot" style="position:absolute;left:660px;top:646px;width:840px">Ahorro anual = ahorro mensual × 12, en días de 8 h (lunes a viernes) · Dynamics 365 (oportunidad de mejora): proyección estimada, no entra en los totales · Las empresas no se suman: se repiten entre proyectos · 69,6% exacto, redondeado<span id="uNote"></span> · horas según resultados del equipo CONT-AI</p>
  </section>
 
  <!-- 4 · Cómo funciona: fuentes -> motor -> entregables -->
