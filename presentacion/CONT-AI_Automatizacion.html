@@ -242,7 +242,7 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
 .uL{font-style:normal}
 .tbl2{position:absolute;left:660px;top:150px;width:840px;border-radius:16px;overflow:hidden;background:var(--card);border:1px solid var(--ln)}
 .tbl2 .cap3{margin:0;padding:16px 18px 6px;font-size:20px;font-weight:800;color:var(--ink)}
-.tbl2 .tr{grid-template-columns:2.35fr .6fr .95fr 1fr 1.05fr .72fr .95fr;gap:8px;padding:11px 16px;font-size:15px}
+.tbl2 .tr{grid-template-columns:2.5fr 1fr 1fr 1.1fr .75fr 1fr;gap:8px;padding:11px 16px;font-size:15px}
 .tbl2 .tr .an{color:#FDE68A;font-weight:800}
 .tbl2 .tr.dyn{background:rgba(59,130,246,.08)}
 .tbl2 .tr.dyn span:first-child small{display:block;font-size:11.5px;font-weight:500;color:var(--mut);margin-top:2px}
@@ -301,7 +301,7 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
  </section>
 
  <!-- 1 · Problema -->
- <section class="slide" data-k="prob" data-t="o" data-title="Problema" data-notes="El problema de fondo en Contraloría tiene tres partes. Primero, procesos manuales: para cada reporte bajamos datos de varias fuentes —AX, SAP, Dynamics 365, SUNAT, Excel— y los cruzamos a mano. Segundo, el sistema actual no tiene la reportería contable que necesitamos: cada mejora o reporte a medida es un desarrollo con altos costos y largos tiempos de espera. Tercero, cuando llega un requerimiento de SUNAT o de la Auditoría Externa, la carga se triplica: piden formatos específicos e inmediatos y no hay margen para esperar. En total, identificamos 76 procesos operativos en Contraloría que hoy se pueden automatizar; 4 ya están automatizados. (40 s)">
+ <section class="slide" data-k="prob" data-t="o" data-title="Problema" data-notes="El problema de fondo en Contraloría tiene tres partes. Primero, procesos manuales: para cada reporte bajamos datos de varias fuentes —AX, SAP, Dynamics 365, SUNAT, Excel— y los cruzamos a mano. Segundo, el sistema actual no tiene la reportería contable que necesitamos: cada mejora o reporte a medida es un desarrollo con altos costos y largos tiempos de espera. Tercero, cuando llega un requerimiento de SUNAT o de la Auditoría Externa, la carga se triplica: piden formatos específicos e inmediatos y no hay margen para esperar. En total, identificamos 76 procesos operativos en Contraloría que hoy se pueden automatizar; 6 ya están automatizados. (40 s)">
   <div class="col" style="left:100px;top:136px;width:1400px;gap:14px">
    <p class="k it">01 — El problema en Contraloría</p>
    <h2 class="h2 kt" style="font-size:56px"><span>Mucha carga manual,</span><span class="acr">poca reportería a medida.</span></h2>
@@ -311,38 +311,40 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
    <div class="pc"><div class="pct"><div class="pci"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 8l-4 4 4 4M15 8l4 4-4 4"/><path d="M13 5l-2 14"/></svg></div><span class="pcn">02</span></div><p class="pcl">Sin reportería a medida</p><h4>Cada reporte nuevo<br>es un desarrollo</h4><p class="pcd">Pedir una mejora en el sistema actual significa <b>altos costos y largos tiempos de espera</b>.</p></div>
    <div class="pc"><div class="pct"><div class="pci"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M12 8v5M12 16h.01"/></svg></div><span class="pcn">03</span></div><p class="pcl">SUNAT y Auditoría Externa</p><h4>La carga<br>se triplica</h4><p class="pcd">Piden <b>formatos específicos e inmediatos</b>, sin margen para esperar.</p></div>
   </div>
-  <div class="pres" id="pres2"><span class="pn76" data-n="76">76</span><span class="pt76">procesos operativos <b>identificados</b> en Contraloría<br>que hoy se pueden automatizar</span><span class="pp76">✓ 4 ya automatizados</span></div>
+  <div class="pres" id="pres2"><span class="pn76" data-n="76">76</span><span class="pt76">procesos operativos <b>identificados</b> en Contraloría<br>que hoy se pueden automatizar</span><span class="pp76">✓ 6 ya automatizados</span></div>
  </section>
 
  <!-- 3 · Resultados: 70% + detalle por automatización -->
- <section class="slide" data-k="m70" data-t="g" data-title="Resultados" data-notes="El resultado en números: en conjunto pasamos de 73 h 30 min a 22 h 20 min al mes, casi 70% menos tiempo en tareas operativas. A la derecha, el detalle: SIRE – Ventas aporta la mayor parte, 45 h 35 min al mes; Libro de Reclamaciones baja 91%. En la última columna, el ahorro proyectado al año: 76,8 días de trabajo, casi 4 meses de una persona a tiempo completo. Además, en la migración de AX a Dynamics 365 validábamos a mano cientos de eventos y miles de líneas; ahora la herramienta cruza ambos sistemas y en segundos dice qué está OK y qué está observado. Las empresas no se suman porque se repiten entre proyectos, y hay dos automatizaciones más pendientes de medir. (35 s)">
+ <section class="slide" data-k="m70" data-t="g" data-title="Resultados" data-notes="El resultado en números: con 6 automatizaciones pasamos de 109 horas 50 minutos a 24 horas 30 minutos al mes: 78% menos tiempo, 85 horas ahorradas cada mes. [Pulsa D] En días de trabajo, son 128 días al año. A la derecha, el detalle por tipo de solución: las automatizaciones aportan la mayor parte —SIRE Ventas y Costos SUNAT—, el RPA del Libro de Reclamaciones baja 91% y el desarrollo de Lavado de Activos 63%. Y como oportunidad de mejora, la validación de la migración de AX a Dynamics 365, que pasó de semanas a segundos. (35 s)">
   <div class="col" style="left:100px;top:140px;width:560px;gap:18px">
    <p class="k it">02 — Resultados</p>
    <div class="utab it" id="utab"><button class="on" data-u="h">Horas</button><button data-u="d">Días</button></div>
    <div class="ba" style="font-size:38px;gap:18px">
-    <span class="old" id="old"><span class="u" data-m="4410">73 h 30 min</span><i class="strike" id="strike" style="height:6px"></i></span>
+    <span class="old" id="old"><span class="u" data-m="6590">109 h 50 min</span><i class="strike" id="strike" style="height:6px"></i></span>
     <span class="arr" id="arr" style="font-size:30px">→</span>
-    <span class="acg u" id="new" data-m="1340">22 h 20 min</span>
+    <span class="acg u" id="new" data-m="1470">24 h 30 min</span>
    </div>
-   <p class="hero acg" id="hero" style="font-size:172px;align-self:flex-start"><span>−</span><span id="h70">70</span><span>%</span><i class="ring" id="ring"></i><i class="ring" id="ring2"></i></p>
+   <p class="hero acg" id="hero" style="font-size:172px;align-self:flex-start"><span>−</span><span id="h70">78</span><span>%</span><i class="ring" id="ring"></i><i class="ring" id="ring2"></i></p>
    <h2 class="h2 kt" style="font-size:38px;color:var(--ink)"><span>menos tiempo en</span><span>tareas operativas</span></h2>
-   <div class="kpi it" style="padding:16px 22px;gap:16px;align-self:flex-start"><span class="v acg u" style="font-size:52px" data-m="3070">51 h 10 min</span><span class="d" style="font-size:17px" id="kpiD">ahorradas<br>cada mes</span></div>
+   <div class="kpi it" style="padding:16px 22px;gap:16px;align-self:flex-start"><span class="v acg u" style="font-size:52px" data-m="5120">85 h 20 min</span><span class="d" style="font-size:17px" id="kpiD">ahorradas<br>cada mes</span></div>
   </div>
   <div class="tbl2" id="tbl2">
    <p class="cap3">Detalle por tipo de solución</p>
-   <div class="tr th"><span>Proyecto</span><span>Empresas</span><span>Antes <i class="uL">(h/mes)</i></span><span>Ahora <i class="uL">(h/mes)</i></span><span>Ahorro mensual</span><span>Reducción</span><span>Ahorro anual <i style="font-style:normal">(días)</i></span></div>
-   <div class="tr grp"><span><i class="gt ga">Automatizaciones</i></span><span></span><span class="u" data-m="4020">67 h</span><span class="u" data-m="1225">20 h 25 min</span><span class="u s2" data-m="2795">46 h 35 min</span><span class="s2">70%</span><span class="s2 an">69,9 días</span></div>
-   <div class="tr it2"><span>SIRE – Ventas</span><span>12</span><span class="u" data-m="3900">65 h</span><span class="u" data-m="1165">19 h 25 min</span><span class="u s2" data-m="2735">45 h 35 min</span><span class="s2">70%</span><span class="s2 an">68,4 días</span></div>
-   <div class="tr it2"><span>SIRE – No Domiciliado</span><span>1</span><span class="u" data-m="120">2 h</span><span class="u" data-m="60">1 h</span><span class="u s2" data-m="60">1 h</span><span class="s2">50%</span><span class="s2 an">1,5 días</span></div>
-   <div class="tr grp"><span><i class="gt gr">RPA</i></span><span></span><span class="u" data-m="110">1 h 50 min</span><span class="u" data-m="10">10 min</span><span class="u s2" data-m="100">1 h 40 min</span><span class="s2">91%</span><span class="s2 an">2,5 días</span></div>
-   <div class="tr it2"><span>Libro Reclamaciones Euroshop</span><span>1</span><span class="u" data-m="110">1 h 50 min</span><span class="u" data-m="10">10 min</span><span class="u s2" data-m="100">1 h 40 min</span><span class="s2">91%</span><span class="s2 an">2,5 días</span></div>
-   <div class="tr grp"><span><i class="gt gd">Desarrollo</i></span><span></span><span class="u" data-m="280">4 h 40 min</span><span class="u" data-m="105">1 h 45 min</span><span class="u s2" data-m="175">2 h 55 min</span><span class="s2">63%</span><span class="s2 an">4,4 días</span></div>
-   <div class="tr it2"><span>Indicadores Lavado de Activos</span><span>7</span><span class="u" data-m="280">4 h 40 min</span><span class="u" data-m="105">1 h 45 min</span><span class="u s2" data-m="175">2 h 55 min</span><span class="s2">63%</span><span class="s2 an">4,4 días</span></div>
-   <div class="tr tot"><span>Totales</span><span><small>no acumulable</small></span><span class="u neg" data-m="4410">73 h 30 min</span><span class="u" data-m="1340">22 h 20 min</span><span class="u s2" data-m="3070">51 h 10 min</span><span class="s2">70%</span><span class="s2 an">76,8 días</span></div>
+   <div class="tr th"><span>Proyecto</span><span>Antes <i class="uL">(h/mes)</i></span><span>Ahora <i class="uL">(h/mes)</i></span><span>Ahorro mensual</span><span>Reducción</span><span>Ahorro anual <i style="font-style:normal">(días)</i></span></div>
+   <div class="tr grp"><span><i class="gt ga">Automatizaciones</i></span><span class="u" data-m="5760">96 h</span><span class="u" data-m="1315">21 h 55 min</span><span class="u s2" data-m="4445">74 h 05 min</span><span class="s2">77%</span><span class="s2 an">111,1 días</span></div>
+   <div class="tr it2"><span>SIRE – Ventas</span><span class="u" data-m="3900">65 h</span><span class="u" data-m="1165">19 h 25 min</span><span class="u s2" data-m="2735">45 h 35 min</span><span class="s2">70%</span><span class="s2 an">68,4 días</span></div>
+   <div class="tr it2"><span>Costos – SUNAT</span><span class="u" data-m="1440">24 h</span><span class="u" data-m="60">1 h</span><span class="u s2" data-m="1380">23 h</span><span class="s2">96%</span><span class="s2 an">34,5 días</span></div>
+   <div class="tr it2"><span>Kardex</span><span class="u" data-m="300">5 h</span><span class="u" data-m="30">30 min</span><span class="u s2" data-m="270">4 h 30 min</span><span class="s2">90%</span><span class="s2 an">6,8 días</span></div>
+   <div class="tr it2"><span>SIRE – No Domiciliado</span><span class="u" data-m="120">2 h</span><span class="u" data-m="60">1 h</span><span class="u s2" data-m="60">1 h</span><span class="s2">50%</span><span class="s2 an">1,5 días</span></div>
+   <div class="tr grp"><span><i class="gt gr">RPA</i></span><span class="u" data-m="550">9 h 10 min</span><span class="u" data-m="50">50 min</span><span class="u s2" data-m="500">8 h 20 min</span><span class="s2">91%</span><span class="s2 an">12,5 días</span></div>
+   <div class="tr it2"><span>Libro Reclamaciones Euroshop</span><span class="u" data-m="550">9 h 10 min</span><span class="u" data-m="50">50 min</span><span class="u s2" data-m="500">8 h 20 min</span><span class="s2">91%</span><span class="s2 an">12,5 días</span></div>
+   <div class="tr grp"><span><i class="gt gd">Desarrollo</i></span><span class="u" data-m="280">4 h 40 min</span><span class="u" data-m="105">1 h 45 min</span><span class="u s2" data-m="175">2 h 55 min</span><span class="s2">63%</span><span class="s2 an">4,4 días</span></div>
+   <div class="tr it2"><span>Indicadores Lavado de Activos</span><span class="u" data-m="280">4 h 40 min</span><span class="u" data-m="105">1 h 45 min</span><span class="u s2" data-m="175">2 h 55 min</span><span class="s2">63%</span><span class="s2 an">4,4 días</span></div>
+   <div class="tr tot"><span>Totales</span><span class="u neg" data-m="6590">109 h 50 min</span><span class="u" data-m="1470">24 h 30 min</span><span class="u s2" data-m="5120">85 h 20 min</span><span class="s2">78%</span><span class="s2 an">128,0 días</span></div>
    <div class="opp"><span class="ot">Oportunidad de mejora</span></div>
-   <div class="tr dyn"><span>Dynamics 365<small>validación AX vs D365 · migración de ERP</small></span><span>—</span><span>semanas</span><span>segundos</span><span class="s2">semanas</span><span class="s2">50%</span><span class="s2 an">semanas <i style="font-style:normal;font-weight:500;opacity:.8">(proyección)</i></span></div>
+   <div class="tr dyn"><span>Dynamics 365<small>validación AX vs D365 · migración de ERP</small></span><span>semanas</span><span>segundos</span><span class="s2">semanas</span><span class="s2">50%</span><span class="s2 an">semanas <i style="font-style:normal;font-weight:500;opacity:.8">(proyección)</i></span></div>
     </div>
-  <p class="foot" style="position:absolute;left:660px;top:646px;width:840px">Ahorro anual = ahorro mensual × 12, en días de 8 h (lunes a viernes) · Dynamics 365 (oportunidad de mejora): proyección estimada, no entra en los totales · Las empresas no se suman: se repiten entre proyectos · 69,6% exacto, redondeado<span id="uNote"></span> · horas según resultados del equipo CONT-AI</p>
+  <p class="foot" style="position:absolute;left:660px;top:auto;bottom:112px;width:840px">Ahorro anual = ahorro mensual × 12, en días de 8 h (lunes a viernes) · Dynamics 365 (oportunidad de mejora): proyección estimada, no entra en los totales · 77,7% exacto, redondeado<span id="uNote"></span> · horas según resultados del equipo CONT-AI</p>
  </section>
 
  <!-- 4 · Cómo funciona: fuentes -> motor -> entregables -->
@@ -384,18 +386,18 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
  </section>
 
  <!-- 6 · Impacto y valor de negocio (cierre) -->
- <section class="slide" data-k="imp" data-t="g" data-title="Impacto" data-notes="¿Qué significa esto para el negocio? Primero, tiempo: 51 horas al mes, unos 77 días al año, que el equipo dedica al análisis y no a cruzar datos. Segundo, ahorro en costos, sobre todo en desarrollo: lo desarrollamos nosotros, sin depender de consultoras ni de proyectos externos para cada necesidad. Tercero, es una plataforma propia, hecha a la medida de Euromotors: se adapta a nuestros procesos, no al revés. Y a futuro, una oportunidad: esta plataforma podría comercializarse a otras empresas del mercado. Hoy son 4 automatizaciones; hay más de 70 procesos por delante. Gracias. (35 s)">
+ <section class="slide" data-k="imp" data-t="g" data-title="Impacto" data-notes="¿Qué significa esto para el negocio? Primero, tiempo: 85 horas al mes, unos 128 días al año, que el equipo dedica al análisis y no a cruzar datos. Segundo, ahorro en costos, sobre todo en desarrollo: lo desarrollamos nosotros, sin depender de consultoras ni de proyectos externos para cada necesidad. Tercero, es una plataforma propia, hecha a la medida de Euromotors: se adapta a nuestros procesos, no al revés. Y a futuro, una oportunidad: esta plataforma podría comercializarse a otras empresas del mercado. Hoy son 6 automatizaciones; hay 70 procesos por delante. Gracias. (35 s)">
   <div class="col" style="left:100px;top:140px;width:1400px;gap:12px">
    <p class="k it">05 — Impacto y valor de negocio</p>
    <h2 class="h2 kt" style="font-size:60px"><span>Más que horas:</span><span class="acg">una plataforma propia.</span></h2>
   </div>
   <div class="vcs">
-   <div class="vc"><div class="vi"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#6EE7B7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v5l3 2"/><circle cx="12" cy="12" r="9"/></svg></div><h4>Más tiempo para analizar</h4><p class="vm acg"><span data-n="51">51</span> h/mes</p><p class="vd">≈ 77 días al año que el equipo dedica al <b>análisis</b>, no a cruzar datos</p></div>
+   <div class="vc"><div class="vi"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#6EE7B7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v5l3 2"/><circle cx="12" cy="12" r="9"/></svg></div><h4>Más tiempo para analizar</h4><p class="vm acg"><span data-n="85">85</span> h/mes</p><p class="vd">≈ 128 días al año que el equipo dedica al <b>análisis</b>, no a cruzar datos</p></div>
    <div class="vc"><div class="vi"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#6EE7B7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M14.8 9.2c-.5-1-1.6-1.6-2.8-1.6-1.6 0-2.8.9-2.8 2.1 0 2.9 5.6 1.5 5.6 4.5 0 1.2-1.2 2.1-2.8 2.1-1.3 0-2.4-.6-2.9-1.7M12 6v1.6M12 16.4V18"/></svg></div><h4>Ahorro en costos</h4><p class="vm acg">En desarrollo</p><p class="vd"><b>Desarrollo propio del Grupo Euromotors</b></p></div>
    <div class="vc"><div class="vi"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#6EE7B7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4M7 9h4M7 12h7"/></svg></div><h4>Plataforma propia</h4><p class="vm acg">A la medida</p><p class="vd"><b>De Euromotors y para Euromotors:</b> se adapta a nuestros procesos, no al revés</p></div>
    <div class="vc fut"><span class="fb">A futuro</span><div class="vi"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#FCD34D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 15c-1.5 1.5-2 4-2 6 2 0 4.5-.5 6-2M14.5 4.5C17 3 20 3 21 3c0 1-.1 4-1.5 6.5L13 16l-5-5z"/><circle cx="15.5" cy="8.5" r="1.5"/></svg></div><h4>Modelo de negocio</h4><p class="vm acgold">Nuevo ingreso</p><p class="vd">Potencial para <b>comercializar la plataforma</b> a otras empresas del mercado</p></div>
   </div>
-  <div class="cl" id="cl"><span><b>4</b> automatizaciones hoy</span><i></i><span>más de <b>70</b> procesos por delante</span><i></i><span class="g">Gracias.</span></div>
+  <div class="cl" id="cl"><span><b>6</b> automatizaciones hoy</span><i></i><span><b>70</b> procesos por delante</span><i></i><span class="g">Gracias.</span></div>
  </section>
 
  <div class="ft" id="ft"></div>
@@ -440,10 +442,10 @@ var HOOK={
  m70:function(tl,sl){var st=$('#strike'),nw=$('#new'),h=$('#h70');
   tl.from('#old',{x:-80,opacity:0,duration:.8,ease:'expo.out'},.3).fromTo(st,{scaleX:0},{scaleX:1,duration:.5,ease:'power4.inOut'},1).to('#old',{opacity:.4,duration:.4},1.4)
    .from('#arr',{x:-30,opacity:0,duration:.5},1.3).from(nw,{x:60,opacity:0,duration:.6,ease:'expo.out'},1.4);
-  var o={v:4410};nw.textContent=U(4410);tl.to(o,{v:1340,duration:1.4,ease:'power3.out',onUpdate:function(){nw.textContent=U(o.v)}},1.45);
+  var o={v:6590};nw.textContent=U(6590);tl.to(o,{v:1470,duration:1.4,ease:'power3.out',onUpdate:function(){nw.textContent=U(o.v)}},1.45);
   var o2={v:0};h.textContent='0';
   tl.fromTo('#hero',{scale:2.8,opacity:0,filter:'blur(30px)'},{scale:1,opacity:1,filter:'blur(0px)',duration:.9,ease:'expo.out'},2.6)
-   .to(o2,{v:70,duration:1.1,ease:'power4.out',onUpdate:function(){h.textContent=Math.round(o2.v)}},2.6)
+   .to(o2,{v:78,duration:1.1,ease:'power4.out',onUpdate:function(){h.textContent=Math.round(o2.v)}},2.6)
    .to('#hero',{x:'+=10',duration:.05,repeat:5,yoyo:true,ease:'none'},3.3).set('#hero',{x:0})
    .fromTo('#ring',{scale:.3,opacity:.9},{scale:3.2,opacity:0,duration:1.2,ease:'power2.out'},3.3).fromTo('#ring2',{scale:.3,opacity:.6},{scale:4.5,opacity:0,duration:1.6,ease:'power2.out'},3.45);
   tl.from('#tbl2',{opacity:0,x:40,duration:.7,ease:'expo.out'},3.6).from($$('#tbl2 .tr',sl),{opacity:0,x:30,duration:.45,stagger:.09,ease:'power3.out'},3.8)
@@ -499,7 +501,7 @@ function U(m){m=Math.round(m);if(UNIT==='d'){var d=m/480,t=(d<1?d.toFixed(2):d.t
 function setUnit(u){UNIT=u;$$('.u[data-m]').forEach(function(e){e.textContent=U(+e.dataset.m)});
  $$('#utab button').forEach(function(b){b.classList.toggle('on',b.dataset.u===u)});
  $$('.uL').forEach(function(e){e.textContent=u==='d'?'(días/mes)':'(h/mes)'});
- $('#kpiD').innerHTML=u==='d'?'de trabajo ahorrados al mes<br>≈ 77 días al año':'ahorradas<br>cada mes';
+ $('#kpiD').innerHTML=u==='d'?'de trabajo ahorrados al mes<br>≈ 128 días al año':'ahorradas<br>cada mes';
  $('#uNote').textContent=u==='d'?' · 1 día = jornada de 8 h':'';
  if(G)G.fromTo($$('.u[data-m]'),{opacity:.2,y:6},{opacity:1,y:0,duration:.35,stagger:.02,overwrite:'auto'})}
 $$('#utab button').forEach(function(b){b.addEventListener('click',function(e){e.stopPropagation();setUnit(b.dataset.u)})});
