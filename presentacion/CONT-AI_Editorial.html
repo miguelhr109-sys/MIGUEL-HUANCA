@@ -185,7 +185,7 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
 .pl p{margin:0;font-size:14.5px;line-height:1.45;color:var(--mut)}
 .par{align-self:center;font-style:normal;font-size:22px;color:rgba(110,231,183,.6)}
 .eb{margin-top:12px;padding:10px 16px;border-radius:12px;background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.35);font-size:15px;color:#D1FAE5}.eb b{color:#6EE7B7}
-.pcs{position:absolute;left:100px;top:368px;width:1400px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.pcs{position:absolute;left:100px;top:340px;width:1400px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .pc{position:relative;padding:28px 28px 30px;border-radius:20px;background:var(--card);border:1px solid var(--ln);overflow:hidden}
 .pc:before{content:"";position:absolute;left:0;top:0;right:0;height:3px;background:linear-gradient(90deg,#FFB347,#FF5E3A)}
 .pct{display:flex;justify-content:space-between;align-items:center}
@@ -194,7 +194,10 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
 .pcl{margin:22px 0 6px;font-size:13px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#FDBA74}
 .pc h4{margin:0 0 14px;font-size:34px;line-height:1.1;font-weight:800;letter-spacing:-.02em}
 .pcd{margin:0;font-size:18px;line-height:1.5;color:var(--mut)}.pcd b{color:var(--ink);font-weight:700}
-.pres{position:absolute;left:100px;top:742px;width:1400px;margin:0;text-align:center;font-size:24px;color:var(--mut)}.pres b{color:#FF7A59;font-weight:700}
+.pres{position:absolute;left:100px;top:722px;width:1400px;height:92px;box-sizing:border-box;padding:0 34px;display:flex;align-items:center;gap:26px;border-radius:18px;background:linear-gradient(90deg,rgba(124,45,18,.45),rgba(15,23,42,.6));border:1px solid rgba(251,146,60,.45)}
+.pn76{font-size:64px;font-weight:900;letter-spacing:-.04em;line-height:1;color:#FF7A59;font-variant-numeric:tabular-nums}
+.pt76{flex:1;font-size:22px;line-height:1.3;color:var(--ink)}.pt76 b{color:#FDBA74}
+.pp76{flex:none;padding:8px 16px;border-radius:999px;font-size:16px;font-weight:700;color:#6EE7B7;background:rgba(52,211,153,.14);border:1px solid rgba(52,211,153,.5)}
 /* video */
 .vid{position:absolute;left:220px;top:160px;width:1160px;height:653px;border-radius:22px;overflow:hidden;background:linear-gradient(160deg,#0B1830,#060D1C);border:1.5px solid rgba(52,211,153,.55);box-shadow:0 0 0 6px rgba(52,211,153,.06),0 0 60px rgba(52,211,153,.22),0 30px 90px rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center}
 .vid video{display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000}
@@ -293,7 +296,7 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;background:radi
 .vc h4{font-size:26px}.vm{font-size:48px;font-style:italic}
 .hero{font-weight:800}
 .pc h4{font-family:var(--serif);font-weight:400;font-size:44px;letter-spacing:0}
-.pres{font-family:var(--serif);font-size:32px;color:var(--ink)}.pres b{font-style:italic;font-weight:400}
+.pn76{font-family:var(--serif);font-weight:400;font-size:84px;font-style:italic}.pt76{font-family:var(--serif);font-size:28px}
 .pl h5{font-family:var(--serif);font-weight:400;font-size:34px;letter-spacing:0}
 .cl .g{font-family:var(--serif);font-style:italic;font-weight:400;font-size:52px;color:#6EE7B7;background:none;-webkit-text-fill-color:#6EE7B7}
 .tbl2 .cap3{padding:12px 18px 2px}
@@ -326,7 +329,7 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;background:radi
  </section>
 
  <!-- 1 · Problema -->
- <section class="slide" data-k="prob" data-t="o" data-title="Problema" data-notes="El problema de fondo en Contraloría tiene tres partes. Primero, procesos manuales: para cada reporte bajamos datos de varias fuentes —AX, SAP, Dynamics 365, SUNAT, Excel— y los cruzamos a mano. Segundo, el sistema actual no tiene la reportería contable que necesitamos: cada mejora o reporte a medida es un desarrollo con altos costos y largos tiempos de espera. Tercero, cuando llega un requerimiento de SUNAT o de la Auditoría Externa, la carga se triplica: piden formatos específicos e inmediatos y no hay margen para esperar. Resultado: pasamos más tiempo armando datos que analizándolos. (40 s)">
+ <section class="slide" data-k="prob" data-t="o" data-title="Problema" data-notes="El problema de fondo en Contraloría tiene tres partes. Primero, procesos manuales: para cada reporte bajamos datos de varias fuentes —AX, SAP, Dynamics 365, SUNAT, Excel— y los cruzamos a mano. Segundo, el sistema actual no tiene la reportería contable que necesitamos: cada mejora o reporte a medida es un desarrollo con altos costos y largos tiempos de espera. Tercero, cuando llega un requerimiento de SUNAT o de la Auditoría Externa, la carga se triplica: piden formatos específicos e inmediatos y no hay margen para esperar. En total, identificamos 76 procesos operativos en Contraloría que hoy se pueden automatizar; 4 ya están automatizados. (40 s)">
   <div class="col" style="left:100px;top:136px;width:1400px;gap:14px">
    <p class="k it">01 — El problema en Contraloría</p>
    <h2 class="h2 kt" style="font-size:76px"><span>Mucha carga manual,</span><span class="acr">poca reportería a medida.</span></h2>
@@ -336,7 +339,7 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;background:radi
    <div class="pc"><div class="pct"><div class="pci"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 8l-4 4 4 4M15 8l4 4-4 4"/><path d="M13 5l-2 14"/></svg></div><span class="pcn">02</span></div><p class="pcl">Sin reportería a medida</p><h4>Cada reporte nuevo<br>es un desarrollo</h4><p class="pcd">Pedir una mejora en el sistema actual significa <b>altos costos y largos tiempos de espera</b>.</p></div>
    <div class="pc"><div class="pct"><div class="pci"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M12 8v5M12 16h.01"/></svg></div><span class="pcn">03</span></div><p class="pcl">SUNAT y Auditoría Externa</p><h4>La carga<br>se triplica</h4><p class="pcd">Piden <b>formatos específicos e inmediatos</b>, sin margen para esperar.</p></div>
   </div>
-  <p class="pres" id="pres2">Resultado: el equipo pasa más tiempo <b>armando datos</b> que <b>analizándolos</b>.</p>
+  <div class="pres" id="pres2"><span class="pn76" data-n="76">76</span><span class="pt76">procesos operativos <b>identificados</b> en Contraloría<br>que hoy se pueden automatizar</span><span class="pp76">✓ 4 ya automatizados</span></div>
  </section>
 
  <!-- 3 · Resultados: 70% + detalle por automatización -->
@@ -461,7 +464,7 @@ var HOOK={
  cover:function(tl){tl.from('.slide.on .h1 .wi',{yPercent:120,rotate:8,duration:1.1,ease:'expo.out',stagger:.09},.2)},
  prob:function(tl,sl,loops){
   tl.from($$('.pc',sl),{opacity:0,y:50,duration:.7,ease:'expo.out',stagger:.22},.8).from($$('.pci',sl),{scale:0,rotation:-60,duration:.5,ease:'back.out(2)',stagger:.22},1)
-   .from($$('.pcn',sl),{opacity:0,x:20,duration:.5,stagger:.22},1.1).from('#pres2',{opacity:0,y:16,duration:.6},2.1)},
+   .from($$('.pcn',sl),{opacity:0,x:20,duration:.5,stagger:.22},1.1).from('#pres2',{opacity:0,y:20,duration:.6},2.1).from('#pres2 .pp76',{opacity:0,scale:.6,duration:.4,ease:'back.out(2)'},2.9);count(tl,$('.pn76',sl),0,76,2.2,1.4)},
  m70:function(tl,sl){var st=$('#strike'),nw=$('#new'),h=$('#h70');
   tl.from('#old',{x:-80,opacity:0,duration:.8,ease:'expo.out'},.3).fromTo(st,{scaleX:0},{scaleX:1,duration:.5,ease:'power4.inOut'},1).to('#old',{opacity:.4,duration:.4},1.4)
    .from('#arr',{x:-30,opacity:0,duration:.5},1.3).from(nw,{x:60,opacity:0,duration:.6,ease:'expo.out'},1.4);
