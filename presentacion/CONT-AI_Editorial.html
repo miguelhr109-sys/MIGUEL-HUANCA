@@ -241,6 +241,16 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
 .mi{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:8px 0;border-bottom:1px solid var(--ln)}
 .mi h5{margin:0;font-size:16px;font-weight:800}.mi p{margin:1px 0 0;font-size:12.5px;color:var(--mut)}
 .mi b{font-size:18px;font-weight:800;white-space:nowrap;color:#E2E8F0;font-variant-numeric:tabular-nums}.mi b.var{font-size:14px;font-weight:700;color:#C9B48A;font-style:italic}
+.pbtn{flex:none;font:700 15px var(--font);color:#FDBA74;background:rgba(251,146,60,.12);border:1px solid rgba(251,146,60,.55);padding:9px 16px;border-radius:999px;cursor:pointer}.pbtn:hover{background:rgba(251,146,60,.25)}
+.pov{position:absolute;inset:0;z-index:20;background:rgba(2,6,15,.86);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center}
+.slide.povOn .pov{display:flex}
+.povb{width:1400px;max-height:780px;box-sizing:border-box;padding:26px 28px;border-radius:20px;background:#0B1220;border:1px solid rgba(251,146,60,.4);box-shadow:0 30px 90px rgba(0,0,0,.6)}
+.povh{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:16px}
+.povh .twl{align-items:center}
+.povx{margin-left:10px;width:34px;height:34px;border-radius:50%;border:1px solid var(--ln);background:rgba(148,163,184,.12);color:var(--ink);font-size:16px;cursor:pointer}
+.pov .tg{grid-template-columns:repeat(4,1fr)}
+.pov .tk{font-size:12.5px;padding:4px 8px}
+.pov .tm h5{font-size:15px}
 /* video */
 .vid{position:absolute;left:220px;top:160px;width:1160px;height:653px;border-radius:22px;overflow:hidden;background:linear-gradient(160deg,#0B1830,#060D1C);border:1.5px solid rgba(52,211,153,.55);box-shadow:0 0 0 6px rgba(52,211,153,.06),0 0 60px rgba(52,211,153,.22),0 30px 90px rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center}
 .vid video{display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000}
@@ -385,7 +395,16 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;background:radi
    <div class="pc"><div class="pct"><div class="pci"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 8l-4 4 4 4M15 8l4 4-4 4"/><path d="M13 5l-2 14"/></svg></div><span class="pcn">02</span></div><p class="pcl">Sin reportería a medida</p><h4>Cada reporte nuevo<br>es un desarrollo</h4><p class="pcd">Pedir una mejora en el sistema actual significa <b>altos costos y largos tiempos de espera</b>.</p></div>
    <div class="pc"><div class="pct"><div class="pci"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M12 8v5M12 16h.01"/></svg></div><span class="pcn">03</span></div><p class="pcl">Fiscalización SUNAT</p><h4>Reducir la contingencia<br>tributaria</h4><p class="pcd">En una fiscalización de SUNAT la carga operativa <b>se puede triplicar</b>, porque cada entrega tiene <b>fecha límite</b>.</p></div>
   </div>
-  <div class="pres" id="pres2"><span class="pn76" data-n="76">76</span><span class="pt76">procesos operativos <b>identificados</b> en Contraloría<br>que hoy se pueden automatizar</span><span class="pp76">✓ 7 ya automatizados</span></div>
+  <div class="pres" id="pres2"><span class="pn76" data-n="76">76</span><span class="pt76">procesos operativos <b>identificados</b> en Contraloría<br>que hoy se pueden automatizar</span><span class="pp76">✓ 7 ya automatizados</span><button class="pbtn" id="pbtn">Ver los 76 procesos →</button></div>
+  <div class="pov" id="pov"><div class="povb">
+   <div class="povh"><div><p class="twk">Tareas operativas de Contraloría</p><p class="twn"><span>76</span> procesos identificados</p></div><div class="twl"><span class="lg1">✓ ya automatizados</span><span class="lg2">por automatizar</span><button class="povx" id="povx" aria-label="Cerrar">✕</button></div></div>
+   <div class="tg">
+    <div class="tm"><h5>EEFF y SUNAT<b>24</b></h5><div class="tl"><span class="tk ok">✓ SIRE – Ventas</span><span class="tk ok">✓ Libro kardex</span><span class="tk ok">✓ Indicadores lavado de activos</span><span class="tk ok">✓ SIRE – No domiciliado</span><span class="tk">Balance</span><span class="tk">PDT 621</span><span class="tk">Libro de inventario y balances</span><span class="tk">Libro de activo fijo</span><span class="tk">Informe mensual correo</span><span class="tk">EEFF</span><span class="tk">Estado de resultado mensual</span><span class="tk">Estado de situación financiera</span><span class="tk">Estado de cambios al patrimonio</span><span class="tk">Flujo de fondos</span><span class="tk">Flujo de efectivo</span><span class="tk">Excel data Power BI</span><span class="tk">Actualizar Power BI</span><span class="tk">Tipo de cambio</span><span class="tk">Anexos de cuentas contables</span><span class="tk">Libro diario</span><span class="tk">Libro mayor</span><span class="tk">Alerta de contratos</span><span class="tk">Buzón electrónico</span><span class="tk">IA: consultas y capacitaciones</span></div></div>
+    <div class="tm"><h5>Clientes y Bancos<b>10</b></h5><div class="tl"><span class="tk">Revisión registro de ventas</span><span class="tk">Conciliación bancarias</span><span class="tk">Anexos de cuentas contables</span><span class="tk">Comisión de tarjetas</span><span class="tk">Comisión gastos bancarios</span><span class="tk">Precio de transferencia intercompany</span><span class="tk">Facturas intercompany y terceros</span><span class="tk">Cobranza dudosa</span><span class="tk">Data manual bancos (BIF, Pichincha, Santander)</span><span class="tk">Diferido</span></div></div>
+    <div class="tm"><h5>Costos y Activo Fijo<b>19</b></h5><div class="tl"><span class="tk">Activos procesos</span><span class="tk">Depreciación</span><span class="tk">Alta de AF</span><span class="tk">Baja</span><span class="tk">Libro Excel AF</span><span class="tk">Stock</span><span class="tk">Servicios en proceso</span><span class="tk">Stock vehículos</span><span class="tk">Stock de repuestos</span><span class="tk">Costo talleres</span><span class="tk">Costo repuesto taller</span><span class="tk">Costo recambios</span><span class="tk">Costo de vehículos</span><span class="tk">Margen de vehículos</span><span class="tk">Stock en transito</span><span class="tk">Garantías importadores</span><span class="tk">Anexos de cuentas contables</span><span class="tk">Desvalorización de existencias</span><span class="tk">Detalle del vehículo</span></div></div>
+    <div class="tm"><h5>Gastos y Proveedores<b>23</b></h5><div class="tl"><span class="tk ok">✓ Libro reclamaciones Euroshop</span><span class="tk">Lotes (retención y detracción)</span><span class="tk">Reporte CxP</span><span class="tk">Provisiones</span><span class="tk">Anticipos</span><span class="tk">Gastos financieros</span><span class="tk">ITBID</span><span class="tk">Rindegastos</span><span class="tk">Devengos de seguro</span><span class="tk">Reporte de gasto por local</span><span class="tk">Resumen de gastos</span><span class="tk">Cajas chicas externas</span><span class="tk">SIRE – Compras</span><span class="tk">Ximple – SAP</span><span class="tk">Facturas intercompany</span><span class="tk">Precio de transferencia</span><span class="tk">Validación SUNAT facturas y proveedores</span><span class="tk">Detracciones</span><span class="tk">Validación de DUAs</span><span class="tk">Anexos</span><span class="tk">Anexos de cuentas contables</span><span class="tk">Agente IA: revisión de facturas</span><span class="tk">Validación RUC</span></div></div>
+   </div>
+  </div></div>
  </section>
 
  <!-- 3 · Resultados: 70% + detalle por automatización -->
@@ -573,7 +592,7 @@ function enter(sl){if(!G){$$('[data-count]',sl).forEach(function(e){e.textConten
  var its=$$('.it',sl);if(its.length)tl.from(its,{y:28,opacity:0,duration:.8,ease:'power3.out',stagger:.1},.35);
  var h=HOOK[sl.dataset.k];if(h)h(tl,sl,loops);
  if(reduce)tl.progress(1)}
-function leave(){var dv=document.getElementById('demo');if(dv&&!dv.paused)dv.pause();if(cur.tl){cur.tl.progress(1);cur.tl.kill()}cur.loops.forEach(function(l){l.kill()});
+function leave(){$$('.povOn').forEach(function(x){x.classList.remove('povOn')});var dv=document.getElementById('demo');if(dv&&!dv.paused)dv.pause();if(cur.tl){cur.tl.progress(1);cur.tl.kill()}cur.loops.forEach(function(l){l.kill()});
  if(G&&SL[idx]){G.set($$('.keys i,.wires .fl',SL[idx]),{clearProps:'boxShadow,opacity'})}}
 
 /* ---------- navigation ---------- */
@@ -597,6 +616,9 @@ function setUnitHD(u){UNIT=u;$$('.u[data-m]').forEach(function(e){e.textContent=
  
  if(G)G.fromTo($$('.u[data-m]'),{opacity:.2,y:6},{opacity:1,y:0,duration:.35,stagger:.02,overwrite:'auto'})}
 $$('#utab button').forEach(function(b){b.addEventListener('click',function(e){e.stopPropagation();setUnit(b.dataset.u)})});
+$('#pbtn').addEventListener('click',function(e){e.stopPropagation();var sl=$('[data-k="prob"]');sl.classList.add('povOn');if(G){G.fromTo('#pov .povb',{opacity:0,y:30,scale:.97},{opacity:1,y:0,scale:1,duration:.45,ease:'expo.out'});G.fromTo('#pov .tk',{opacity:0,scale:.7},{opacity:1,scale:1,duration:.25,stagger:.006,ease:'back.out(2)',delay:.15})}});
+$('#pov').addEventListener('click',function(e){e.stopPropagation();if(e.target.id==='pov'||e.target.id==='povx')$('[data-k="prob"]').classList.remove('povOn')});
+addEventListener('keydown',function(e){if(e.key==='Escape')$$('.povOn').forEach(function(x){x.classList.remove('povOn')})},true);
 var stepNext=null,stepPrev=null;
 function adv(d){if(d>0&&stepNext&&stepNext())return;if(d<0&&stepPrev&&stepPrev())return;go(idx+d)}
 function go(i){stepNext=stepPrev=null;i=Math.max(0,Math.min(SL.length-1,i));if(i===idx)return;if(idx>=0){leave();SL[idx].classList.remove('on')}idx=i;var sl=SL[i];sl.classList.add('on');
@@ -617,7 +639,7 @@ function toggleFS(){var d=document.documentElement;try{if(document.fullscreenEle
 $('#fs').addEventListener('click',function(e){e.stopPropagation();toggleFS()});
 addEventListener('dblclick',function(e){if(e.target.closest('.ctl,#iso,video,.ld,#pres'))return;toggleFS()});
 ['fullscreenchange','webkitfullscreenchange'].forEach(function(ev){document.addEventListener(ev,function(){$('#fsT').textContent=(document.fullscreenElement||document.webkitFullscreenElement)?'Salir':'Pantalla completa';size()})});
-addEventListener('click',function(e){if(e.target.closest('.ld,video,input,button,.ctl,.seg,#pres,#iso,#fs'))return;adv(e.clientX<innerWidth*.25?-1:1)});
+addEventListener('click',function(e){if(e.target.closest('.pov,.ld,video,input,button,.ctl,.seg,#pres,#iso,#fs'))return;adv(e.clientX<innerWidth*.25?-1:1)});
 var wl=0;addEventListener('wheel',function(e){var n=Date.now();if(n-wl<1000||Math.abs(e.deltaY)<25)return;wl=n;adv(e.deltaY>0?1:-1)},{passive:true});
 var sx=null,sy=null;addEventListener('touchstart',function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
 addEventListener('touchend',function(e){if(sx===null||(e.target.closest&&e.target.closest('.ctl')))return;var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.max(Math.abs(dx),Math.abs(dy))>40)adv((Math.abs(dx)>Math.abs(dy)?dx:dy)<0?1:-1);sx=null},{passive:true});
