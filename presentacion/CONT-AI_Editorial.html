@@ -532,11 +532,7 @@ var HOOK={
   tl.from('#old',{x:-60,opacity:0,duration:.5,ease:'expo.out'},.15).fromTo(st,{scaleX:0},{scaleX:1,duration:.35,ease:'power4.inOut'},.45).to('#old',{opacity:.4,duration:.3},.75)
    .from('#arr',{x:-20,opacity:0,duration:.35},.6).from(nw,{x:40,opacity:0,duration:.4,ease:'expo.out'},.65);
   var o={v:7070};nw.textContent=U(7070);tl.to(o,{v:1770,duration:.9,ease:'power3.out',onUpdate:function(){nw.textContent=U(o.v)}},.7);
-  var o2={v:0};h.textContent='0';
-  tl.fromTo('#hero',{scale:2.2,opacity:0,filter:'blur(24px)'},{scale:1,opacity:1,filter:'blur(0px)',duration:.6,ease:'expo.out'},.9)
-   .to(o2,{v:75,duration:.7,ease:'power4.out',onUpdate:function(){h.textContent=Math.round(o2.v)}},.9)
-   .to('#hero',{x:'+=10',duration:.05,repeat:5,yoyo:true,ease:'none'},1.45).set('#hero',{x:0})
-   .fromTo('#ring',{scale:.3,opacity:.9},{scale:3.2,opacity:0,duration:1.1,ease:'power2.out'},1.45).fromTo('#ring2',{scale:.3,opacity:.6},{scale:4.5,opacity:0,duration:1.4,ease:'power2.out'},1.55);
+  h.textContent='75';tl.from('#hero',{y:28,opacity:0,duration:.8,ease:'power3.out'},.45);
   tl.from('#tbl2',{opacity:0,x:40,duration:.6,ease:'expo.out'},1.3).from($$('#tbl2 .tr',sl),{opacity:0,x:30,duration:.35,stagger:.05,ease:'power3.out'},1.4)
    .fromTo($$('#tbl2 .tr.tot',sl),{backgroundColor:'rgba(52,211,153,.07)'},{backgroundColor:'rgba(52,211,153,.28)',duration:.35,yoyo:true,repeat:1},2.2)
    .from('#emp',{opacity:0,y:20,duration:.5},2.3);count(tl,$('#emp .en'),0,14,2.4,1);
