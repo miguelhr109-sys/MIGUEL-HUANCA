@@ -414,10 +414,10 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;background:radi
  </section>
 
  <!-- 3 · Resultados: 70% + detalle por automatización -->
- <section class="slide" data-k="m70" data-t="g" data-title="Resultados" data-notes="El resultado en números: con 7 automatizaciones pasamos de 117 horas 50 minutos a 29 horas 30 minutos al mes: 75% menos tiempo, 88 horas ahorradas cada mes. [Pulsa D] En días de trabajo, son 11 días al mes, unos 133 días al año. A la derecha, el detalle por tipo de solución y cuántas empresas usa cada una; las empresas no se suman porque se repiten entre procesos. Como oportunidad de mejora, la validación de la migración de AX a Dynamics 365, que pasó de semanas a segundos. Y todo esto ya beneficia a 14 empresas del grupo. [Pulsa R o el botón ROI S/] Y en dinero: S/ 111 679. Primero, S/ 72 259 al año que pagábamos a un proveedor por elaborar los libros electrónicos y que ahora hacemos en casa: es un ahorro recurrente. Segundo, al presentar los libros electrónicos a tiempo, reducimos la exposición a contingencias ante una fiscalización de SUNAT, por S/ 26 253. Y tercero, el SIRE que un tercero nos cotizó en S/ 13 167 lo desarrollamos nosotros con IA. Inversión externa: cero. Además, evitamos multas. Por infracción: en indicadores de lavado de activos, de 2 a 20 UIT, es decir de 11 mil a 110 mil soles; en el libro de reclamaciones, de 1 a 10 UIT, de 5 500 a 55 mil soles. Y en la información mensual a SUNAT, la multa es un porcentaje de las ventas de cada empresa: mientras más vende la empresa, más alta la multa. Con la automatización, todo se presenta a tiempo.">
+ <section class="slide" data-k="m70" data-t="g" data-title="Resultados" data-notes="El resultado en números: con 7 automatizaciones pasamos de 117 horas 50 minutos a 29 horas 30 minutos al mes: 75% menos tiempo, 88 horas ahorradas cada mes. [Abre en Días] Son 11 días de trabajo ahorrados al mes, unos 133 días al año. [Pulsa H para verlo en horas] A la derecha, el detalle por tipo de solución y cuántas empresas usa cada una; las empresas no se suman porque se repiten entre procesos. Como oportunidad de mejora, la validación de la migración de AX a Dynamics 365, que pasó de semanas a segundos. Y todo esto ya beneficia a 14 empresas del grupo. [Pulsa R o el botón ROI S/] Y en dinero: S/ 111 679. Primero, S/ 72 259 al año que pagábamos a un proveedor por elaborar los libros electrónicos y que ahora hacemos en casa: es un ahorro recurrente. Segundo, al presentar los libros electrónicos a tiempo, reducimos la exposición a contingencias ante una fiscalización de SUNAT, por S/ 26 253. Y tercero, el SIRE que un tercero nos cotizó en S/ 13 167 lo desarrollamos nosotros con IA. Inversión externa: cero. Además, evitamos multas. Por infracción: en indicadores de lavado de activos, de 2 a 20 UIT, es decir de 11 mil a 110 mil soles; en el libro de reclamaciones, de 1 a 10 UIT, de 5 500 a 55 mil soles. Y en la información mensual a SUNAT, la multa es un porcentaje de las ventas de cada empresa: mientras más vende la empresa, más alta la multa. Con la automatización, todo se presenta a tiempo.">
   <div class="col" style="left:100px;top:140px;width:560px;gap:18px">
    <p class="k it">02 — Resultados</p>
-   <div class="utab it" id="utab"><button class="on" data-u="h">Horas</button><button data-u="d">Días</button><button data-u="r">ROI S/</button></div>
+   <div class="utab it" id="utab"><button data-u="h">Horas</button><button class="on" data-u="d">Días</button><button data-u="r">ROI S/</button></div>
    <div class="ba" style="font-size:38px;gap:18px">
     <span class="old" id="old"><span class="u" data-m="7070">117 h 50 min</span><i class="strike" id="strike" style="height:6px"></i></span>
     <span class="arr" id="arr" style="font-size:30px">→</span>
@@ -563,15 +563,7 @@ var HOOK={
  prob:function(tl,sl,loops){
   tl.from($$('.pc',sl),{opacity:0,y:50,duration:.7,ease:'expo.out',stagger:.22},.8).from($$('.pci',sl),{scale:0,rotation:-60,duration:.5,ease:'back.out(2)',stagger:.22},1)
    .from($$('.pcn',sl),{opacity:0,x:20,duration:.5,stagger:.22},1.1).from('#pres2',{opacity:0,y:20,duration:.6},2.1).from('#pres2 .pp76',{opacity:0,scale:.6,duration:.4,ease:'back.out(2)'},2.9);count(tl,$('.pn76',sl),0,77,2.2,1.4)},
- m70:function(tl,sl){var st=$('#strike'),nw=$('#new'),h=$('#h70');
-  tl.from('#old',{x:-60,opacity:0,duration:.5,ease:'expo.out'},.15).fromTo(st,{scaleX:0},{scaleX:1,duration:.35,ease:'power4.inOut'},.45).to('#old',{opacity:.4,duration:.3},.75)
-   .from('#arr',{x:-20,opacity:0,duration:.35},.6).from(nw,{x:40,opacity:0,duration:.4,ease:'expo.out'},.65);
-  var o={v:7070};nw.textContent=U(7070);tl.to(o,{v:1770,duration:.9,ease:'power3.out',onUpdate:function(){nw.textContent=U(o.v)}},.7);
-  h.textContent='75';tl.from('#hero',{y:28,opacity:0,duration:.8,ease:'power3.out'},.45);
-  tl.from('#tbl2',{opacity:0,x:40,duration:.6,ease:'expo.out'},1.3).from($$('#tbl2 .tr',sl),{opacity:0,x:30,duration:.35,stagger:.05,ease:'power3.out'},1.4)
-   .fromTo($$('#tbl2 .tr.tot',sl),{backgroundColor:'rgba(52,211,153,.07)'},{backgroundColor:'rgba(52,211,153,.28)',duration:.35,yoyo:true,repeat:1},2.2)
-   .from('#emp',{opacity:0,y:20,duration:.5},2.3);count(tl,$('#emp .en'),0,14,2.4,1);
-  return 1.3},
+ m70:function(tl,sl){$('#new').textContent=U(1770);$('#h70').textContent='75';$('#emp .en').textContent='14';G.set('#strike',{scaleX:1});G.set('#old',{opacity:.4})},
  flow:function(tl,sl,loops){
   var W=$('#wires',sl),fs=$$('.fs',sl),eng=$('.eng',sl),of=$$('.of',sl),mt=$('svg.mt',sl);
   if(!W.childNodes.length){var E=eng.offsetLeft,ET=eng.offsetTop,inY=ET+eng.offsetHeight/2,outX=E+eng.offsetWidth;
@@ -616,13 +608,12 @@ var mains=SL.filter(function(x){return !x.dataset.annex}).length,idx=-1,t0=null;
 SL.forEach(function(sl,i){if(sl.dataset.annex)return;var d=document.createElement('div');d.className='seg';d.textContent=sl.dataset.title;d.onclick=function(e){e.stopPropagation();go(i)};ft.appendChild(d)});
 var nm=document.createElement('div');nm.className='num';ft.appendChild(nm);
 /* units on the results slide: hours or 8-hour workdays */
-var UNIT='h';
+var UNIT='d';
 function U(m){m=Math.round(m);if(UNIT==='d'){var d=m/480,t=(d<1?d.toFixed(2):d.toFixed(1)).replace('.',',');return t+(t==='1,0'?' día':' días')}
  var h=Math.floor(m/60),r=m%60;return h&&r?h+' h '+String(r).padStart(2,'0')+' min':h?h+' h':r+' min'}
 function setUnit(u){var sl=$('[data-k="m70"]');
  if(u==='r'){sl.classList.add('roiOn');$$('#utab button').forEach(function(b){b.classList.toggle('on',b.dataset.u==='r')});
-  if(G){var o={v:0},e=$('#rv1');G.fromTo('#roi',{opacity:0,x:30},{opacity:1,x:0,duration:.5,ease:'expo.out'});G.fromTo('#roi .rbar i',{scaleX:0},{scaleX:1,duration:.9,stagger:.15,ease:'power3.out',delay:.2});
-   G.fromTo('#roi .ri,#roi .mx,#roi .mi',{opacity:0,y:14},{opacity:1,y:0,duration:.35,stagger:.08,delay:.25});G.to(o,{v:111679,duration:1.4,ease:'power3.out',onUpdate:function(){e.textContent=Math.round(o.v).toString().replace(/\B(?=(\d{3})+(?!\d))/g,' ')}})}
+  $('#rv1').textContent='111 679';
   return}
  sl.classList.remove('roiOn');setUnitHD(u)}
 function setUnitHD(u){UNIT=u;$$('.u[data-m]').forEach(function(e){e.textContent=U(+e.dataset.m)});
@@ -630,7 +621,7 @@ function setUnitHD(u){UNIT=u;$$('.u[data-m]').forEach(function(e){e.textContent=
  $$('.uL').forEach(function(e){e.textContent=u==='d'?'(días/mes)':'(h/mes)'});
  $('#kpiD').innerHTML=u==='d'?'de trabajo ahorrados al mes<br>≈ 133 días al año':'ahorradas<br>cada mes';
  
- if(G)G.fromTo($$('.u[data-m]'),{opacity:.2,y:6},{opacity:1,y:0,duration:.35,stagger:.02,overwrite:'auto'})}
+ }
 $$('#utab button').forEach(function(b){b.addEventListener('click',function(e){e.stopPropagation();setUnit(b.dataset.u)})});
 $('#pbtn').addEventListener('click',function(e){e.stopPropagation();var sl=$('[data-k="prob"]');sl.classList.add('povOn');if(G){G.fromTo('#pov .povb',{opacity:0,y:30,scale:.97},{opacity:1,y:0,scale:1,duration:.45,ease:'expo.out'});G.fromTo('#pov .tk',{opacity:0,scale:.7},{opacity:1,scale:1,duration:.25,stagger:.006,ease:'back.out(2)',delay:.15})}});
 $('#pov').addEventListener('click',function(e){e.stopPropagation();if(e.target.id==='pov'||e.target.id==='povx')$('[data-k="prob"]').classList.remove('povOn')});
@@ -638,6 +629,7 @@ addEventListener('keydown',function(e){if(e.key==='Escape')$$('.povOn').forEach(
 $('#ebtn').addEventListener('click',function(e){e.stopPropagation();$('[data-k="m70"]').classList.add('eovOn');if(G){G.fromTo('#eov .povb',{opacity:0,y:30,scale:.97},{opacity:1,y:0,scale:1,duration:.45,ease:'expo.out'});G.fromTo('#eov .ve',{opacity:0,y:10},{opacity:1,y:0,duration:.3,stagger:.04,delay:.15})}});
 $('#eov').addEventListener('click',function(e){e.stopPropagation();if(e.target.id==='eov'||e.target.id==='eovx')$('[data-k="m70"]').classList.remove('eovOn')});
 addEventListener('keydown',function(e){if(e.key==='Escape')$$('.eovOn').forEach(function(x){x.classList.remove('eovOn')})},true);
+setUnit('d');
 var stepNext=null,stepPrev=null;
 function adv(d){if(d>0&&stepNext&&stepNext())return;if(d<0&&stepPrev&&stepPrev())return;go(idx+d)}
 function go(i){stepNext=stepPrev=null;i=Math.max(0,Math.min(SL.length-1,i));if(i===idx)return;if(idx>=0){leave();SL[idx].classList.remove('on')}idx=i;var sl=SL[i];sl.classList.add('on');
