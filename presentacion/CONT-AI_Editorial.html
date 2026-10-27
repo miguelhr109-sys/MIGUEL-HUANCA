@@ -243,7 +243,7 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
 .mi b{font-size:18px;font-weight:800;white-space:nowrap;color:#E2E8F0;font-variant-numeric:tabular-nums}.mi b.var{font-size:14px;font-weight:700;color:#C9B48A;font-style:italic}
 .pbtn{flex:none;font:700 15px var(--font);color:#FDBA74;background:rgba(251,146,60,.12);border:1px solid rgba(251,146,60,.55);padding:9px 16px;border-radius:999px;cursor:pointer}.pbtn:hover{background:rgba(251,146,60,.25)}
 .pov{position:absolute;inset:0;z-index:20;background:rgba(2,6,15,.86);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center}
-.slide.povOn .pov{display:flex}
+.slide.povOn #pov,.slide.eovOn #eov{display:flex}
 .povb{width:1400px;max-height:780px;box-sizing:border-box;padding:26px 28px;border-radius:20px;background:#0B1220;border:1px solid rgba(251,146,60,.4);box-shadow:0 30px 90px rgba(0,0,0,.6)}
 .povh{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:16px}
 .povh .twl{align-items:center}
@@ -251,6 +251,13 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
 .pov .tg{grid-template-columns:repeat(4,1fr)}
 .pov .tk{font-size:12.5px;padding:4px 8px}
 .pov .tm h5{font-size:15px}
+.ebtn{margin-left:auto;flex:none;font:700 15px var(--font);color:#6EE7B7;background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.55);padding:9px 16px;border-radius:999px;cursor:pointer}.ebtn:hover{background:rgba(52,211,153,.25)}
+#eov .povb{border-color:rgba(52,211,153,.45)}#eov .twn span{color:#6EE7B7!important;-webkit-text-fill-color:#6EE7B7!important;background:none!important}
+.vgs{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.vg{padding:16px;border-radius:14px;background:var(--card);border:1px solid var(--ln);display:flex;flex-direction:column;gap:8px}
+.vg h5{margin:0 0 6px;display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--c)}
+.vg h5 b{font-size:12px;letter-spacing:0;padding:2px 9px;border-radius:999px;border:1px solid var(--c);color:var(--c)}
+.ve{display:block;padding:10px 12px;border-radius:10px;background:rgba(148,163,184,.08);border:1px solid rgba(148,163,184,.18);font-size:17px;font-weight:700;color:var(--ink)}
 /* video */
 .vid{position:absolute;left:220px;top:160px;width:1160px;height:653px;border-radius:22px;overflow:hidden;background:linear-gradient(160deg,#0B1830,#060D1C);border:1.5px solid rgba(52,211,153,.55);box-shadow:0 0 0 6px rgba(52,211,153,.06),0 0 60px rgba(52,211,153,.22),0 30px 90px rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center}
 .vid video{display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000}
@@ -452,7 +459,17 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;background:radi
    <div class="mi"><div><h5>Libro de reclamaciones</h5><p>Atención dentro de plazo · Indecopi · 1 a 10 UIT</p></div><b>S/ 5 500 – 55 000</b></div>
    <div class="mi"><div><h5>Información mensual a SUNAT</h5><p>La multa es un % de las ventas de cada empresa</p></div><b class="var">Variable según ventas</b></div>
   </div>
-  <div class="emp" id="emp"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4v18M19 21V10l-7-3"/><path d="M8 9h1M8 13h1M8 17h1M15 13h1M15 17h1"/></svg><span class="en" data-n="14">14</span><span class="et">empresas del grupo <b>ya se benefician</b><br>de estas automatizaciones</span></div>
+  <div class="emp" id="emp"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4v18M19 21V10l-7-3"/><path d="M8 9h1M8 13h1M8 17h1M15 13h1M15 17h1"/></svg><span class="en" data-n="14">14</span><span class="et">empresas del grupo <b>ya se benefician</b><br>de estas automatizaciones</span><button class="ebtn" id="ebtn">Ver las 14 empresas →</button></div>
+  <div class="pov" id="eov"><div class="povb" style="width:1240px">
+   <div class="povh"><div><p class="twk" style="color:#6EE7B7">Empresas del grupo con automatizaciones</p><p class="twn"><span style="color:#6EE7B7">14</span> empresas · 5 verticales</p></div><div class="twl"><button class="povx" id="eovx" aria-label="Cerrar">✕</button></div></div>
+   <div class="vgs">
+    <div class="vg"><h5 style="--c:#6EE7B7">Dealer<b>4</b></h5><span class="ve">ONE</span><span class="ve">T1</span><span class="ve">Revo Motors</span><span class="ve">Euroshop</span></div>
+    <div class="vg"><h5 style="--c:#93C5FD">Import<b>2</b></h5><span class="ve">Euromotors</span><span class="ve">Altos Andes</span></div>
+    <div class="vg"><h5 style="--c:#C4B5FD">Mobility<b>1</b></h5><span class="ve">Renting</span></div>
+    <div class="vg"><h5 style="--c:#FCD34D">Real Estate<b>3</b></h5><span class="ve">Japan</span><span class="ve">Taller Temporal</span><span class="ve">Euroinmuebles</span></div>
+    <div class="vg"><h5 style="--c:#FDBA74">Transport<b>4</b></h5><span class="ve">ICP</span><span class="ve">San Bartolomé</span><span class="ve">Euro Camiones</span><span class="ve">Eurolift</span></div>
+   </div>
+  </div></div>
  </section>
 
  <!-- 4 · Cómo funciona: fuentes -> motor -> entregables -->
@@ -592,7 +609,7 @@ function enter(sl){if(!G){$$('[data-count]',sl).forEach(function(e){e.textConten
  var its=$$('.it',sl);if(its.length)tl.from(its,{y:28,opacity:0,duration:.8,ease:'power3.out',stagger:.1},.35);
  var h=HOOK[sl.dataset.k];if(h)h(tl,sl,loops);
  if(reduce)tl.progress(1)}
-function leave(){$$('.povOn').forEach(function(x){x.classList.remove('povOn')});var dv=document.getElementById('demo');if(dv&&!dv.paused)dv.pause();if(cur.tl){cur.tl.progress(1);cur.tl.kill()}cur.loops.forEach(function(l){l.kill()});
+function leave(){$$('.eovOn').forEach(function(x){x.classList.remove('eovOn')});$$('.povOn').forEach(function(x){x.classList.remove('povOn')});var dv=document.getElementById('demo');if(dv&&!dv.paused)dv.pause();if(cur.tl){cur.tl.progress(1);cur.tl.kill()}cur.loops.forEach(function(l){l.kill()});
  if(G&&SL[idx]){G.set($$('.keys i,.wires .fl',SL[idx]),{clearProps:'boxShadow,opacity'})}}
 
 /* ---------- navigation ---------- */
@@ -619,6 +636,9 @@ $$('#utab button').forEach(function(b){b.addEventListener('click',function(e){e.
 $('#pbtn').addEventListener('click',function(e){e.stopPropagation();var sl=$('[data-k="prob"]');sl.classList.add('povOn');if(G){G.fromTo('#pov .povb',{opacity:0,y:30,scale:.97},{opacity:1,y:0,scale:1,duration:.45,ease:'expo.out'});G.fromTo('#pov .tk',{opacity:0,scale:.7},{opacity:1,scale:1,duration:.25,stagger:.006,ease:'back.out(2)',delay:.15})}});
 $('#pov').addEventListener('click',function(e){e.stopPropagation();if(e.target.id==='pov'||e.target.id==='povx')$('[data-k="prob"]').classList.remove('povOn')});
 addEventListener('keydown',function(e){if(e.key==='Escape')$$('.povOn').forEach(function(x){x.classList.remove('povOn')})},true);
+$('#ebtn').addEventListener('click',function(e){e.stopPropagation();$('[data-k="m70"]').classList.add('eovOn');if(G){G.fromTo('#eov .povb',{opacity:0,y:30,scale:.97},{opacity:1,y:0,scale:1,duration:.45,ease:'expo.out'});G.fromTo('#eov .ve',{opacity:0,y:10},{opacity:1,y:0,duration:.3,stagger:.04,delay:.15})}});
+$('#eov').addEventListener('click',function(e){e.stopPropagation();if(e.target.id==='eov'||e.target.id==='eovx')$('[data-k="m70"]').classList.remove('eovOn')});
+addEventListener('keydown',function(e){if(e.key==='Escape')$$('.eovOn').forEach(function(x){x.classList.remove('eovOn')})},true);
 var stepNext=null,stepPrev=null;
 function adv(d){if(d>0&&stepNext&&stepNext())return;if(d<0&&stepPrev&&stepPrev())return;go(idx+d)}
 function go(i){stepNext=stepPrev=null;i=Math.max(0,Math.min(SL.length-1,i));if(i===idx)return;if(idx>=0){leave();SL[idx].classList.remove('on')}idx=i;var sl=SL[i];sl.classList.add('on');
