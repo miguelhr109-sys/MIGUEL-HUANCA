@@ -579,7 +579,7 @@ SL.forEach(function(sl,i){if(sl.dataset.annex)return;var d=document.createElemen
 var nm=document.createElement('div');nm.className='num';ft.appendChild(nm);
 /* units on the results slide: hours or 8-hour workdays */
 var UNIT='d';
-function U(m){m=Math.round(m);if(UNIT==='d'){var d=m/480,t=(d<1?d.toFixed(2):d.toFixed(1)).replace('.',',');return t+(t==='1,0'?' día':' días')}
+function U(m){m=Math.round(m);if(UNIT==='d'){var d=m/480,t=(d<1?d.toFixed(2):d.toFixed(1)).replace('.',',').replace(/,0$/,'');return t+(t==='1'?' día':' días')}
  var h=Math.floor(m/60),r=m%60;return h&&r?h+' h '+String(r).padStart(2,'0')+' min':h?h+' h':r+' min'}
 function setUnit(u){var sl=$('[data-k="m70"]');
  if(u==='r'){sl.classList.add('roiOn');$$('#utab button').forEach(function(b){b.classList.toggle('on',b.dataset.u==='r')});
