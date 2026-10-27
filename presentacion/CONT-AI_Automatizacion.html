@@ -218,6 +218,18 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
 .ri b{text-align:right;font-size:22px;font-weight:900;font-variant-numeric:tabular-nums}
 .ri.rtot{border-bottom:0;margin-top:4px;padding:14px 14px;border-radius:12px;background:rgba(251,191,36,.12);border:1px solid rgba(251,191,36,.45)}.ri.rtot h5{font-size:20px;color:#FCD34D}.ri.rtot{grid-template-columns:14px 1fr auto 170px}.ri.rtot b{font-size:26px;color:#FCD34D;white-space:nowrap}
 .rf{display:flex;justify-content:space-between;margin-top:16px;font-size:14px;color:var(--mut)}.rf b{color:#6EE7B7}
+
+/* ROI sober palette */
+.roi{border-color:rgba(148,163,184,.22)}
+.rk{color:#C9B48A}
+.rcur,.rv{color:#F1F5F9}
+.rbar{height:10px;border-radius:5px}
+.rbar i:nth-child(1){background:#5B7A99!important}.rbar i:nth-child(2){background:#A08A5E!important}.rbar i:nth-child(3){background:#7C8796!important}
+.ri:nth-of-type(1) .rd{background:#5B7A99!important}
+.rg{font-weight:700;letter-spacing:.08em;color:#CBD5E1!important;background:transparent!important;border:1px solid rgba(148,163,184,.4)!important}
+.ri.rtot{background:transparent;border:0;border-top:1.5px solid rgba(201,180,138,.6);border-radius:0;margin-top:2px;padding:16px 0}
+.ri.rtot h5{color:#F1F5F9}.ri.rtot b{color:#C9B48A}
+.rf b{color:#F1F5F9}
 /* video */
 .vid{position:absolute;left:220px;top:160px;width:1160px;height:653px;border-radius:22px;overflow:hidden;background:linear-gradient(160deg,#0B1830,#060D1C);border:1.5px solid rgba(52,211,153,.55);box-shadow:0 0 0 6px rgba(52,211,153,.06),0 0 60px rgba(52,211,153,.22),0 30px 90px rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center}
 .vid video{display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000}
@@ -369,10 +381,10 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
     <div class="roi" id="roi">
    <p class="rk">Retorno económico · ROI</p>
    <div class="rt"><span class="rcur">S/</span><span class="rv" id="rv1">168 579</span><span class="rl">en costos evitados<br>y riesgos mitigados</span></div>
-   <div class="rbar"><i style="width:42.9%;background:#34D399"></i><i style="width:49.3%;background:#FBBF24"></i><i style="width:7.8%;background:#60A5FA"></i></div>
-   <div class="ri"><span class="rd" style="background:#34D399"></span><div><h5>Elaboración de libros electrónicos</h5><p>Servicio de un proveedor externo (Kardex) que ahora hacemos en casa</p></div><span class="rg rec">Ahorro anual recurrente</span><b>S/ 72 259</b></div>
-   <div class="ri"><span class="rd" style="background:#FBBF24"></span><div><h5>Presentación a tiempo ante SUNAT</h5><p>Libros electrónicos dentro de plazo: menor exposición a contingencias en fiscalización</p></div><span class="rg rsk">Riesgo mitigado</span><b>S/ 83 153</b></div>
-   <div class="ri"><span class="rd" style="background:#60A5FA"></span><div><h5>SIRE Ventas y No Domiciliado</h5><p>Cotizado a un tercero; lo desarrollamos internamente con IA</p></div><span class="rg one">Costo evitado</span><b>S/ 13 167</b></div>
+   <div class="rbar"><i style="width:42.9%;background:#5B7A99"></i><i style="width:49.3%;background:#A08A5E"></i><i style="width:7.8%;background:#7C8796"></i></div>
+   <div class="ri"><span class="rd" style="background:#5B7A99"></span><div><h5>Elaboración de libros electrónicos</h5><p>Servicio de un proveedor externo (Kardex) que ahora hacemos en casa</p></div><span class="rg rec">Ahorro anual recurrente</span><b>S/ 72 259</b></div>
+   <div class="ri"><span class="rd" style="background:#A08A5E"></span><div><h5>Presentación a tiempo ante SUNAT</h5><p>Libros electrónicos dentro de plazo: menor exposición a contingencias en fiscalización</p></div><span class="rg rsk">Riesgo mitigado</span><b>S/ 83 153</b></div>
+   <div class="ri"><span class="rd" style="background:#7C8796"></span><div><h5>SIRE Ventas y No Domiciliado</h5><p>Cotizado a un tercero; lo desarrollamos internamente con IA</p></div><span class="rg one">Costo evitado</span><b>S/ 13 167</b></div>
    <div class="ri rtot"><span></span><div><h5>Total retorno económico</h5></div><span></span><b>S/ 168 579</b></div>
    <div class="rf"><span>Inversión externa: <b>S/ 0</b> · desarrollo propio del equipo con IA</span><span>Importes en soles</span></div>
   </div>
